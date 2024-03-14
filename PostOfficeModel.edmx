@@ -1,0 +1,733 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище PostOfficeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Correspondence">
+          <Key>
+            <PropertyRef Name="id Correspondence" />
+          </Key>
+          <Property Name="id Correspondence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id Subscribe" Type="int" Nullable="false" />
+          <Property Name="DeliveryAddres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOfDispatch" Type="smalldatetime" Nullable="false" />
+          <Property Name="DateOfDelivery" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogIO">
+          <Key>
+            <PropertyRef Name="id Journal" />
+          </Key>
+          <Property Name="id Journal" Type="int" Nullable="false" />
+          <Property Name="id User" Type="int" Nullable="false" />
+          <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="ExitTime" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OperatorPostOffice">
+          <Key>
+            <PropertyRef Name="id Operator" />
+          </Key>
+          <Property Name="id Operator" Type="int" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Publication">
+          <Key>
+            <PropertyRef Name="id Publication" />
+          </Key>
+          <Property Name="id Publication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id TypePublication" Type="int" Nullable="false" />
+          <Property Name="id TypeViewPublication" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PricePerMonth" Type="money" Nullable="false" />
+          <Property Name="Cover" Type="image" />
+          <Property Name="Feedback" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumberIssuesPerMonth" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id Role" />
+          </Key>
+          <Property Name="id Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subscribe">
+          <Key>
+            <PropertyRef Name="id Subscribe" />
+          </Key>
+          <Property Name="id Subscribe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id Subscriber" Type="int" Nullable="false" />
+          <Property Name="id Publication" Type="int" Nullable="false" />
+          <Property Name="StatusActive" Type="tinyint" Nullable="false" />
+          <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="EndTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="DateRegistration" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubscriberOfThePostOffice">
+          <Key>
+            <PropertyRef Name="id Subscriber" />
+          </Key>
+          <Property Name="id Subscriber" Type="int" Nullable="false" />
+          <Property Name="id Operator" Type="int" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="NumberPhone" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypePublication">
+          <Key>
+            <PropertyRef Name="id TypePublication" />
+          </Key>
+          <Property Name="id TypePublication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeViewPublication">
+          <Key>
+            <PropertyRef Name="id TypeViewPublication" />
+          </Key>
+          <Property Name="id TypeViewPublication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id User" />
+          </Key>
+          <Property Name="id User" Type="int" Nullable="false" />
+          <Property Name="id Role" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Correspondence_Subscribe">
+          <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="1" />
+          <End Role="Correspondence" Type="Self.Correspondence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscribe">
+              <PropertyRef Name="id Subscribe" />
+            </Principal>
+            <Dependent Role="Correspondence">
+              <PropertyRef Name="id Subscribe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogIO_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="LogIO" Type="Self.LogIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id User" />
+            </Principal>
+            <Dependent Role="LogIO">
+              <PropertyRef Name="id User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperatorPostOffice_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="OperatorPostOffice" Type="Self.OperatorPostOffice" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id User" />
+            </Principal>
+            <Dependent Role="OperatorPostOffice">
+              <PropertyRef Name="id Operator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Publication_TypePublication">
+          <End Role="TypePublication" Type="Self.TypePublication" Multiplicity="1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypePublication">
+              <PropertyRef Name="id TypePublication" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="id TypePublication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Publication_TypeViewPublication">
+          <End Role="TypeViewPublication" Type="Self.TypeViewPublication" Multiplicity="1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeViewPublication">
+              <PropertyRef Name="id TypeViewPublication" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="id TypeViewPublication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribe_Publication">
+          <End Role="Publication" Type="Self.Publication" Multiplicity="1" />
+          <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="id Publication" />
+            </Principal>
+            <Dependent Role="Subscribe">
+              <PropertyRef Name="id Publication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribe_SubscriberOfThePostOffice">
+          <End Role="SubscriberOfThePostOffice" Type="Self.SubscriberOfThePostOffice" Multiplicity="1" />
+          <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubscriberOfThePostOffice">
+              <PropertyRef Name="id Subscriber" />
+            </Principal>
+            <Dependent Role="Subscribe">
+              <PropertyRef Name="id Subscriber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriberOfThePostOffice_OperatorPostOffice">
+          <End Role="OperatorPostOffice" Type="Self.OperatorPostOffice" Multiplicity="1" />
+          <End Role="SubscriberOfThePostOffice" Type="Self.SubscriberOfThePostOffice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperatorPostOffice">
+              <PropertyRef Name="id Operator" />
+            </Principal>
+            <Dependent Role="SubscriberOfThePostOffice">
+              <PropertyRef Name="id Operator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriberOfThePostOffice_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="SubscriberOfThePostOffice" Type="Self.SubscriberOfThePostOffice" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id User" />
+            </Principal>
+            <Dependent Role="SubscriberOfThePostOffice">
+              <PropertyRef Name="id Subscriber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role1">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id Role" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="id Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PostOfficeModelContainer">
+          <EntitySet Name="Correspondence" EntityType="Self.Correspondence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogIO" EntityType="Self.LogIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperatorPostOffice" EntityType="Self.OperatorPostOffice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publication" EntityType="Self.Publication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscribe" EntityType="Self.Subscribe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubscriberOfThePostOffice" EntityType="Self.SubscriberOfThePostOffice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypePublication" EntityType="Self.TypePublication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeViewPublication" EntityType="Self.TypeViewPublication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Correspondence_Subscribe" Association="Self.FK_Correspondence_Subscribe">
+            <End Role="Subscribe" EntitySet="Subscribe" />
+            <End Role="Correspondence" EntitySet="Correspondence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogIO_User" Association="Self.FK_LogIO_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LogIO" EntitySet="LogIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperatorPostOffice_User" Association="Self.FK_OperatorPostOffice_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="OperatorPostOffice" EntitySet="OperatorPostOffice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Publication_TypePublication" Association="Self.FK_Publication_TypePublication">
+            <End Role="TypePublication" EntitySet="TypePublication" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Publication_TypeViewPublication" Association="Self.FK_Publication_TypeViewPublication">
+            <End Role="TypeViewPublication" EntitySet="TypeViewPublication" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribe_Publication" Association="Self.FK_Subscribe_Publication">
+            <End Role="Publication" EntitySet="Publication" />
+            <End Role="Subscribe" EntitySet="Subscribe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribe_SubscriberOfThePostOffice" Association="Self.FK_Subscribe_SubscriberOfThePostOffice">
+            <End Role="SubscriberOfThePostOffice" EntitySet="SubscriberOfThePostOffice" />
+            <End Role="Subscribe" EntitySet="Subscribe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriberOfThePostOffice_OperatorPostOffice" Association="Self.FK_SubscriberOfThePostOffice_OperatorPostOffice">
+            <End Role="OperatorPostOffice" EntitySet="OperatorPostOffice" />
+            <End Role="SubscriberOfThePostOffice" EntitySet="SubscriberOfThePostOffice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriberOfThePostOffice_User" Association="Self.FK_SubscriberOfThePostOffice_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="SubscriberOfThePostOffice" EntitySet="SubscriberOfThePostOffice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role1" Association="Self.FK_User_Role1">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PostOfficeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Correspondence">
+          <Key>
+            <PropertyRef Name="id_Correspondence" />
+          </Key>
+          <Property Name="id_Correspondence" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Subscribe" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryAddres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfDispatch" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateOfDelivery" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Subscribe" Relationship="Self.FK_Correspondence_Subscribe" FromRole="Correspondence" ToRole="Subscribe" />
+        </EntityType>
+        <EntityType Name="LogIO">
+          <Key>
+            <PropertyRef Name="id_Journal" />
+          </Key>
+          <Property Name="id_Journal" Type="Int32" Nullable="false" />
+          <Property Name="id_User" Type="Int32" Nullable="false" />
+          <Property Name="EntryTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ExitTime" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="User" Relationship="Self.FK_LogIO_User" FromRole="LogIO" ToRole="User" />
+        </EntityType>
+        <EntityType Name="OperatorPostOffice">
+          <Key>
+            <PropertyRef Name="id_Operator" />
+          </Key>
+          <Property Name="id_Operator" Type="Int32" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_OperatorPostOffice_User" FromRole="OperatorPostOffice" ToRole="User" />
+          <NavigationProperty Name="SubscriberOfThePostOffice" Relationship="Self.FK_SubscriberOfThePostOffice_OperatorPostOffice" FromRole="OperatorPostOffice" ToRole="SubscriberOfThePostOffice" />
+        </EntityType>
+        <EntityType Name="Publication">
+          <Key>
+            <PropertyRef Name="id_Publication" />
+          </Key>
+          <Property Name="id_Publication" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_TypePublication" Type="Int32" Nullable="false" />
+          <Property Name="id_TypeViewPublication" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PricePerMonth" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Cover" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Feedback" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumberIssuesPerMonth" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TypePublication" Relationship="Self.FK_Publication_TypePublication" FromRole="Publication" ToRole="TypePublication" />
+          <NavigationProperty Name="TypeViewPublication" Relationship="Self.FK_Publication_TypeViewPublication" FromRole="Publication" ToRole="TypeViewPublication" />
+          <NavigationProperty Name="Subscribe" Relationship="Self.FK_Subscribe_Publication" FromRole="Publication" ToRole="Subscribe" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id_Role" />
+          </Key>
+          <Property Name="id_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role1" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Subscribe">
+          <Key>
+            <PropertyRef Name="id_Subscribe" />
+          </Key>
+          <Property Name="id_Subscribe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Subscriber" Type="Int32" Nullable="false" />
+          <Property Name="id_Publication" Type="Int32" Nullable="false" />
+          <Property Name="StatusActive" Type="Byte" Nullable="false" />
+          <Property Name="EntryTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateRegistration" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Correspondence" Relationship="Self.FK_Correspondence_Subscribe" FromRole="Subscribe" ToRole="Correspondence" />
+          <NavigationProperty Name="Publication" Relationship="Self.FK_Subscribe_Publication" FromRole="Subscribe" ToRole="Publication" />
+          <NavigationProperty Name="SubscriberOfThePostOffice" Relationship="Self.FK_Subscribe_SubscriberOfThePostOffice" FromRole="Subscribe" ToRole="SubscriberOfThePostOffice" />
+        </EntityType>
+        <EntityType Name="SubscriberOfThePostOffice">
+          <Key>
+            <PropertyRef Name="id_Subscriber" />
+          </Key>
+          <Property Name="id_Subscriber" Type="Int32" Nullable="false" />
+          <Property Name="id_Operator" Type="Int32" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NumberPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OperatorPostOffice" Relationship="Self.FK_SubscriberOfThePostOffice_OperatorPostOffice" FromRole="SubscriberOfThePostOffice" ToRole="OperatorPostOffice" />
+          <NavigationProperty Name="Subscribe" Relationship="Self.FK_Subscribe_SubscriberOfThePostOffice" FromRole="SubscriberOfThePostOffice" ToRole="Subscribe" />
+          <NavigationProperty Name="User" Relationship="Self.FK_SubscriberOfThePostOffice_User" FromRole="SubscriberOfThePostOffice" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypePublication">
+          <Key>
+            <PropertyRef Name="id_TypePublication" />
+          </Key>
+          <Property Name="id_TypePublication" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Publication" Relationship="Self.FK_Publication_TypePublication" FromRole="TypePublication" ToRole="Publication" />
+        </EntityType>
+        <EntityType Name="TypeViewPublication">
+          <Key>
+            <PropertyRef Name="id_TypeViewPublication" />
+          </Key>
+          <Property Name="id_TypeViewPublication" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Publication" Relationship="Self.FK_Publication_TypeViewPublication" FromRole="TypeViewPublication" ToRole="Publication" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id_User" />
+          </Key>
+          <Property Name="id_User" Type="Int32" Nullable="false" />
+          <Property Name="id_Role" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LogIO" Relationship="Self.FK_LogIO_User" FromRole="User" ToRole="LogIO" />
+          <NavigationProperty Name="OperatorPostOffice" Relationship="Self.FK_OperatorPostOffice_User" FromRole="User" ToRole="OperatorPostOffice" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role1" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="SubscriberOfThePostOffice" Relationship="Self.FK_SubscriberOfThePostOffice_User" FromRole="User" ToRole="SubscriberOfThePostOffice" />
+        </EntityType>
+        <Association Name="FK_Correspondence_Subscribe">
+          <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="1" />
+          <End Role="Correspondence" Type="Self.Correspondence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscribe">
+              <PropertyRef Name="id_Subscribe" />
+            </Principal>
+            <Dependent Role="Correspondence">
+              <PropertyRef Name="id_Subscribe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogIO_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="LogIO" Type="Self.LogIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id_User" />
+            </Principal>
+            <Dependent Role="LogIO">
+              <PropertyRef Name="id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperatorPostOffice_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="OperatorPostOffice" Type="Self.OperatorPostOffice" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id_User" />
+            </Principal>
+            <Dependent Role="OperatorPostOffice">
+              <PropertyRef Name="id_Operator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriberOfThePostOffice_OperatorPostOffice">
+          <End Role="OperatorPostOffice" Type="Self.OperatorPostOffice" Multiplicity="1" />
+          <End Role="SubscriberOfThePostOffice" Type="Self.SubscriberOfThePostOffice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperatorPostOffice">
+              <PropertyRef Name="id_Operator" />
+            </Principal>
+            <Dependent Role="SubscriberOfThePostOffice">
+              <PropertyRef Name="id_Operator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Publication_TypePublication">
+          <End Role="TypePublication" Type="Self.TypePublication" Multiplicity="1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypePublication">
+              <PropertyRef Name="id_TypePublication" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="id_TypePublication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Publication_TypeViewPublication">
+          <End Role="TypeViewPublication" Type="Self.TypeViewPublication" Multiplicity="1" />
+          <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeViewPublication">
+              <PropertyRef Name="id_TypeViewPublication" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="id_TypeViewPublication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribe_Publication">
+          <End Role="Publication" Type="Self.Publication" Multiplicity="1" />
+          <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="id_Publication" />
+            </Principal>
+            <Dependent Role="Subscribe">
+              <PropertyRef Name="id_Publication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role1">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id_Role" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="id_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribe_SubscriberOfThePostOffice">
+          <End Role="SubscriberOfThePostOffice" Type="Self.SubscriberOfThePostOffice" Multiplicity="1" />
+          <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubscriberOfThePostOffice">
+              <PropertyRef Name="id_Subscriber" />
+            </Principal>
+            <Dependent Role="Subscribe">
+              <PropertyRef Name="id_Subscriber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriberOfThePostOffice_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="SubscriberOfThePostOffice" Type="Self.SubscriberOfThePostOffice" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id_User" />
+            </Principal>
+            <Dependent Role="SubscriberOfThePostOffice">
+              <PropertyRef Name="id_Subscriber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PostOfficeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Correspondence" EntityType="Self.Correspondence" />
+          <EntitySet Name="LogIO" EntityType="Self.LogIO" />
+          <EntitySet Name="OperatorPostOffice" EntityType="Self.OperatorPostOffice" />
+          <EntitySet Name="Publication" EntityType="Self.Publication" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Subscribe" EntityType="Self.Subscribe" />
+          <EntitySet Name="SubscriberOfThePostOffice" EntityType="Self.SubscriberOfThePostOffice" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TypePublication" EntityType="Self.TypePublication" />
+          <EntitySet Name="TypeViewPublication" EntityType="Self.TypeViewPublication" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Correspondence_Subscribe" Association="Self.FK_Correspondence_Subscribe">
+            <End Role="Subscribe" EntitySet="Subscribe" />
+            <End Role="Correspondence" EntitySet="Correspondence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogIO_User" Association="Self.FK_LogIO_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LogIO" EntitySet="LogIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperatorPostOffice_User" Association="Self.FK_OperatorPostOffice_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="OperatorPostOffice" EntitySet="OperatorPostOffice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriberOfThePostOffice_OperatorPostOffice" Association="Self.FK_SubscriberOfThePostOffice_OperatorPostOffice">
+            <End Role="OperatorPostOffice" EntitySet="OperatorPostOffice" />
+            <End Role="SubscriberOfThePostOffice" EntitySet="SubscriberOfThePostOffice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Publication_TypePublication" Association="Self.FK_Publication_TypePublication">
+            <End Role="TypePublication" EntitySet="TypePublication" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Publication_TypeViewPublication" Association="Self.FK_Publication_TypeViewPublication">
+            <End Role="TypeViewPublication" EntitySet="TypeViewPublication" />
+            <End Role="Publication" EntitySet="Publication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribe_Publication" Association="Self.FK_Subscribe_Publication">
+            <End Role="Publication" EntitySet="Publication" />
+            <End Role="Subscribe" EntitySet="Subscribe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role1" Association="Self.FK_User_Role1">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribe_SubscriberOfThePostOffice" Association="Self.FK_Subscribe_SubscriberOfThePostOffice">
+            <End Role="SubscriberOfThePostOffice" EntitySet="SubscriberOfThePostOffice" />
+            <End Role="Subscribe" EntitySet="Subscribe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriberOfThePostOffice_User" Association="Self.FK_SubscriberOfThePostOffice_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="SubscriberOfThePostOffice" EntitySet="SubscriberOfThePostOffice" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PostOfficeModelContainer" CdmEntityContainer="PostOfficeEntities">
+          <EntitySetMapping Name="Correspondence">
+            <EntityTypeMapping TypeName="PostOfficeModel.Correspondence">
+              <MappingFragment StoreEntitySet="Correspondence">
+                <ScalarProperty Name="id_Correspondence" ColumnName="id Correspondence" />
+                <ScalarProperty Name="id_Subscribe" ColumnName="id Subscribe" />
+                <ScalarProperty Name="DeliveryAddres" ColumnName="DeliveryAddres" />
+                <ScalarProperty Name="DateOfDispatch" ColumnName="DateOfDispatch" />
+                <ScalarProperty Name="DateOfDelivery" ColumnName="DateOfDelivery" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogIO">
+            <EntityTypeMapping TypeName="PostOfficeModel.LogIO">
+              <MappingFragment StoreEntitySet="LogIO">
+                <ScalarProperty Name="id_Journal" ColumnName="id Journal" />
+                <ScalarProperty Name="id_User" ColumnName="id User" />
+                <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+                <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperatorPostOffice">
+            <EntityTypeMapping TypeName="PostOfficeModel.OperatorPostOffice">
+              <MappingFragment StoreEntitySet="OperatorPostOffice">
+                <ScalarProperty Name="id_Operator" ColumnName="id Operator" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publication">
+            <EntityTypeMapping TypeName="PostOfficeModel.Publication">
+              <MappingFragment StoreEntitySet="Publication">
+                <ScalarProperty Name="id_Publication" ColumnName="id Publication" />
+                <ScalarProperty Name="id_TypePublication" ColumnName="id TypePublication" />
+                <ScalarProperty Name="id_TypeViewPublication" ColumnName="id TypeViewPublication" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PricePerMonth" ColumnName="PricePerMonth" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+                <ScalarProperty Name="NumberIssuesPerMonth" ColumnName="NumberIssuesPerMonth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="PostOfficeModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="id_Role" ColumnName="id Role" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscribe">
+            <EntityTypeMapping TypeName="PostOfficeModel.Subscribe">
+              <MappingFragment StoreEntitySet="Subscribe">
+                <ScalarProperty Name="id_Subscribe" ColumnName="id Subscribe" />
+                <ScalarProperty Name="id_Subscriber" ColumnName="id Subscriber" />
+                <ScalarProperty Name="id_Publication" ColumnName="id Publication" />
+                <ScalarProperty Name="StatusActive" ColumnName="StatusActive" />
+                <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="DateRegistration" ColumnName="DateRegistration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubscriberOfThePostOffice">
+            <EntityTypeMapping TypeName="PostOfficeModel.SubscriberOfThePostOffice">
+              <MappingFragment StoreEntitySet="SubscriberOfThePostOffice">
+                <ScalarProperty Name="id_Subscriber" ColumnName="id Subscriber" />
+                <ScalarProperty Name="id_Operator" ColumnName="id Operator" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="NumberPhone" ColumnName="NumberPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PostOfficeModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypePublication">
+            <EntityTypeMapping TypeName="PostOfficeModel.TypePublication">
+              <MappingFragment StoreEntitySet="TypePublication">
+                <ScalarProperty Name="id_TypePublication" ColumnName="id TypePublication" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeViewPublication">
+            <EntityTypeMapping TypeName="PostOfficeModel.TypeViewPublication">
+              <MappingFragment StoreEntitySet="TypeViewPublication">
+                <ScalarProperty Name="id_TypeViewPublication" ColumnName="id TypeViewPublication" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="PostOfficeModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id_User" ColumnName="id User" />
+                <ScalarProperty Name="id_Role" ColumnName="id Role" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
