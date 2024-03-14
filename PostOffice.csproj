@@ -168,6 +168,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Pic\free-icon-font-angle-left-3916912.png" />
+    <Resource Include="Pic\free-icon-font-angle-right-3916907.png" />
+    <Resource Include="Pic\free-icon-font-arrow-small-left-3916837.png" />
+    <Resource Include="Pic\free-icon-font-arrow-small-right-3916831.png" />
     <Content Include="PostOfficeModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PostOfficeModel.Context.cs</LastGenOutput>
@@ -182,8 +186,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pic\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

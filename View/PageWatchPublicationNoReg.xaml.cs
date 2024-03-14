@@ -24,9 +24,7 @@ namespace PostOffice.View
 
         List<Publication> _publications;
 
-        List<Button> buttonsMenu;
-
-        private int _allCountPublicationEntity;
+        List<Publication> sortPublication;
 
         private int _countPublication = 6;
 
@@ -38,24 +36,76 @@ namespace PostOffice.View
         {
             InitializeComponent();
 
-            dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
+            sortPublication = new List<Publication>();
 
-            buttonsMenu = new List<Button>();
+            try
+            {
+                dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"{e.Message}");
+            }
 
             _publications = dataBasePostOffice.postOfficeEntities.Publication.ToList();
 
-            _allCountPublicationEntity = dataBasePostOffice.postOfficeEntities.Publication.Count();
+            comboBoxTypePublication(cbTypePublication, dataBasePostOffice.postOfficeEntities.TypePublication.ToList());
+
+            comboBoxTypeViewPubication(cbCatergoriaPublication, dataBasePostOffice.postOfficeEntities.TypeViewPublication.ToList());
+        }
+
+        private int CountEntryMax(int AllCountData) => (int) Math.Ceiling(AllCountData * 1.0 / _countPublication);
+
+        private void comboBoxTypePublication(ComboBox comboBox, List<TypePublication> list)
+        {
+            List<string> temp = new List<string>();
+
+            temp.Add("Все издания");
+
+            foreach (var item in list)
+            {
+                temp.Add(item.Name);
+            }
+
+            comboBox.ItemsSource = temp;
+
+            comboBox.SelectedItem = temp[0];
+        }
+
+        private void comboBoxTypeViewPubication(ComboBox comboBox, List<TypeViewPublication> list)
+        {
+            List<string> temp = new List<string>();
+
+            temp.Add("Все категории изданий");
+
+            foreach (var item in list)
+            {
+                temp.Add(item.Name);
+            }
+
+            comboBox.ItemsSource = temp;
+
+            comboBox.SelectedItem = temp[0];
         }
 
         private void Refresh()
         {
-            var publications = _publications.ToList();
+            var publication = sortPublication;
 
-            _maxPages = (int)Math.Ceiling(_allCountPublicationEntity * 1.0 / _countPublication);
+            var publicationPages = sortPublication.Skip((_currentPage - 1) * _countPublication).Take(_countPublication).ToList();
 
-            var publicationPages = publications.Skip((_currentPage - 1) * _countPublication).Take(_countPublication).ToList();
+            _maxPages = CountEntryMax(publication.Count());
 
-            MyLv.ItemsSource = publicationPages.ToList();
+            InfoPages.Content = $"Страница: {_currentPage} из {_maxPages}";
+
+            MyLv.ItemsSource = publicationPages;
+        }
+
+        private void ApplySearch()
+        {
+            sortPublication = _publications.Where(item => item.Name.StartsWith(tbSearch.Text)).ToList();
+
+            Refresh();
         }
 
         private void ListViewSelectedChanged(object sender, SelectionChangedEventArgs e)
@@ -65,7 +115,67 @@ namespace PostOffice.View
 
         private void GridLoaded(object sender, RoutedEventArgs e)
         {
+            ApplySearch();
+        }
+
+        private void btnNextPage(object sender, RoutedEventArgs e)
+        {
+            if (_currentPage >= _maxPages) _currentPage = _maxPages;
+            else
+            {
+                _currentPage++;
+            }
             Refresh();
+        }
+
+        private void btnBackPage(object sender, RoutedEventArgs e)
+        {
+            if (_currentPage <= 1) _currentPage = 1;
+            else
+            {
+                _currentPage--;
+            }
+            Refresh();
+        }
+
+        private void btnFirstPage(object sender, RoutedEventArgs e)
+        {
+            _currentPage = 1;
+            Refresh();
+        }
+
+        private void btnLastPage(object sender, RoutedEventArgs e)
+        {
+            _currentPage = _maxPages;
+            Refresh();
+        }
+
+        private void TextChangedSearch(object sender, TextChangedEventArgs e)
+        {
+            ApplySearch();
+        }
+
+        private void cbCategoriaChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ApplyComboBoxFiltres();
+        }
+
+        private void ApplyComboBoxFiltres()
+        {
+            string selectItem = cbCatergoriaPublication.SelectedItem as string;
+            string selectItem2 = cbTypePublication.SelectedItem as string;
+
+            if (selectItem != "Все категории изданий" & selectItem2 != "Все издания")
+            {
+                sortPublication = _publications.Where(item => item.TypeViewPublication.Name == selectItem & item.TypePublication.Name == selectItem2).ToList();
+            }
+
+            Refresh();
+        }
+
+        private void cbTypeChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ApplyComboBoxFiltres();
         }
     }
 }
