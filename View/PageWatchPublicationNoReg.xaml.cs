@@ -26,6 +26,8 @@ namespace PostOffice.View
 
         List<Publication> sortPublication;
 
+        List<Publication> temps;
+
         private int _countPublication = 6;
 
         private int _maxPages;
@@ -37,6 +39,8 @@ namespace PostOffice.View
             InitializeComponent();
 
             sortPublication = new List<Publication>();
+
+            temps = new List<Publication>();
 
             try
             {
@@ -157,17 +161,40 @@ namespace PostOffice.View
 
         private void cbCategoriaChanged(object sender, SelectionChangedEventArgs e)
         {
+            ApplySearch();
             ApplyComboBoxFiltres();
         }
 
         private void ApplyComboBoxFiltres()
         {
             string selectItem = cbCatergoriaPublication.SelectedItem as string;
+
             string selectItem2 = cbTypePublication.SelectedItem as string;
 
-            if (selectItem != "Все категории изданий" & selectItem2 != "Все издания")
+            if (selectItem != "Все категории изданий")
             {
-                sortPublication = _publications.Where(item => item.TypeViewPublication.Name == selectItem & item.TypePublication.Name == selectItem2).ToList();
+                temps = _publications.Where(item => item.TypeViewPublication.Name == selectItem).ToList();
+                if (selectItem2 != "Все издания")
+                {
+                    sortPublication = temps.Where(item => item.TypePublication.Name == selectItem2).ToList();
+                }
+                else
+                {
+                    sortPublication = temps;
+                }
+            }
+
+            if (selectItem2 != "Все издания")
+            {
+                temps = _publications.Where(item => item.TypePublication.Name == selectItem2).ToList();
+                if (selectItem != "Все категории изданий")
+                {
+                    sortPublication = temps.Where(item => item.TypeViewPublication.Name == selectItem).ToList();
+                }
+                else
+                {
+                    sortPublication = temps;
+                }
             }
 
             Refresh();
@@ -175,6 +202,7 @@ namespace PostOffice.View
 
         private void cbTypeChanged(object sender, SelectionChangedEventArgs e)
         {
+            ApplySearch();
             ApplyComboBoxFiltres();
         }
     }
