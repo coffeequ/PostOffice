@@ -17,27 +17,20 @@
                 <TextBlock HorizontalAlignment="Left" Width="200" Padding="0 10 0 5" ><InlineUIContainer>
                     <Label Background="AliceBlue" Content="Почтовое отделение" Height="50" VerticalContentAlignment="Center" Width="200" HorizontalContentAlignment="Center" FontSize="18"/>
                 </InlineUIContainer></TextBlock>
-                <TextBox VerticalContentAlignment="Center" Background="AliceBlue" HorizontalContentAlignment="Left" Height="25" x:Name="tbSearch" BorderThickness="1" BorderBrush="Black" Margin="5 5 5 0"/>
+                <TextBox TextChanged="TextChangedSearch" VerticalContentAlignment="Center" Background="AliceBlue" HorizontalContentAlignment="Left" Height="25" x:Name="tbSearch" BorderThickness="1" BorderBrush="Black" Margin="5 5 5 0"/>
                 <Border Background="AliceBlue" Margin="5 10 5 0">
                     <StackPanel Height="300">
-                        <ComboBox IsEditable="True" IsReadOnly="True" FontSize="16" Text="Категория издания" Height="30">
-                            <ComboBoxItem>Научпоп</ComboBoxItem>
-                            <ComboBoxItem>Садоводство</ComboBoxItem>
-                            <ComboBoxItem>Кулинария</ComboBoxItem>
-                        </ComboBox>
-                        <ComboBox IsEditable="True" IsReadOnly="True" FontSize="16" Text="Вид издания" Height="30">
-                            <ComboBoxItem>Журнал</ComboBoxItem>
-                            <ComboBoxItem>Газета</ComboBoxItem>
-                        </ComboBox>
+                        <ComboBox Name="cbCatergoriaPublication" SelectionChanged="cbCategoriaChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30"></ComboBox>
+                        <ComboBox Name="cbTypePublication" SelectionChanged="cbTypeChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30"></ComboBox>
                     </StackPanel>
                 </Border>
             </StackPanel>
         </Border>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50*"></RowDefinition>
-                <RowDefinition Height="359*"/>
-                <RowDefinition Height="41*"></RowDefinition>
+                <RowDefinition Height="25*"></RowDefinition>
+                <RowDefinition Height="179*"/>
+                <RowDefinition Height="40.8"></RowDefinition>
             </Grid.RowDefinitions>
             <Border BorderBrush="Black" BorderThickness="1">
                 <StackPanel HorizontalAlignment="Right" DockPanel.Dock="Left" Margin="0 0 15 0" Orientation="Horizontal">
@@ -64,9 +57,24 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackPanel Orientation="Horizontal" Grid.Row="3" Name="spList">
-                
-            </StackPanel>
+            <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black">
+                <StackPanel Orientation="Horizontal" Name="spList" HorizontalAlignment="Center">
+                    <Button Click="btnFirstPage" Style="{StaticResource TabButton}" BorderBrush="White" Margin="0 0 10 0">
+                        <Image Height="30" Source="/Pic/free-icon-font-arrow-small-left-3916837.png" />
+                    </Button>
+                    <Button Click="btnBackPage" Style="{StaticResource TabButton}" BorderBrush="White" Margin="0 0 10 0">
+                        <Image Height="30" Source="/Pic/free-icon-font-angle-left-3916912.png" />
+                    </Button>
+                    <Button Click="btnNextPage" Style="{StaticResource TabButton}" BorderBrush="White">
+                        <Image Height="30" Source="/Pic/free-icon-font-angle-right-3916907.png" />
+                    </Button>
+                    <Button Click="btnLastPage" Style="{StaticResource TabButton}" BorderBrush="White">
+                        <Image Height="30" Source="/Pic/free-icon-font-arrow-small-right-3916831.png" />
+                    </Button>
+                    <Label Name="InfoPages" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="200"></Label>
+                </StackPanel>
+
+            </Border>
         </Grid>
     </Grid>
 </Page>

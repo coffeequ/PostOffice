@@ -1,4 +1,3 @@
-C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOffice\obj\Debug\PostOffice.csproj.AssemblyReference.cache
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOffice\obj\Debug\MainWindow.g.cs
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOffice\obj\Debug\App.g.cs
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOffice\obj\Debug\PostOffice_MarkupCompile.cache
@@ -22,3 +21,5 @@ C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсов
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOffice\obj\Debug\PostOffice.csproj.CopyComplete
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOffice\obj\Debug\View\PageWatchPublicationNoReg.g.cs
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOffice\obj\Debug\View\PageWatchPublicationNoReg.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOffice\obj\Debug\App.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOffice\obj\Debug\PostOffice.csproj.AssemblyReference.cache
