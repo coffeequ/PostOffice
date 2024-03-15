@@ -106,6 +106,9 @@
     <Compile Include="View\PageWatchPublicationNoReg.xaml.cs">
       <DependentUpon>PageWatchPublicationNoReg.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\WinEntrance.xaml.cs">
+      <DependentUpon>WinEntrance.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -119,6 +122,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\PageWatchPublicationNoReg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WinEntrance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,6 +179,9 @@
     <Resource Include="Pic\free-icon-font-angle-right-3916907.png" />
     <Resource Include="Pic\free-icon-font-arrow-small-left-3916837.png" />
     <Resource Include="Pic\free-icon-font-arrow-small-right-3916831.png" />
+    <Resource Include="Pic\u-komelka.jpg" />
+    <Resource Include="Pic\free-icon-font-user-3917711.png" />
+    <Resource Include="Pic\Untitled-1.jpg" />
     <Content Include="PostOfficeModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PostOfficeModel.Context.cs</LastGenOutput>
