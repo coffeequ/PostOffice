@@ -173,10 +173,10 @@ namespace PostOffice.View
 
             if (selectItem != "Все категории изданий")
             {
-                temps = _publications.Where(item => item.TypeViewPublication.Name == selectItem).ToList();
+                temps = _publications.Where(item => item.TypeViewPublication.Name == selectItem & item.Name.StartsWith(tbSearch.Text)).ToList();
                 if (selectItem2 != "Все издания")
                 {
-                    sortPublication = temps.Where(item => item.TypePublication.Name == selectItem2).ToList();
+                    sortPublication = temps.Where(item => item.TypePublication.Name == selectItem2 & item.Name.StartsWith(tbSearch.Text)).ToList();
                 }
                 else
                 {
@@ -186,10 +186,10 @@ namespace PostOffice.View
 
             if (selectItem2 != "Все издания")
             {
-                temps = _publications.Where(item => item.TypePublication.Name == selectItem2).ToList();
+                temps = _publications.Where(item => item.TypePublication.Name == selectItem2 & item.Name.StartsWith(tbSearch.Text)).ToList();
                 if (selectItem != "Все категории изданий")
                 {
-                    sortPublication = temps.Where(item => item.TypeViewPublication.Name == selectItem).ToList();
+                    sortPublication = temps.Where(item => item.TypeViewPublication.Name == selectItem & item.Name.StartsWith(tbSearch.Text)).ToList();
                 }
                 else
                 {
