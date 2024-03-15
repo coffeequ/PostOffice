@@ -19,31 +19,11 @@ namespace PostOffice.View
     /// </summary>
     public partial class WinEntrance : Window
     {
-        Model.DataBasePostOffice DataBasePostOffice;
-
         public WinEntrance()
         {
             InitializeComponent();
 
-            try
-            {
-                DataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                throw;
-            }
-        }
-
-        private void btnEntrance(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnExit(object sender, RoutedEventArgs e)
-        {
-
+            frameLog.NavigationService.Navigate(new View.PageLogin());
         }
     }
 }

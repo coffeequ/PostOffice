@@ -75,3 +75,5 @@ C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсов
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\PostOffice.csproj.CopyComplete
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\PostOffice.exe
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\PostOffice.pdb
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageLogin.g.cs
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageLogin.baml

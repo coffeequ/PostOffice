@@ -25,7 +25,7 @@ namespace PostOffice
         public int id_TypeViewPublication { get; set; }
         public string Name { get; set; }
         public decimal PricePerMonth { get; set; }
-        public byte[] Cover { get; set; }
+        public string Cover { get; set; }
         public string Feedback { get; set; }
         public int NumberIssuesPerMonth { get; set; }
     
@@ -33,22 +33,5 @@ namespace PostOffice
         public virtual TypeViewPublication TypeViewPublication { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subscribe> Subscribe { get; set; }
-
-        public string NewNumberIssuesPerMonth 
-        {
-            get 
-            {
-                return NumberIssuesPerMonth > 1 ? $"{TypePublication.Name}, {NumberIssuesPerMonth.ToString()} раза в месяц" : $" {TypePublication.Name}, {NumberIssuesPerMonth.ToString()} раз в месяц";
-            }
-        }
-
-        private int myVar;
-
-        public int MyProperty
-        {
-            get { return myVar; }
-            set { myVar = value; }
-        }
-
     }
 }

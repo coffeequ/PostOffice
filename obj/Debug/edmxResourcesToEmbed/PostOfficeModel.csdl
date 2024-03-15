@@ -41,7 +41,7 @@
     <Property Name="id_TypeViewPublication" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PricePerMonth" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="Cover" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Cover" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Feedback" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="NumberIssuesPerMonth" Type="Int32" Nullable="false" />
     <NavigationProperty Name="TypePublication" Relationship="Self.FK_Publication_TypePublication" FromRole="Publication" ToRole="TypePublication" />
@@ -245,7 +245,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="PostOfficeEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="PostOfficeEntites" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Correspondence" EntityType="Self.Correspondence" />
     <EntitySet Name="LogIO" EntityType="Self.LogIO" />
     <EntitySet Name="OperatorPostOffice" EntityType="Self.OperatorPostOffice" />

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище PostOfficeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище PostOfficeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Correspondence">
           <Key>
             <PropertyRef Name="id Correspondence" />
@@ -42,7 +42,7 @@
           <Property Name="id TypeViewPublication" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PricePerMonth" Type="money" Nullable="false" />
-          <Property Name="Cover" Type="image" />
+          <Property Name="Cover" Type="nvarchar" MaxLength="50" />
           <Property Name="Feedback" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NumberIssuesPerMonth" Type="int" Nullable="false" />
         </EntityType>
@@ -283,7 +283,8 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PostOfficeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -328,7 +329,7 @@
           <Property Name="id_TypeViewPublication" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PricePerMonth" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Cover" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Cover" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Feedback" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NumberIssuesPerMonth" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TypePublication" Relationship="Self.FK_Publication_TypePublication" FromRole="Publication" ToRole="TypePublication" />
@@ -532,7 +533,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PostOfficeEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PostOfficeEntites" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Correspondence" EntityType="Self.Correspondence" />
           <EntitySet Name="LogIO" EntityType="Self.LogIO" />
           <EntitySet Name="OperatorPostOffice" EntityType="Self.OperatorPostOffice" />
@@ -590,7 +591,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище PostOfficeModelContainer" CdmEntityContainer="PostOfficeEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PostOfficeModelContainer" CdmEntityContainer="PostOfficeEntites">
           <EntitySetMapping Name="Correspondence">
             <EntityTypeMapping TypeName="PostOfficeModel.Correspondence">
               <MappingFragment StoreEntitySet="Correspondence">

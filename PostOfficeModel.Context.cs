@@ -13,10 +13,10 @@ namespace PostOffice
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PostOfficeEntities : DbContext
+    public partial class PostOfficeEntites : DbContext
     {
-        public PostOfficeEntities()
-            : base("name=PostOfficeEntities")
+        public PostOfficeEntites()
+            : base("name=PostOfficeEntites")
         {
         }
     
