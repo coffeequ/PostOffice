@@ -193,6 +193,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Pic\CoverPublication\MagickWorld.jpg" />
+    <Resource Include="Pic\CoverPublication\70292371.jpg" />
+    <Resource Include="Pic\CoverPublication\file_011f99a2-1ea8-4388-8cba-4088bcc06346_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_7322c46b-1458-4505-a760-8c00b65572f4_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_b3453024-2b71-4021-842c-7db3b9dd177b_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_bc748350-47a6-467c-ac5a-22fc30afc41a_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_c8b9a2c2-e09d-4dee-a180-d37a6ca3a23c_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_d9a10f38-8d28-48d0-bf85-7c899973b33a_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_f8bf44b5-0ed5-4c02-ba96-7b317580bb6b_EXTRA_LARGE.jpg" />
     <Content Include="PostOfficeModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PostOfficeModel.edmx</DependentUpon>
