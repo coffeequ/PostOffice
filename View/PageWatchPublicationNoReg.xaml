@@ -6,14 +6,14 @@
       xmlns:local="clr-namespace:PostOffice.View"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageWatchPublicationNoReg">
+      Title="Просмотр изданий">
     <Grid Loaded="GridLoaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Border BorderBrush="Black" BorderThickness="1">
-            <StackPanel Background="CadetBlue">
+            <StackPanel Background="#a7c3c6">
                 <TextBlock HorizontalAlignment="Left" Width="200" Padding="0 10 0 5" ><InlineUIContainer>
                     <Label Background="AliceBlue" Content="Почтовое отделение" Height="50" VerticalContentAlignment="Center" Width="200" HorizontalContentAlignment="Center" FontSize="18"/>
                 </InlineUIContainer></TextBlock>
@@ -32,10 +32,14 @@
                 <RowDefinition Height="179*"/>
                 <RowDefinition Height="40.8"></RowDefinition>
             </Grid.RowDefinitions>
-            <Border BorderBrush="Black" BorderThickness="1">
-                <StackPanel HorizontalAlignment="Right" DockPanel.Dock="Left" Margin="0 0 15 0" Orientation="Horizontal">
-                    <Label>Войти</Label>
-                    <Label>Войти</Label>
+            <Border Background="#a7c3c6" BorderBrush="Black" BorderThickness="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Style="{StaticResource BackroundButton}" Click="btnEntrance" Margin="0 0 5 0" >
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16">Войти</Label>
+                            <Image Height="50" Source="/Pic/free-icon-font-user-3917711.png" />
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </Border>
             <ListView Name="MyLv" BorderBrush="Black" BorderThickness="1 0 1 1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewSelectedChanged" Grid.Row="1">
@@ -57,7 +61,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black">
+            <Border Background="#a7c3c6" Grid.Row="2" BorderThickness="1" BorderBrush="Black">
                 <StackPanel Orientation="Horizontal" Name="spList" HorizontalAlignment="Center">
                     <Button Click="btnFirstPage" Style="{StaticResource TabButton}" BorderBrush="White" Margin="0 0 10 0">
                         <Image Height="30" Source="/Pic/free-icon-font-arrow-small-left-3916837.png" />

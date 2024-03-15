@@ -205,5 +205,10 @@ namespace PostOffice.View
             ApplySearch();
             ApplyComboBoxFiltres();
         }
+
+        private void btnEntrance(object sender, RoutedEventArgs e)
+        {
+            new WinEntrance().Show();
+        }
     }
 }
