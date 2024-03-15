@@ -108,7 +108,7 @@ namespace PostOffice.View
         private void ApplySearch()
         {
             sortPublication = _publications.Where(item => item.Name.StartsWith(tbSearch.Text)).ToList();
-
+            ApplyComboBoxFiltres();
             Refresh();
         }
 
