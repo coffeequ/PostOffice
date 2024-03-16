@@ -17,6 +17,7 @@ namespace PostOffice
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Publication()
         {
+            this.Feedback = new HashSet<Feedback>();
             this.Subscribe = new HashSet<Subscribe>();
         }
     
@@ -26,36 +27,13 @@ namespace PostOffice
         public string Name { get; set; }
         public decimal PricePerMonth { get; set; }
         public string Cover { get; set; }
-        public string Feedback { get; set; }
         public int NumberIssuesPerMonth { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Feedback> Feedback { get; set; }
         public virtual TypePublication TypePublication { get; set; }
         public virtual TypeViewPublication TypeViewPublication { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subscribe> Subscribe { get; set; }
-
-        public string NewNumberIssuesPerMonth
-        {
-            get
-            {
-                return NumberIssuesPerMonth > 1 ? $"{TypePublication.Name}, {NumberIssuesPerMonth.ToString()} раза в месяц" : $" {TypePublication.Name}, {NumberIssuesPerMonth.ToString()} раз в месяц";
-            }
-        }
-
-        public string PricePerMonthRounded
-        {
-            get
-            {
-                return PricePerMonth.ToString("F2");
-            }
-        }
-
-        public string CoverImage
-        {
-            get
-            {
-                return $"/Pic/" + Cover;
-            }
-        }
     }
 }

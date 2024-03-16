@@ -15,6 +15,14 @@
           <Property Name="DateOfDispatch" Type="smalldatetime" Nullable="false" />
           <Property Name="DateOfDelivery" Type="smalldatetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="id Feedback" />
+          </Key>
+          <Property Name="id Feedback" Type="int" Nullable="false" />
+          <Property Name="id Publication" Type="int" Nullable="false" />
+          <Property Name="Feedback" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="LogIO">
           <Key>
             <PropertyRef Name="id Journal" />
@@ -42,8 +50,7 @@
           <Property Name="id TypeViewPublication" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PricePerMonth" Type="money" Nullable="false" />
-          <Property Name="Cover" Type="nvarchar" MaxLength="50" />
-          <Property Name="Feedback" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cover" Type="nvarchar" MaxLength="200" />
           <Property Name="NumberIssuesPerMonth" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
@@ -119,6 +126,18 @@
             </Principal>
             <Dependent Role="Correspondence">
               <PropertyRef Name="id Subscribe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_Publication">
+          <End Role="Publication" Type="Self.Publication" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="id Publication" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="id Publication" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -232,6 +251,7 @@
         </Association>
         <EntityContainer Name="Хранилище PostOfficeModelContainer">
           <EntitySet Name="Correspondence" EntityType="Self.Correspondence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LogIO" EntityType="Self.LogIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OperatorPostOffice" EntityType="Self.OperatorPostOffice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Publication" EntityType="Self.Publication" Schema="dbo" store:Type="Tables" />
@@ -245,6 +265,10 @@
           <AssociationSet Name="FK_Correspondence_Subscribe" Association="Self.FK_Correspondence_Subscribe">
             <End Role="Subscribe" EntitySet="Subscribe" />
             <End Role="Correspondence" EntitySet="Correspondence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_Publication" Association="Self.FK_Feedback_Publication">
+            <End Role="Publication" EntitySet="Publication" />
+            <End Role="Feedback" EntitySet="Feedback" />
           </AssociationSet>
           <AssociationSet Name="FK_LogIO_User" Association="Self.FK_LogIO_User">
             <End Role="User" EntitySet="User" />
@@ -299,6 +323,15 @@
           <Property Name="DateOfDelivery" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Subscribe" Relationship="Self.FK_Correspondence_Subscribe" FromRole="Correspondence" ToRole="Subscribe" />
         </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="id_Feedback" />
+          </Key>
+          <Property Name="id_Feedback" Type="Int32" Nullable="false" />
+          <Property Name="id_Publication" Type="Int32" Nullable="false" />
+          <Property Name="Feedback1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Publication" Relationship="Self.FK_Feedback_Publication" FromRole="Feedback" ToRole="Publication" />
+        </EntityType>
         <EntityType Name="LogIO">
           <Key>
             <PropertyRef Name="id_Journal" />
@@ -329,9 +362,9 @@
           <Property Name="id_TypeViewPublication" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PricePerMonth" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Cover" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Feedback" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cover" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NumberIssuesPerMonth" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Feedback" Relationship="Self.FK_Feedback_Publication" FromRole="Publication" ToRole="Feedback" />
           <NavigationProperty Name="TypePublication" Relationship="Self.FK_Publication_TypePublication" FromRole="Publication" ToRole="TypePublication" />
           <NavigationProperty Name="TypeViewPublication" Relationship="Self.FK_Publication_TypeViewPublication" FromRole="Publication" ToRole="TypeViewPublication" />
           <NavigationProperty Name="Subscribe" Relationship="Self.FK_Subscribe_Publication" FromRole="Publication" ToRole="Subscribe" />
@@ -422,6 +455,18 @@
             </Principal>
             <Dependent Role="Correspondence">
               <PropertyRef Name="id_Subscribe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_Publication">
+          <End Role="Publication" Type="Self.Publication" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="id_Publication" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="id_Publication" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -533,8 +578,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PostOfficeEntites" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PostOfficeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Correspondence" EntityType="Self.Correspondence" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" />
           <EntitySet Name="LogIO" EntityType="Self.LogIO" />
           <EntitySet Name="OperatorPostOffice" EntityType="Self.OperatorPostOffice" />
           <EntitySet Name="Publication" EntityType="Self.Publication" />
@@ -548,6 +594,10 @@
           <AssociationSet Name="FK_Correspondence_Subscribe" Association="Self.FK_Correspondence_Subscribe">
             <End Role="Subscribe" EntitySet="Subscribe" />
             <End Role="Correspondence" EntitySet="Correspondence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_Publication" Association="Self.FK_Feedback_Publication">
+            <End Role="Publication" EntitySet="Publication" />
+            <End Role="Feedback" EntitySet="Feedback" />
           </AssociationSet>
           <AssociationSet Name="FK_LogIO_User" Association="Self.FK_LogIO_User">
             <End Role="User" EntitySet="User" />
@@ -591,7 +641,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище PostOfficeModelContainer" CdmEntityContainer="PostOfficeEntites">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PostOfficeModelContainer" CdmEntityContainer="PostOfficeEntities">
           <EntitySetMapping Name="Correspondence">
             <EntityTypeMapping TypeName="PostOfficeModel.Correspondence">
               <MappingFragment StoreEntitySet="Correspondence">
@@ -600,6 +650,15 @@
                 <ScalarProperty Name="DeliveryAddres" ColumnName="DeliveryAddres" />
                 <ScalarProperty Name="DateOfDispatch" ColumnName="DateOfDispatch" />
                 <ScalarProperty Name="DateOfDelivery" ColumnName="DateOfDelivery" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedback">
+            <EntityTypeMapping TypeName="PostOfficeModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="id_Feedback" ColumnName="id Feedback" />
+                <ScalarProperty Name="id_Publication" ColumnName="id Publication" />
+                <ScalarProperty Name="Feedback1" ColumnName="Feedback" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -632,7 +691,6 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="PricePerMonth" ColumnName="PricePerMonth" />
                 <ScalarProperty Name="Cover" ColumnName="Cover" />
-                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
                 <ScalarProperty Name="NumberIssuesPerMonth" ColumnName="NumberIssuesPerMonth" />
               </MappingFragment>
             </EntityTypeMapping>
