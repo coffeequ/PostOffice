@@ -26,6 +26,7 @@ namespace PostOffice
         }
     
         public virtual DbSet<Correspondence> Correspondence { get; set; }
+        public virtual DbSet<Feedback> Feedback { get; set; }
         public virtual DbSet<LogIO> LogIO { get; set; }
         public virtual DbSet<OperatorPostOffice> OperatorPostOffice { get; set; }
         public virtual DbSet<Publication> Publication { get; set; }

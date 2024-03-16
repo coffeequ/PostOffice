@@ -37,7 +37,7 @@
     <Property Name="id TypeViewPublication" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PricePerMonth" Type="money" Nullable="false" />
-    <Property Name="Cover" Type="image" />
+    <Property Name="Cover" Type="nvarchar" MaxLength="50" />
     <Property Name="Feedback" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="NumberIssuesPerMonth" Type="int" Nullable="false" />
   </EntityType>

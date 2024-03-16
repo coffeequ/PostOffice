@@ -74,10 +74,20 @@
     <Compile Include="OperatorPostOffice.cs">
       <DependentUpon>PostOfficeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PostOfficeModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PostOfficeModel.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="PostOfficeModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PostOfficeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostOfficeModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PostOfficeModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Publication.cs">
       <DependentUpon>PostOfficeModel.tt</DependentUpon>
@@ -103,6 +113,9 @@
     <Compile Include="User.cs">
       <DependentUpon>PostOfficeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\PageLogin.xaml.cs">
+      <DependentUpon>PageLogin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PageWatchPublicationNoReg.xaml.cs">
       <DependentUpon>PageWatchPublicationNoReg.xaml</DependentUpon>
     </Compile>
@@ -121,6 +134,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\PageLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PageWatchPublicationNoReg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -131,16 +148,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PostOfficeModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PostOfficeModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PostOfficeModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PostOfficeModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -158,11 +165,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <EntityDeploy Include="PostOfficeModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PostOfficeModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="packages.config" />
     <None Include="PostOfficeModel.edmx.diagram">
       <DependentUpon>PostOfficeModel.edmx</DependentUpon>
     </None>
@@ -181,11 +188,24 @@
     <Resource Include="Pic\free-icon-font-arrow-small-right-3916831.png" />
     <Resource Include="Pic\u-komelka.jpg" />
     <Resource Include="Pic\free-icon-font-user-3917711.png" />
-    <Resource Include="Pic\Untitled-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pic\CoverPublication\MagickWorld.jpg" />
+    <Resource Include="Pic\CoverPublication\70292371.jpg" />
+    <Resource Include="Pic\CoverPublication\file_011f99a2-1ea8-4388-8cba-4088bcc06346_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_7322c46b-1458-4505-a760-8c00b65572f4_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_b3453024-2b71-4021-842c-7db3b9dd177b_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_bc748350-47a6-467c-ac5a-22fc30afc41a_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_c8b9a2c2-e09d-4dee-a180-d37a6ca3a23c_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_d9a10f38-8d28-48d0-bf85-7c899973b33a_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_f8bf44b5-0ed5-4c02-ba96-7b317580bb6b_EXTRA_LARGE.jpg" />
     <Content Include="PostOfficeModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PostOfficeModel.Context.cs</LastGenOutput>
       <DependentUpon>PostOfficeModel.edmx</DependentUpon>
+      <LastGenOutput>PostOfficeModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="PostOfficeModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -193,9 +213,5 @@
       <LastGenOutput>PostOfficeModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
