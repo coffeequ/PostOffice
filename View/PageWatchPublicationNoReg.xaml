@@ -52,7 +52,7 @@
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="2" Width="599">
                             <StackPanel>
-                                <Image Height="500" Source="{Binding CoverImage}"></Image>
+                                <Image Height="300" Source="{Binding CoverImage}"></Image>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}"></Label>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding NewNumberIssuesPerMonth}"></Label>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding PricePerMonthRounded}"></Label>

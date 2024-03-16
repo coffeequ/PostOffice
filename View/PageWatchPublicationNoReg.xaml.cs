@@ -114,7 +114,7 @@ namespace PostOffice.View
 
         private void ListViewSelectedChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Publication publication = new Publication();
         }
 
         private void GridLoaded(object sender, RoutedEventArgs e)

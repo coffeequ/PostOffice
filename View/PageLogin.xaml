@@ -21,10 +21,10 @@
             <Label FontSize="16">Логин</Label>
             <TextBox FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Name="tbLogin" Height="30"></TextBox>
             <Label FontSize="16">Пароль</Label>
-            <TextBox FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Name="tbPassword" Height="30"></TextBox>
+            <PasswordBox FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Name="tbPassword" Height="30"></PasswordBox>
             <Button Click="btnEntrance" Margin="0 10 0 0" Background="AliceBlue" Width="175" FontSize="16" Height="50">Войти</Button>
             <Button Click="btnExit" Margin="0 10 0 0" Background="AliceBlue" Width="175" FontSize="16" Height="50">Назад</Button>
-            <Button Style="{StaticResource BackroundButton}" Margin="0 5 0 0">
+            <Button Style="{StaticResource BackroundButton}" Click="btnPasswordRecovery" Margin="0 5 0 0">
                 <TextBlock FontSize="14" Foreground="AliceBlue" FontStyle="Italic">
                     Забыл пароль
                 </TextBlock>

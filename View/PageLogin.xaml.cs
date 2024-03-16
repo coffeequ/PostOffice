@@ -22,6 +22,10 @@ namespace PostOffice.View
     {
         Model.DataBasePostOffice DataBasePostOffice;
 
+        public delegate void CloseWin();
+
+        public static event CloseWin closeWin;
+
         public PageLogin()
         {
             InitializeComponent();
@@ -41,7 +45,7 @@ namespace PostOffice.View
         {
             string inputLogin = tbLogin.Text.Trim();
 
-            string inputPassword = tbPassword.Text.Trim();
+            string inputPassword = tbPassword.Password.Trim();
 
             var operatorPostOffice = DataBasePostOffice.postOfficeEntities.User.ToList().Where(personal => personal.Login == inputLogin).ToList();
 
@@ -66,7 +70,12 @@ namespace PostOffice.View
 
         private void btnExit(object sender, RoutedEventArgs e)
         {
+            closeWin();
+        }
 
+        private void btnPasswordRecovery(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Восстановление пароля");
         }
     }
 }
