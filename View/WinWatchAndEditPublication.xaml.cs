@@ -47,5 +47,10 @@ namespace PostOffice.View
             var listFeedBack = dataBasePostOffice.postOfficeEntities.Feedback.Where(item => item.Publication.id_Publication == publication.id_Publication).ToList();
             DataGridTableReview.ItemsSource = listFeedBack;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
