@@ -8,9 +8,9 @@ namespace PostOffice.Model
 {
     class DataBasePostOffice
     {
-        public PostOfficeEntites postOfficeEntities { get; set; }
+        public PostOfficeEntities postOfficeEntities { get; set; }
 
-        public DataBasePostOffice(PostOfficeEntites postOfficeEntities)
+        public DataBasePostOffice(PostOfficeEntities postOfficeEntities)
         {
             this.postOfficeEntities = postOfficeEntities;
         }

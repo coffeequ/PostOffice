@@ -105,7 +105,7 @@ namespace PostOffice.View
             MyLv.ItemsSource = publicationPages;
         }
 
-        private void ApplySearch()
+        private void ApplySearch() 
         {
             sortPublication = _publications.Where(item => item.Name.StartsWith(tbSearch.Text)).ToList();
             ApplyComboBoxFiltres();

@@ -35,5 +35,30 @@ namespace PostOffice
         public virtual TypeViewPublication TypeViewPublication { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subscribe> Subscribe { get; set; }
+
+        public string NewNumberIssuesPerMonth
+        {
+            get
+            {
+                return NumberIssuesPerMonth > 1 ? $"{TypePublication.Name}, {NumberIssuesPerMonth.ToString()} раза в месяц" : $" {TypePublication.Name}, {NumberIssuesPerMonth.ToString()} раз в месяц";
+            }
+        }
+
+        public string PricePerMonthRounded
+        {
+            get
+            {
+                return PricePerMonth.ToString("F2");
+            }
+        }
+
+        public string CoverImage
+        {
+            get
+            {
+                return $"/Pic/" + Cover;
+            }
+        }
+
     }
 }

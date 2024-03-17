@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище PostOfficeModelContainer" CdmEntityContainer="PostOfficeEntites">
+  <EntityContainerMapping StorageEntityContainer="Хранилище PostOfficeModelContainer" CdmEntityContainer="PostOfficeEntities">
     <EntitySetMapping Name="Correspondence">
       <EntityTypeMapping TypeName="PostOfficeModel.Correspondence">
         <MappingFragment StoreEntitySet="Correspondence">
@@ -9,6 +9,15 @@
           <ScalarProperty Name="DeliveryAddres" ColumnName="DeliveryAddres" />
           <ScalarProperty Name="DateOfDispatch" ColumnName="DateOfDispatch" />
           <ScalarProperty Name="DateOfDelivery" ColumnName="DateOfDelivery" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedback">
+      <EntityTypeMapping TypeName="PostOfficeModel.Feedback">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="id_Feedback" ColumnName="id Feedback" />
+          <ScalarProperty Name="id_Publication" ColumnName="id Publication" />
+          <ScalarProperty Name="Feedback1" ColumnName="Feedback" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -41,7 +50,6 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="PricePerMonth" ColumnName="PricePerMonth" />
           <ScalarProperty Name="Cover" ColumnName="Cover" />
-          <ScalarProperty Name="Feedback" ColumnName="Feedback" />
           <ScalarProperty Name="NumberIssuesPerMonth" ColumnName="NumberIssuesPerMonth" />
         </MappingFragment>
       </EntityTypeMapping>
