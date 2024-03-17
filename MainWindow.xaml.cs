@@ -20,13 +20,13 @@ namespace PostOffice
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static PostOfficeEntites postOfficeEntity;
+        public static PostOfficeEntities postOfficeEntity;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            postOfficeEntity = new PostOfficeEntites();
+            postOfficeEntity = new PostOfficeEntities();
 
             mainFrame.NavigationService.Navigate(new View.PageWatchPublicationNoReg());
         }

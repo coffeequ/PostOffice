@@ -67,6 +67,9 @@
     <Compile Include="Correspondence.cs">
       <DependentUpon>PostOfficeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Feedback.cs">
+      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="LogIO.cs">
       <DependentUpon>PostOfficeModel.tt</DependentUpon>
     </Compile>
@@ -122,6 +125,9 @@
     <Compile Include="View\WinEntrance.xaml.cs">
       <DependentUpon>WinEntrance.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\WinWatchAndEditPublication.xaml.cs">
+      <DependentUpon>WinWatchAndEditPublication.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -143,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\WinEntrance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WinWatchAndEditPublication.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,6 +212,8 @@
     <Resource Include="Pic\CoverPublication\file_c8b9a2c2-e09d-4dee-a180-d37a6ca3a23c_EXTRA_LARGE.jpg" />
     <Resource Include="Pic\CoverPublication\file_d9a10f38-8d28-48d0-bf85-7c899973b33a_EXTRA_LARGE.jpg" />
     <Resource Include="Pic\CoverPublication\file_f8bf44b5-0ed5-4c02-ba96-7b317580bb6b_EXTRA_LARGE.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="PostOfficeModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PostOfficeModel.edmx</DependentUpon>

@@ -34,6 +34,8 @@ namespace PostOffice.View
 
         private int _currentPage = 1;
 
+        bool isOperator = false;
+
         public PageWatchPublicationNoReg()
         {
             InitializeComponent();
@@ -105,7 +107,7 @@ namespace PostOffice.View
             MyLv.ItemsSource = publicationPages;
         }
 
-        private void ApplySearch()
+        private void ApplySearch() 
         {
             sortPublication = _publications.Where(item => item.Name.StartsWith(tbSearch.Text)).ToList();
             ApplyComboBoxFiltres();
@@ -114,7 +116,14 @@ namespace PostOffice.View
 
         private void ListViewSelectedChanged(object sender, SelectionChangedEventArgs e)
         {
-            Publication publication = new Publication();
+            var item = sender as ListView;
+
+            var selectedItem = item.SelectedItem as Publication;
+
+            WinWatchAndEditPublication win = new WinWatchAndEditPublication(selectedItem);
+
+            win.Show();
+
         }
 
         private void GridLoaded(object sender, RoutedEventArgs e)
