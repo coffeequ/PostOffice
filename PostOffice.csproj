@@ -122,11 +122,17 @@
     <Compile Include="View\PageWatchPublicationNoReg.xaml.cs">
       <DependentUpon>PageWatchPublicationNoReg.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PageWatchPublicationOperator.xaml.cs">
+      <DependentUpon>PageWatchPublicationOperator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\WinEntrance.xaml.cs">
       <DependentUpon>WinEntrance.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\WinWatchAndEditPublication.xaml.cs">
       <DependentUpon>WinWatchAndEditPublication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WinWatchPublication.xaml.cs">
+      <DependentUpon>WinWatchPublication.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -148,11 +154,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PageWatchPublicationOperator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\WinEntrance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\WinWatchAndEditPublication.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WinWatchPublication.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,6 +228,7 @@
     <Resource Include="Pic\CoverPublication\file_f8bf44b5-0ed5-4c02-ba96-7b317580bb6b_EXTRA_LARGE.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Pic\free-icon-font-magic-wand-3914260.png" />
     <Content Include="PostOfficeModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PostOfficeModel.edmx</DependentUpon>

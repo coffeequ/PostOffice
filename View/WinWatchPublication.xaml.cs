@@ -15,27 +15,18 @@ using System.Windows.Shapes;
 namespace PostOffice.View
 {
     /// <summary>
-    /// Логика взаимодействия для WinEntrance.xaml
+    /// Логика взаимодействия для WinWatchPublication.xaml
     /// </summary>
-    public partial class WinEntrance : Window
+    public partial class WinWatchPublication : Window
     {
-        public delegate void CloseWin();
-
-        public static event CloseWin closeWin;
-
-        public WinEntrance()
+        User user;
+        public WinWatchPublication(User user)
         {
             InitializeComponent();
 
-            View.PageLogin.closeWin += PageLogin_closeWin;
+            this.user = user;
 
-            frameLog.NavigationService.Navigate(new View.PageLogin());
-        }
-
-        private void PageLogin_closeWin()
-        {
-            closeWin();
-            Close();
+            mainFrame.NavigationService.Navigate(new View.PageWatchPublicationOperator(user));
         }
     }
 }

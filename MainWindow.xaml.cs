@@ -22,13 +22,24 @@ namespace PostOffice
     {
         public static PostOfficeEntities postOfficeEntity;
 
+        public delegate void CloseWin();
+
+        public static event CloseWin closeWin;
+
         public MainWindow()
         {
             InitializeComponent();
 
             postOfficeEntity = new PostOfficeEntities();
 
+            View.PageWatchPublicationNoReg.closePage += PageWatchPublicationNoReg_closePage;
+
             mainFrame.NavigationService.Navigate(new View.PageWatchPublicationNoReg());
+        }
+
+        public void PageWatchPublicationNoReg_closePage()
+        {
+            Close();
         }
 
         private void mainFrame_Navigated(object sender, NavigationEventArgs e)

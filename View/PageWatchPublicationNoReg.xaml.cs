@@ -30,15 +30,19 @@ namespace PostOffice.View
 
         private int _countPublication = 6;
 
+        public delegate void CloseWin();
+
+        public static event CloseWin closePage;
+
         private int _maxPages;
 
         private int _currentPage = 1;
 
-        bool isOperator = false;
-
         public PageWatchPublicationNoReg()
         {
             InitializeComponent();
+
+            WinEntrance.closeWin += WinEntrance_closePage;
 
             sortPublication = new List<Publication>();
 
@@ -58,6 +62,11 @@ namespace PostOffice.View
             comboBoxTypePublication(cbTypePublication, dataBasePostOffice.postOfficeEntities.TypePublication.ToList());
 
             comboBoxTypeViewPubication(cbCatergoriaPublication, dataBasePostOffice.postOfficeEntities.TypeViewPublication.ToList());
+        }
+
+        private void WinEntrance_closePage()
+        {
+            closePage();
         }
 
         private int CountEntryMax(int AllCountData) => (int) Math.Ceiling(AllCountData * 1.0 / _countPublication);
