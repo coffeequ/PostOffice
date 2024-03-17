@@ -125,6 +125,9 @@
     <Compile Include="View\WinEntrance.xaml.cs">
       <DependentUpon>WinEntrance.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\WinWatchAndEditPublication.xaml.cs">
+      <DependentUpon>WinWatchAndEditPublication.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -146,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\WinEntrance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WinWatchAndEditPublication.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

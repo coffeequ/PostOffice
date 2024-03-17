@@ -56,7 +56,6 @@ C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсов
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\bin\Debug\EntityFramework.xml
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\bin\Debug\ru\EntityFramework.resources.dll
-C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\PostOffice.csproj.AssemblyReference.cache
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\MainWindow.g.cs
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageWatchPublicationNoReg.g.cs
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\WinEntrance.g.cs
@@ -77,3 +76,5 @@ C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсов
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\PostOffice.pdb
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageLogin.g.cs
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageLogin.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\WinWatchAndEditPublication.g.cs
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\WinWatchAndEditPublication.baml
