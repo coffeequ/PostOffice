@@ -22,10 +22,6 @@ namespace PostOffice
     {
         public static PostOfficeEntities postOfficeEntity;
 
-        public delegate void CloseWin();
-
-        public static event CloseWin closeWin;
-
         public MainWindow()
         {
             InitializeComponent();

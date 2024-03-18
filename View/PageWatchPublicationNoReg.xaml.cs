@@ -123,18 +123,6 @@ namespace PostOffice.View
             Refresh();
         }
 
-        private void ListViewSelectedChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var item = sender as ListView;
-
-            var selectedItem = item.SelectedItem as Publication;
-
-            WinWatchAndEditPublication win = new WinWatchAndEditPublication(selectedItem);
-
-            win.Show();
-
-        }
-
         private void GridLoaded(object sender, RoutedEventArgs e)
         {
             ApplySearch();
@@ -227,6 +215,17 @@ namespace PostOffice.View
         private void btnEntrance(object sender, RoutedEventArgs e)
         {
             new WinEntrance().Show();
+        }
+
+        private void btnWatch(object sender, RoutedEventArgs e)
+        {
+            var item = sender as Button;
+
+            var selectedItem = item.DataContext as Publication;
+
+            WinWatchAndEditPublication win = new WinWatchAndEditPublication(selectedItem);
+
+            win.Show();
         }
     }
 }

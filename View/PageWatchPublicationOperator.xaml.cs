@@ -48,14 +48,23 @@ namespace PostOffice.View
                 Width = 40
             };
 
-            //image.Source = new BitmapImage(new Uri("Pic/free-icon-font-magic-wand-3914260.png"));
-
             spLogin.Children.Add(image);
         }
 
         private void btnEntrance(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Выход или редактириование личных данных");
+        }
+
+        private void btnWatch(object sender, RoutedEventArgs e)
+        {
+            var item = sender as Button;
+
+            var selectedItem = item.DataContext as Publication;
+
+            WinWatchAndEditPublication win = new WinWatchAndEditPublication(selectedItem);
+
+            win.Show();
         }
     }
 }
