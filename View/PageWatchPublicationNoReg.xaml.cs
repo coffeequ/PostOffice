@@ -227,5 +227,11 @@ namespace PostOffice.View
 
             win.Show();
         }
+
+        private void cbPriorityGenderChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ApplySearch();
+            ApplyComboBoxFiltres();
+        }
     }
 }

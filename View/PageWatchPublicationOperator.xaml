@@ -18,7 +18,14 @@
                     <Label Background="AliceBlue" Content="Почтовое отделение" Height="50" VerticalContentAlignment="Center" Width="200" HorizontalContentAlignment="Center" FontSize="18"/>
                 </InlineUIContainer></TextBlock>
                 <Border Background="AliceBlue" Margin="5 10 5 0">
-                    <StackPanel Height="300"/>
+                    <StackPanel Height="300">
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="Button_Click">Подписчики</Button>
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Список изданий</Button>
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Просмотр статистики</Button>
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Категория изданий</Button>
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Виды изданий</Button>
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Список пользователей</Button>
+                    </StackPanel>
                 </Border>
             </StackPanel>
         </Border>
@@ -37,27 +44,9 @@
                     </Button>
                 </StackPanel>
             </Border>
-            <ListView Name="MyLv" BorderBrush="Black" BorderThickness="1 0 1 1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel HorizontalAlignment="Center"></WrapPanel>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="2" Width="599">
-                            <StackPanel>
-                                <Image Height="300" Source="{Binding CoverImage}"></Image>
-                                <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}"></Label>
-                                <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding NewNumberIssuesPerMonth}"></Label>
-                                <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="{Binding PricePerMonthRounded}"></Label>
-                                <Button Name="btnWatch" FontSize="16" Click="btnWatch" Width="200" Height="25" Margin="0 0 0 10" Style="{StaticResource BackroundButton}">Посмотреть</Button>
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-          
+            <Frame Grid.Row="1" Name="frameToAction">
+                
+            </Frame>          
         </Grid>
     </Grid>
 </Page>

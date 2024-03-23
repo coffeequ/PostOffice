@@ -24,17 +24,11 @@ namespace PostOffice.View
 
         Model.DataBasePostOffice dataBasePostOffice;
 
-        List<Publication> _allPublication;
-
         public PageWatchPublicationOperator(User user)
         {
             InitializeComponent();
 
             dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
-
-            _allPublication = dataBasePostOffice.postOfficeEntities.Publication.ToList();
-
-            MyLv.ItemsSource = _allPublication;
 
             this.user = user;
         }
@@ -65,6 +59,11 @@ namespace PostOffice.View
             WinWatchAndEditPublication win = new WinWatchAndEditPublication(selectedItem);
 
             win.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            frameToAction.NavigationService.Navigate(new View.PageSubscribers());
         }
     }
 }

@@ -119,6 +119,9 @@
     <Compile Include="View\PageLogin.xaml.cs">
       <DependentUpon>PageLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PageSubscribers.xaml.cs">
+      <DependentUpon>PageSubscribers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PageWatchPublicationNoReg.xaml.cs">
       <DependentUpon>PageWatchPublicationNoReg.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\PageLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageSubscribers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

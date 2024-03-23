@@ -82,3 +82,4 @@ C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсов
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\WinWatchPublication.g.cs
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageWatchPublicationOperator.baml
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\WinWatchPublication.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\PostOffice.csproj.AssemblyReference.cache
