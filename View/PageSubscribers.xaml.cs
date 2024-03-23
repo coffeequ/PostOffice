@@ -20,9 +20,28 @@ namespace PostOffice.View
     /// </summary>
     public partial class PageSubscribers : Page
     {
+        List<SubscriberOfThePostOffice> subscriberOfThePostOffices;
+
+        Model.DataBasePostOffice dataBasePostOffice;
+
         public PageSubscribers()
         {
             InitializeComponent();
+
+            dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
+
+            subscriberOfThePostOffices = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
+
+            dgSubscribers.ItemsSource = subscriberOfThePostOffices;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var item = sender as Button;
+
+            var selectedItem = item.DataContext as SubscriberOfThePostOffice;
+
+            new WinMoreDetailsSubscriber(selectedItem).ShowDialog();
         }
     }
 }
