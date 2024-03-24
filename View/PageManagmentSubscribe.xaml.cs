@@ -22,32 +22,34 @@ namespace PostOffice.View
     {
         SubscriberOfThePostOffice subscriberOfThePostOffice;
 
-        Dictionary<int, string> month = new Dictionary<int, string>()
-        {
-            {1, "Январь"},
-            {2, "Февраль"},
-            {3, "Март"},
-            {4, "Апрель"},
-            {5, "Май"},
-            {6, "Июнь"},
-            {7, "Июль"},
-            {8, "Август"},
-            {9, "Сентябрь"},
-            {10, "Октябрь"},
-            {11, "Ноябрь"},
-            {12, "Декабрь"}
-        };
+        Model.DataBasePostOffice dataBasePostOffice;
+
+        List<Publication> publicationsSelected;
+
+        StackPanel stackPanel;
+
+        int yearEnd = 0;
 
         public PageManagmentSubscribe(SubscriberOfThePostOffice subscriberOfThePostOffice)
         {
             InitializeComponent();
 
             this.subscriberOfThePostOffice = subscriberOfThePostOffice;
-        }
 
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
+            publicationsSelected = new List<Publication>();
 
+            try
+            {
+                dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+
+            stackPanel = new StackPanel();
         }
 
         private void Grid_LoadedMonth(object sender, RoutedEventArgs e)
@@ -56,18 +58,131 @@ namespace PostOffice.View
 
             tbDayStart.Text = DateTime.Now.Day.ToString();
             
-            tbDayStart.IsEnabled = false;
+            tbMonthStart.IsEnabled = false;
             
             tbMonthStart.Text = DateTime.Now.Month.ToString();
             
             tbYearStart.IsEnabled = false;
             
             tbYearStart.Text = DateTime.Now.Year.ToString();
+
+            tbDayEnd.IsEnabled = false;
+
+            tbDayEnd.Text = DateTime.Now.Day.ToString();
+
+            tbYearEnd.IsEnabled = false;
+
+            tbYearEnd.Text = DateTime.Now.Year.ToString();
         }
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
+            Subscribe subscribe;
 
+            for (int i = 0; i < publicationsSelected.Count(); i++)
+            {
+                subscribe = new Subscribe();
+
+                subscribe.Publication = publicationsSelected[i];
+
+                subscribe.DateRegistration = DateTime.Now;
+
+                subscribe.EntryTime = DateTime.Now;
+
+                subscribe.StatusActive = 1;
+
+                DateTime dateTime = new DateTime(int.Parse(tbYearEnd.Text), yearEnd, int.Parse(tbDayEnd.Text));
+
+                subscribe.EndTime = dateTime;
+
+                subscribe.id_Subscriber = subscriberOfThePostOffice.id_Subscriber;
+
+                dataBasePostOffice.postOfficeEntities.Subscribe.Add(subscribe);
+
+                dataBasePostOffice.postOfficeEntities.SaveChanges();
+            }
+        }
+
+        private void tbMonthEnd_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                yearEnd = int.Parse(tbMonthEnd.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + $". Введите корректный месяц!");
+                tbYearEnd.Clear();
+            }
+
+            if (yearEnd >= 13)
+            {
+                MessageBox.Show("Введите корректный месяц!");
+                tbYearEnd.Clear();
+            }
+        }
+
+        private void dgPublication_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as DataGrid;
+            var itemSelected = item.SelectedItem as Publication;
+
+            try
+            {
+                if (publicationsSelected.Contains(itemSelected))
+                {
+                    throw new Exception ($"Издание {itemSelected.Name} уже находится в списке добавленных");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            MessageBox.Show($"Была успешно добавлена публикация");
+
+            publicationsSelected.Add(itemSelected);
+
+            
+
+            Button button = new Button()
+            {
+                Width = 125,
+                Height = 45,
+                Content = 'X'
+            };
+
+            button.Click += button_delete;
+
+            stackPanel.Orientation = Orientation.Horizontal;
+
+            Label label = new Label()
+            {
+                Content = itemSelected.Name,
+                FontSize = 14
+            };
+
+            stackPanel.Children.Add(label);
+
+            stackPanel.Children.Add(button);
+
+            lvSelectedPublication.Items.Add(stackPanel);
+
+            lvSelectedPublication.Items.Refresh();
+        }
+
+        private void button_delete(object sender, RoutedEventArgs e)
+        {
+            var item = sender as Button;
+
+            var selectedItem = item.DataContext as Publication;
+
+            publicationsSelected.Remove(selectedItem);
+
+            lvSelectedPublication.Items.Remove(selectedItem.Name);
+
+            lvSelectedPublication.Items.Refresh();
         }
     }
 }

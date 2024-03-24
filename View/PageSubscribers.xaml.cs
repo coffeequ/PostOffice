@@ -50,6 +50,11 @@ namespace PostOffice.View
             var selectedItem = item.DataContext as SubscriberOfThePostOffice;
 
             new WinMoreDetailsSubscriber(selectedItem).ShowDialog();
+
+            dgSubscribers.ItemsSource = null;
+
+            dgSubscribers.ItemsSource = subscriberOfThePostOffices;
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

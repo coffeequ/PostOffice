@@ -47,7 +47,7 @@ namespace PostOffice.View
 
         private void Button_Add_Publication(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate();
+            NavigationService.Navigate(new View.PageManagmentSubscribe(subscriberOfThePostOffice));
         }
 
         private void Button_saveData(object sender, RoutedEventArgs e)

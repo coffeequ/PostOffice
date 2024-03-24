@@ -88,3 +88,7 @@ C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсов
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageSubscribers.baml
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\WinMoreDetailsSubscriber.g.cs
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\WinMoreDetailsSubscriber.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageManagmentSubscribe.g.cs
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageMoreDetailsSubscriber.g.cs
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageManagmentSubscribe.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageMoreDetailsSubscriber.baml
