@@ -7,50 +7,8 @@
         mc:Ignorable="d"
         Title="Почтовое отделение" Background="AliceBlue" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="143*"></RowDefinition>
-            <RowDefinition Height="67*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="277*"></ColumnDefinition>
-                <ColumnDefinition Width="120*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <StackPanel Margin="10">
-                <StackPanel Orientation="Vertical">
-                    <Label FontSize="14" Height="30">Фамилия</Label>
-                    <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Surname}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <Label FontSize="14" Height="30">Имя</Label>
-                    <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Name}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <Label FontSize="14" Height="30">Отчество</Label>
-                    <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding MiddleName}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <Label FontSize="14" Height="30">Номер телефона</Label>
-                    <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding NumberPhone}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <Label FontSize="14" Height="30">Дата рождения</Label>
-                    <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding MiddleName}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Grid.Column="1">
-                <Button FontSize="14" Margin="10" Height="40" Style="{StaticResource BackroundButton}">Добавить подписку</Button>
-                <Button FontSize="14" Margin="10" Height="40" Style="{StaticResource BackroundButton}">Сохранить</Button>
-                <Button FontSize="14" Margin="10" Height="40" Style="{StaticResource BackroundButton}">Вывести чек</Button>
-            </StackPanel>
-        </Grid>
-        <DataGrid Grid.Row="1" Name="dgSubsriberPublication" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Наименование" Binding="{Binding Publication.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата начала подписки" Binding="{Binding EntryTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата окончания подписки" Binding="{Binding EndTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата регистрации" Binding="{Binding DateRegistration}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Frame x:Name="MyFrame" NavigationUIVisibility="Hidden">
+            
+        </Frame>
     </Grid>
 </Window>

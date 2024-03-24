@@ -28,7 +28,15 @@ namespace PostOffice.View
         {
             InitializeComponent();
 
-            dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
+            try
+            {
+                dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
 
             subscriberOfThePostOffices = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
 
@@ -42,6 +50,11 @@ namespace PostOffice.View
             var selectedItem = item.DataContext as SubscriberOfThePostOffice;
 
             new WinMoreDetailsSubscriber(selectedItem).ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

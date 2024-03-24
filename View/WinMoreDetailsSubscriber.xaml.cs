@@ -19,23 +19,11 @@ namespace PostOffice.View
     /// </summary>
     public partial class WinMoreDetailsSubscriber : Window
     {
-        SubscriberOfThePostOffice subscriberOfThePostOffice;
-
-        Model.DataBasePostOffice dataBasePostOffice;
-
         public WinMoreDetailsSubscriber(SubscriberOfThePostOffice subscriberOfThePostOffice)
         {
             InitializeComponent();
 
-            dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
-
-            this.subscriberOfThePostOffice = subscriberOfThePostOffice;
-            
-            DataContext = subscriberOfThePostOffice;
-
-            var publicationSubscriber = dataBasePostOffice.postOfficeEntities.Subscribe.Where(persona => persona.id_Subscriber == subscriberOfThePostOffice.id_Subscriber).ToList();
-
-            dgSubsriberPublication.ItemsSource = publicationSubscriber;
+            MyFrame.NavigationService.Navigate(new View.PageMoreDetailsSubscriber(subscriberOfThePostOffice));
         }
     }
 }
