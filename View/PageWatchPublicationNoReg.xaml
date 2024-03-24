@@ -22,6 +22,7 @@
                     <StackPanel Height="300">
                         <ComboBox Name="cbCatergoriaPublication" SelectionChanged="cbCategoriaChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30"></ComboBox>
                         <ComboBox Name="cbTypePublication" SelectionChanged="cbTypeChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30"></ComboBox>
+                        <ComboBox Name="cbPriorityGender" SelectionChanged="cbPriorityGenderChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30"></ComboBox>
                     </StackPanel>
                 </Border>
             </StackPanel>
@@ -36,13 +37,13 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Style="{StaticResource BackroundButton}" Click="btnEntrance" Margin="0 0 5 0" >
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16">Войти</Label>
+                            <Label Name="lbLogin" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16">Войти</Label>
                             <Image Height="50" Source="/Pic/free-icon-font-user-3917711.png" />
                         </StackPanel>
                     </Button>
                 </StackPanel>
             </Border>
-            <ListView Name="MyLv" BorderBrush="Black" BorderThickness="1 0 1 1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewSelectedChanged" Grid.Row="1">
+            <ListView Name="MyLv" BorderBrush="Black" BorderThickness="1 0 1 1" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  Grid.Row="1">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel HorizontalAlignment="Center"></WrapPanel>
@@ -56,6 +57,7 @@
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}"></Label>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding NewNumberIssuesPerMonth}"></Label>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="{Binding PricePerMonthRounded}"></Label>
+                                <Button Name="btnWatch" FontSize="16" Click="btnWatch" Width="200" Height="25" Margin="0 0 0 10" Style="{StaticResource BackroundButton}">Посмотреть</Button>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
@@ -69,7 +71,7 @@
                     <Button Click="btnBackPage" Style="{StaticResource TabButton}" BorderBrush="White" Margin="0 0 10 0">
                         <Image Height="30" Source="/Pic/free-icon-font-angle-left-3916912.png" />
                     </Button>
-                    <Button Click="btnNextPage" Style="{StaticResource TabButton}" BorderBrush="White">
+                    <Button Click="btnNextPage" Style="{StaticResource TabButton}" BorderBrush="White" Margin="0 0 10 0">
                         <Image Height="30" Source="/Pic/free-icon-font-angle-right-3916907.png" />
                     </Button>
                     <Button Click="btnLastPage" Style="{StaticResource TabButton}" BorderBrush="White">

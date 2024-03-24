@@ -49,12 +49,21 @@ namespace PostOffice.View
 
             var operatorPostOffice = DataBasePostOffice.postOfficeEntities.User.ToList().Where(personal => personal.Login == inputLogin).ToList();
 
-            if (operatorPostOffice.Count() != 0)
+            if (string.IsNullOrWhiteSpace(tbLogin.Text))
+            {
+                MessageBox.Show("Введите логин");
+            }
+            else if (string.IsNullOrWhiteSpace(tbPassword.Password))
+            {
+                MessageBox.Show("Введите пароль");
+            }
+            else if (operatorPostOffice.Count() != 0)
             {
                 if (operatorPostOffice[0].Password == inputPassword)
                 {
-                    MessageBox.Show("Открытие окна");
-
+                    View.WinWatchPublication win = new WinWatchPublication(operatorPostOffice[0]);
+                    win.Show();
+                    closeWin();
                 }
                 else
                 {

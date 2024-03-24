@@ -28,7 +28,14 @@ namespace PostOffice
 
             postOfficeEntity = new PostOfficeEntities();
 
+            View.PageWatchPublicationNoReg.closePage += PageWatchPublicationNoReg_closePage;
+
             mainFrame.NavigationService.Navigate(new View.PageWatchPublicationNoReg());
+        }
+
+        public void PageWatchPublicationNoReg_closePage()
+        {
+            Close();
         }
 
         private void mainFrame_Navigated(object sender, NavigationEventArgs e)

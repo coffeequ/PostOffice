@@ -19,6 +19,10 @@ namespace PostOffice.View
     /// </summary>
     public partial class WinEntrance : Window
     {
+        public delegate void CloseWin();
+
+        public static event CloseWin closeWin;
+
         public WinEntrance()
         {
             InitializeComponent();
@@ -30,6 +34,7 @@ namespace PostOffice.View
 
         private void PageLogin_closeWin()
         {
+            closeWin();
             Close();
         }
     }

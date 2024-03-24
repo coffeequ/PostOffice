@@ -30,15 +30,19 @@ namespace PostOffice.View
 
         private int _countPublication = 6;
 
+        public delegate void CloseWin();
+
+        public static event CloseWin closePage;
+
         private int _maxPages;
 
         private int _currentPage = 1;
 
-        bool isOperator = false;
-
         public PageWatchPublicationNoReg()
         {
             InitializeComponent();
+
+            WinEntrance.closeWin += WinEntrance_closePage;
 
             sortPublication = new List<Publication>();
 
@@ -58,6 +62,11 @@ namespace PostOffice.View
             comboBoxTypePublication(cbTypePublication, dataBasePostOffice.postOfficeEntities.TypePublication.ToList());
 
             comboBoxTypeViewPubication(cbCatergoriaPublication, dataBasePostOffice.postOfficeEntities.TypeViewPublication.ToList());
+        }
+
+        private void WinEntrance_closePage()
+        {
+            closePage();
         }
 
         private int CountEntryMax(int AllCountData) => (int) Math.Ceiling(AllCountData * 1.0 / _countPublication);
@@ -112,18 +121,6 @@ namespace PostOffice.View
             sortPublication = _publications.Where(item => item.Name.StartsWith(tbSearch.Text)).ToList();
             ApplyComboBoxFiltres();
             Refresh();
-        }
-
-        private void ListViewSelectedChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var item = sender as ListView;
-
-            var selectedItem = item.SelectedItem as Publication;
-
-            WinWatchAndEditPublication win = new WinWatchAndEditPublication(selectedItem);
-
-            win.Show();
-
         }
 
         private void GridLoaded(object sender, RoutedEventArgs e)
@@ -218,6 +215,23 @@ namespace PostOffice.View
         private void btnEntrance(object sender, RoutedEventArgs e)
         {
             new WinEntrance().Show();
+        }
+
+        private void btnWatch(object sender, RoutedEventArgs e)
+        {
+            var item = sender as Button;
+
+            var selectedItem = item.DataContext as Publication;
+
+            WinWatchAndEditPublication win = new WinWatchAndEditPublication(selectedItem);
+
+            win.Show();
+        }
+
+        private void cbPriorityGenderChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ApplySearch();
+            ApplyComboBoxFiltres();
         }
     }
 }
