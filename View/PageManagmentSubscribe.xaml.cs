@@ -26,7 +26,9 @@ namespace PostOffice.View
 
         List<Publication> publicationsSelected;
 
-        StackPanel stackPanel;
+        HashSet<Publication> activePublcation;
+
+        List<Subscribe> subscribes;
 
         int yearEnd = 0;
 
@@ -37,6 +39,8 @@ namespace PostOffice.View
             this.subscriberOfThePostOffice = subscriberOfThePostOffice;
 
             publicationsSelected = new List<Publication>();
+
+            activePublcation = new HashSet<Publication>();
 
             try
             {
@@ -49,7 +53,9 @@ namespace PostOffice.View
 
             dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
 
-            stackPanel = new StackPanel();
+            subscribes = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
+
+            lvSelectedPublication.Items.Clear();
         }
 
         private void Grid_LoadedMonth(object sender, RoutedEventArgs e)
@@ -73,6 +79,14 @@ namespace PostOffice.View
             tbYearEnd.IsEnabled = false;
 
             tbYearEnd.Text = DateTime.Now.Year.ToString();
+
+            for (int i = 0; i < subscribes.Count(); i++)
+            {
+                if (subscribes[i].StatusActive == 1)
+                {
+                    activePublcation.Add(subscribes[i].Publication);
+                }
+            }
         }
 
         private void Button_Add(object sender, RoutedEventArgs e)
@@ -91,6 +105,18 @@ namespace PostOffice.View
 
                 subscribe.StatusActive = 1;
 
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(yearEnd.ToString()))
+                    {
+                        throw new Exception($"Введите правильный месяц");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
                 DateTime dateTime = new DateTime(int.Parse(tbYearEnd.Text), yearEnd, int.Parse(tbDayEnd.Text));
 
                 subscribe.EndTime = dateTime;
@@ -101,6 +127,7 @@ namespace PostOffice.View
 
                 dataBasePostOffice.postOfficeEntities.SaveChanges();
             }
+            MessageBox.Show($"Успешно были добавлены {publicationsSelected.Count} публикации в подписку!");
         }
 
         private void tbMonthEnd_TextChanged(object sender, TextChangedEventArgs e)
@@ -133,6 +160,12 @@ namespace PostOffice.View
                 {
                     throw new Exception ($"Издание {itemSelected.Name} уже находится в списке добавленных");
                 }
+
+                if (activePublcation.Contains(itemSelected))
+                {
+                    throw new Exception($"Подписка на издание: {itemSelected.Name}, уже активна");
+                }
+
             }
             catch (Exception ex)
             {
@@ -144,30 +177,7 @@ namespace PostOffice.View
 
             publicationsSelected.Add(itemSelected);
 
-            
-
-            Button button = new Button()
-            {
-                Width = 125,
-                Height = 45,
-                Content = 'X'
-            };
-
-            button.Click += button_delete;
-
-            stackPanel.Orientation = Orientation.Horizontal;
-
-            Label label = new Label()
-            {
-                Content = itemSelected.Name,
-                FontSize = 14
-            };
-
-            stackPanel.Children.Add(label);
-
-            stackPanel.Children.Add(button);
-
-            lvSelectedPublication.Items.Add(stackPanel);
+            lvSelectedPublication.ItemsSource = publicationsSelected;
 
             lvSelectedPublication.Items.Refresh();
         }
@@ -180,7 +190,7 @@ namespace PostOffice.View
 
             publicationsSelected.Remove(selectedItem);
 
-            lvSelectedPublication.Items.Remove(selectedItem.Name);
+            lvSelectedPublication.ItemsSource = publicationsSelected;
 
             lvSelectedPublication.Items.Refresh();
         }

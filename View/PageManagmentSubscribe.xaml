@@ -45,7 +45,14 @@
                 <Button FontSize="14" Margin="0 0 0 10" Height="45" Click="Button_Add">Сохранить</Button>
                 <Label>Список выбранных изданий: </Label>
                 <ListView Name="lvSelectedPublication" FontSize="14">
-                    
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Label FontSize="16" Content="{Binding Name}"></Label>
+                                <Button Click="button_delete" Width="50" Height="45">X</Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
         </Grid>

@@ -32,5 +32,20 @@ namespace PostOffice
         public virtual ICollection<Correspondence> Correspondence { get; set; }
         public virtual Publication Publication { get; set; }
         public virtual SubscriberOfThePostOffice SubscriberOfThePostOffice { get; set; }
+
+        public string GetStringStatusActive
+        {
+            get
+            {
+                if (StatusActive == 1)
+                {
+                    return "Активна";
+                }
+                else
+                {
+                    return "Не активна";
+                }
+            }
+        }
     }
 }
