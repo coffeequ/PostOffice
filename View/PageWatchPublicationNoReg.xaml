@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PostOffice.View"
+      xmlns:local="clr-namespace:PostOffice.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Просмотр изданий">
@@ -19,10 +19,10 @@
                 </InlineUIContainer></TextBlock>
                 <TextBox TextChanged="TextChangedSearch" VerticalContentAlignment="Center" Background="AliceBlue" HorizontalContentAlignment="Left" Height="25" x:Name="tbSearch" BorderThickness="1" BorderBrush="Black" Margin="5 5 5 0"/>
                 <Border Background="AliceBlue" Margin="5 10 5 0">
-                    <StackPanel Height="300">
-                        <ComboBox Name="cbCatergoriaPublication" SelectionChanged="cbCategoriaChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30"></ComboBox>
-                        <ComboBox Name="cbTypePublication" SelectionChanged="cbTypeChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30"></ComboBox>
-                        <ComboBox Name="cbPriorityGender" SelectionChanged="cbPriorityGenderChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30"></ComboBox>
+                    <StackPanel Height="310">
+                        <ComboBox Name="cbCatergoriaPublication" SelectionChanged="cbCategoriaChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>
+                        <ComboBox Name="cbTypePublication" SelectionChanged="cbTypeChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>
+                        <ComboBox Name="cbPriorityGender" SelectionChanged="cbPriorityGenderChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>
                     </StackPanel>
                 </Border>
             </StackPanel>
@@ -38,7 +38,7 @@
                     <Button Style="{StaticResource BackroundButton}" Click="btnEntrance" Margin="0 0 5 0" >
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                             <Label Name="lbLogin" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16">Войти</Label>
-                            <Image Height="50" Source="/Pic/free-icon-font-user-3917711.png" />
+                            <materialDesign:PackIcon Height="45" Width="50" Kind="AccountCircle" />
                         </StackPanel>
                     </Button>
                 </StackPanel>
