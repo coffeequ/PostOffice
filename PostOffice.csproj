@@ -128,6 +128,9 @@
     <Compile Include="View\PageMoreDetailsSubscriber.xaml.cs">
       <DependentUpon>PageMoreDetailsSubscriber.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PagePublication.xaml.cs">
+      <DependentUpon>PagePublication.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PageSubscribers.xaml.cs">
       <DependentUpon>PageSubscribers.xaml</DependentUpon>
     </Compile>
@@ -170,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PageMoreDetailsSubscriber.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PagePublication.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

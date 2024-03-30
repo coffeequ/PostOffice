@@ -19,8 +19,8 @@
                 </InlineUIContainer></TextBlock>
                 <Border Background="AliceBlue" Margin="5 10 5 0">
                     <StackPanel Height="300">
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="Button_Click">Подписчики</Button>
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Список изданий</Button>
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonSubsribes">Подписчики</Button>
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonPublication">Список изданий</Button>
                         <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Просмотр статистики</Button>
                         <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Категория изданий</Button>
                         <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Виды изданий</Button>
