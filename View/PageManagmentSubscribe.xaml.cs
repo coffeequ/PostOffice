@@ -26,7 +26,7 @@ namespace PostOffice.View
 
         List<Publication> publicationsSelected;
 
-        HashSet<Publication> activePublcation;
+        List<Publication> activePublication;
 
         List<Subscribe> subscribes;
 
@@ -40,7 +40,7 @@ namespace PostOffice.View
 
             publicationsSelected = new List<Publication>();
 
-            activePublcation = new HashSet<Publication>();
+            activePublication = new List<Publication>();
 
             try
             {
@@ -82,9 +82,12 @@ namespace PostOffice.View
 
             for (int i = 0; i < subscribes.Count(); i++)
             {
-                if (subscribes[i].StatusActive == 1)
+                if (subscribes[i].id_Subscriber == subscriberOfThePostOffice.id_Subscriber)
                 {
-                    activePublcation.Add(subscribes[i].Publication);
+                    if (subscribes[i].StatusActive == 1)
+                    {
+                        activePublication.Add(subscribes[i].Publication);
+                    }
                 }
             }
         }
@@ -110,6 +113,10 @@ namespace PostOffice.View
                     if (string.IsNullOrWhiteSpace(yearEnd.ToString()))
                     {
                         throw new Exception($"Введите правильный месяц");
+                    }
+                    if (string.IsNullOrWhiteSpace(tbAdressDelivery.Text))
+                    {
+                        throw new Exception($"Введите адресс доставки");
                     }
                 }
                 catch (Exception ex)
@@ -161,7 +168,7 @@ namespace PostOffice.View
                     throw new Exception ($"Издание {itemSelected.Name} уже находится в списке добавленных");
                 }
 
-                if (activePublcation.Contains(itemSelected))
+                if (activePublication.Contains(itemSelected))
                 {
                     throw new Exception($"Подписка на издание: {itemSelected.Name}, уже активна");
                 }

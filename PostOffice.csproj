@@ -260,6 +260,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pic\free-icon-font-magic-wand-3914260.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="PostOfficeModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PostOfficeModel.edmx</DependentUpon>

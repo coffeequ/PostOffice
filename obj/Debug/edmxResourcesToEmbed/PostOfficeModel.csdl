@@ -75,7 +75,7 @@
     <Property Name="StatusActive" Type="Byte" Nullable="false" />
     <Property Name="EntryTime" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="DateRegistration" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateRegistration" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Correspondence" Relationship="Self.FK_Correspondence_Subscribe" FromRole="Subscribe" ToRole="Correspondence" />
     <NavigationProperty Name="Publication" Relationship="Self.FK_Subscribe_Publication" FromRole="Subscribe" ToRole="Publication" />
     <NavigationProperty Name="SubscriberOfThePostOffice" Relationship="Self.FK_Subscribe_SubscriberOfThePostOffice" FromRole="Subscribe" ToRole="SubscriberOfThePostOffice" />
@@ -93,7 +93,6 @@
     <Property Name="NumberPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <NavigationProperty Name="OperatorPostOffice" Relationship="Self.FK_SubscriberOfThePostOffice_OperatorPostOffice" FromRole="SubscriberOfThePostOffice" ToRole="OperatorPostOffice" />
     <NavigationProperty Name="Subscribe" Relationship="Self.FK_Subscribe_SubscriberOfThePostOffice" FromRole="SubscriberOfThePostOffice" ToRole="Subscribe" />
-    <NavigationProperty Name="User" Relationship="Self.FK_SubscriberOfThePostOffice_User" FromRole="SubscriberOfThePostOffice" ToRole="User" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -132,7 +131,6 @@
     <NavigationProperty Name="LogIO" Relationship="Self.FK_LogIO_User" FromRole="User" ToRole="LogIO" />
     <NavigationProperty Name="OperatorPostOffice" Relationship="Self.FK_OperatorPostOffice_User" FromRole="User" ToRole="OperatorPostOffice" />
     <NavigationProperty Name="Role" Relationship="Self.FK_User_Role1" FromRole="User" ToRole="Role" />
-    <NavigationProperty Name="SubscriberOfThePostOffice" Relationship="Self.FK_SubscriberOfThePostOffice_User" FromRole="User" ToRole="SubscriberOfThePostOffice" />
   </EntityType>
   <Association Name="FK_Correspondence_Subscribe">
     <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="1" />
@@ -254,18 +252,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SubscriberOfThePostOffice_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="SubscriberOfThePostOffice" Type="Self.SubscriberOfThePostOffice" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="id_User" />
-      </Principal>
-      <Dependent Role="SubscriberOfThePostOffice">
-        <PropertyRef Name="id_Subscriber" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="PostOfficeEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Correspondence" EntityType="Self.Correspondence" />
     <EntitySet Name="Feedback" EntityType="Self.Feedback" />
@@ -318,10 +304,6 @@
     <AssociationSet Name="FK_Subscribe_SubscriberOfThePostOffice" Association="Self.FK_Subscribe_SubscriberOfThePostOffice">
       <End Role="SubscriberOfThePostOffice" EntitySet="SubscriberOfThePostOffice" />
       <End Role="Subscribe" EntitySet="Subscribe" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SubscriberOfThePostOffice_User" Association="Self.FK_SubscriberOfThePostOffice_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="SubscriberOfThePostOffice" EntitySet="SubscriberOfThePostOffice" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
