@@ -34,21 +34,35 @@
                     <Label FontSize="14">День:</Label>
                     <TextBox Name="tbDayEnd" FontSize="14" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                     <Label FontSize="14">Месяц:</Label>
-                    <TextBox Name="tbMonthEnd" FontSize="14" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox TextChanged="tbMonthEnd_TextChanged" Name="tbMonthEnd" FontSize="14" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                     <Label FontSize="14">Год:</Label>
                     <TextBox Name="tbYearEnd" FontSize="14" Width="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                 </StackPanel>
+                <Label FontSize="14">Адрес доставки: </Label>
+                <TextBox x:Name="tbAdressDelivery" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="14"></TextBox>
             </StackPanel>
             <StackPanel Margin="10" Grid.Column="1">
-                <Button FontSize="14" Margin="0 0 0 10" Height="45" Click="Button_Add">Добавить</Button>
-                <Button FontSize="14" Height="45">Удалить</Button>
+                <Button  FontSize="14" Foreground="White" Margin="0 0 0 10" Height="40" Click="Button_Add">Сохранить</Button>
+                <Label>Список выбранных изданий: </Label>
+                <ListView Name="lvSelectedPublication" FontSize="14">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Label FontSize="16" Content="{Binding Name}"></Label>
+                                <Button Click="button_delete" Width="50" Height="45">X</Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackPanel>
         </Grid>
-        <DataGrid Grid.Row="1">
+        <DataGrid Grid.Row="1" Name="dgPublication" AutoGenerateColumns="False" MouseDoubleClick="dgPublication_MouseDoubleClick" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Наименование публикации"></DataGridTextColumn>
-                <DataGridTextColumn Header="Цена за 1 месяц"></DataGridTextColumn>
-                <DataGridTextColumn Header="Количество выпусков в месяц"></DataGridTextColumn>
+                <DataGridTextColumn Header="Наименование публикации" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена за 1 месяц" Binding="{Binding PricePerMonth}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество выпусков в месяц" Binding="{Binding NumberIssuesPerMonth}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Вид издания" Binding="{Binding TypePublication.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Тип издания" Binding="{Binding TypeViewPublication.Name}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

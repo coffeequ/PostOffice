@@ -26,11 +26,26 @@ namespace PostOffice
         public byte StatusActive { get; set; }
         public System.DateTime EntryTime { get; set; }
         public System.DateTime EndTime { get; set; }
-        public System.DateTime DateRegistration { get; set; }
+        public Nullable<System.DateTime> DateRegistration { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Correspondence> Correspondence { get; set; }
         public virtual Publication Publication { get; set; }
         public virtual SubscriberOfThePostOffice SubscriberOfThePostOffice { get; set; }
+
+        public string GetStringStatusActive
+        {
+            get
+            {
+                if (StatusActive == 1)
+                {
+                    return "Активна";
+                }
+                else
+                {
+                    return "Не активна";
+                }
+            }
+        }
     }
 }

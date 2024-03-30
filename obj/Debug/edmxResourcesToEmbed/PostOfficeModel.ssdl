@@ -65,7 +65,7 @@
     <Property Name="StatusActive" Type="tinyint" Nullable="false" />
     <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
     <Property Name="EndTime" Type="smalldatetime" Nullable="false" />
-    <Property Name="DateRegistration" Type="smalldatetime" Nullable="false" />
+    <Property Name="DateRegistration" Type="smalldatetime" />
   </EntityType>
   <EntityType Name="SubscriberOfThePostOffice">
     <Key>
@@ -220,18 +220,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SubscriberOfThePostOffice_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="SubscriberOfThePostOffice" Type="Self.SubscriberOfThePostOffice" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="id User" />
-      </Principal>
-      <Dependent Role="SubscriberOfThePostOffice">
-        <PropertyRef Name="id Subscriber" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_User_Role1">
     <End Role="Role" Type="Self.Role" Multiplicity="1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -291,10 +279,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_SubscriberOfThePostOffice_OperatorPostOffice" Association="Self.FK_SubscriberOfThePostOffice_OperatorPostOffice">
       <End Role="OperatorPostOffice" EntitySet="OperatorPostOffice" />
-      <End Role="SubscriberOfThePostOffice" EntitySet="SubscriberOfThePostOffice" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SubscriberOfThePostOffice_User" Association="Self.FK_SubscriberOfThePostOffice_User">
-      <End Role="User" EntitySet="User" />
       <End Role="SubscriberOfThePostOffice" EntitySet="SubscriberOfThePostOffice" />
     </AssociationSet>
     <AssociationSet Name="FK_User_Role1" Association="Self.FK_User_Role1">

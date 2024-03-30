@@ -61,9 +61,14 @@ namespace PostOffice.View
             win.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonSubsribes(object sender, RoutedEventArgs e)
         {
             frameToAction.NavigationService.Navigate(new View.PageSubscribers());
+        }
+
+        private void ButtonPublication(object sender, RoutedEventArgs e)
+        {
+            frameToAction.NavigationService.Navigate(new View.PagePublication());
         }
     }
 }

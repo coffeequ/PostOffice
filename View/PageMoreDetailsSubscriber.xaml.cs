@@ -22,6 +22,8 @@ namespace PostOffice.View
     {
         SubscriberOfThePostOffice subscriberOfThePostOffice;
 
+        List<Subscribe> allSubscribes;
+
         Model.DataBasePostOffice dataBasePostOffice;
 
         public PageMoreDetailsSubscriber(SubscriberOfThePostOffice subscriberOfThePostOffice)
@@ -40,6 +42,8 @@ namespace PostOffice.View
 
             DataContext = subscriberOfThePostOffice;
 
+            allSubscribes = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
+
             var publicationSubscriber = dataBasePostOffice.postOfficeEntities.Subscribe.Where(persona => persona.id_Subscriber == subscriberOfThePostOffice.id_Subscriber).ToList();
 
             dgSubsriberPublication.ItemsSource = publicationSubscriber;
@@ -47,7 +51,7 @@ namespace PostOffice.View
 
         private void Button_Add_Publication(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate();
+            NavigationService.Navigate(new View.PageManagmentSubscribe(subscriberOfThePostOffice));
         }
 
         private void Button_saveData(object sender, RoutedEventArgs e)
@@ -58,6 +62,37 @@ namespace PostOffice.View
         private void Button_wordCheck(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Вывод чека об оплате");
+        }
+
+        private void Button_Delete_Publication(object sender, RoutedEventArgs e)
+        {
+            var item = sender as Button;
+            
+            var selectedItem = item.DataContext as Subscribe;
+
+            if (selectedItem != null)
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show(
+                    "Вы точно хотите удалить запись",
+                    "Внимание!",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Error);
+
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    dataBasePostOffice.postOfficeEntities.Subscribe.Remove(selectedItem);
+                    dataBasePostOffice.postOfficeEntities.SaveChanges();
+                    MessageBox.Show("Запись удалена!");
+
+                    dgSubsriberPublication.ItemsSource = null;
+
+                    var publicationSubscriber = dataBasePostOffice.postOfficeEntities.Subscribe.Where(persona => persona.id_Subscriber == subscriberOfThePostOffice.id_Subscriber).ToList();
+
+                    dgSubsriberPublication.ItemsSource = publicationSubscriber;
+                }
+            }
+
+
         }
     }
 }

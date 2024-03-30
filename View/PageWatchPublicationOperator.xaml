@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PostOffice.View"
+      xmlns:local="clr-namespace:PostOffice.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Просмотр изданий">
@@ -19,8 +19,8 @@
                 </InlineUIContainer></TextBlock>
                 <Border Background="AliceBlue" Margin="5 10 5 0">
                     <StackPanel Height="300">
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="Button_Click">Подписчики</Button>
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Список изданий</Button>
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonSubsribes">Подписчики</Button>
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonPublication">Список изданий</Button>
                         <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Просмотр статистики</Button>
                         <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Категория изданий</Button>
                         <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Виды изданий</Button>
@@ -38,7 +38,7 @@
                     <Button Style="{StaticResource BackroundButton}" Click="btnEntrance" Margin="0 0 5 0" >
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                             <Label Name="lbLogin" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16">Войти</Label>
-                            <Image Height="50" Source="/Pic/free-icon-font-user-3917711.png" />
+                            <materialDesign:PackIcon Height="45" Width="50" Kind="AccountCircle" />
                         </StackPanel>
                     </Button>
                 </StackPanel>

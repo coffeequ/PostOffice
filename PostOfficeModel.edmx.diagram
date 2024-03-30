@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0177de6d47d542768df2c98df8f3141c" Name="Diagram1">
-        <EntityTypeShape EntityType="PostOfficeModel.Correspondence" Width="1.5" PointX="12" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PostOfficeModel.Feedback" Width="1.5" PointX="9.75" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PostOfficeModel.LogIO" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PostOfficeModel.OperatorPostOffice" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PostOfficeModel.Publication" Width="1.5" PointX="7.5" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="PostOfficeModel.Role" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PostOfficeModel.Subscribe" Width="1.5" PointX="9.75" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="PostOfficeModel.SubscriberOfThePostOffice" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="PostOfficeModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PostOfficeModel.TypePublication" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PostOfficeModel.TypeViewPublication" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PostOfficeModel.User" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+      <Diagram DiagramId="5bd5142ada364d5887dc95dfdaae3d22" Name="Diagram1">
+        <EntityTypeShape EntityType="PostOfficeModel.Correspondence" Width="1.5" PointX="10.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PostOfficeModel.Feedback" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PostOfficeModel.LogIO" Width="1.5" PointX="3.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PostOfficeModel.OperatorPostOffice" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PostOfficeModel.Publication" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="PostOfficeModel.Role" Width="1.5" PointX="1.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PostOfficeModel.Subscribe" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PostOfficeModel.SubscriberOfThePostOffice" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PostOfficeModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PostOfficeModel.TypePublication" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PostOfficeModel.TypeViewPublication" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PostOfficeModel.User" Width="1.5" PointX="1.5" PointY="8.375" IsExpanded="true" />
         <AssociationConnector Association="PostOfficeModel.FK_Correspondence_Subscribe" ManuallyRouted="false" />
         <AssociationConnector Association="PostOfficeModel.FK_Feedback_Publication" ManuallyRouted="false" />
         <AssociationConnector Association="PostOfficeModel.FK_LogIO_User" ManuallyRouted="false" />
@@ -27,7 +27,6 @@
         <AssociationConnector Association="PostOfficeModel.FK_Subscribe_Publication" ManuallyRouted="false" />
         <AssociationConnector Association="PostOfficeModel.FK_User_Role1" ManuallyRouted="false" />
         <AssociationConnector Association="PostOfficeModel.FK_Subscribe_SubscriberOfThePostOffice" ManuallyRouted="false" />
-        <AssociationConnector Association="PostOfficeModel.FK_SubscriberOfThePostOffice_User" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

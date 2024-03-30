@@ -29,6 +29,5 @@ namespace PostOffice
         public virtual ICollection<LogIO> LogIO { get; set; }
         public virtual OperatorPostOffice OperatorPostOffice { get; set; }
         public virtual Role Role { get; set; }
-        public virtual SubscriberOfThePostOffice SubscriberOfThePostOffice { get; set; }
     }
 }
