@@ -23,6 +23,8 @@ namespace PostOffice.View
 
         Model.DataBasePostOffice dataBasePostOffice;
 
+        List<Feedback> feedbacks;
+
         public WinWatchAndEditPublication(Publication publication)
         {
             InitializeComponent();
@@ -40,17 +42,49 @@ namespace PostOffice.View
                 MessageBox.Show(e.Message);
                 throw;
             }
+
+            feedbacks = dataBasePostOffice.postOfficeEntities.Feedback.ToList();
+        }
+
+        private List<Feedback> UpdateInfo()
+        {
+            return dataBasePostOffice.postOfficeEntities.Feedback.Where(item => item.Publication.id_Publication == publication.id_Publication).ToList();
         }
 
         private void isLoaded(object sender, RoutedEventArgs e)
         {
-            var listFeedBack = dataBasePostOffice.postOfficeEntities.Feedback.Where(item => item.Publication.id_Publication == publication.id_Publication).ToList();
-            DataGridTableReview.ItemsSource = listFeedBack;
+            DataGridTableReview.ItemsSource = UpdateInfo();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Exit(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void KeyDownFeedback(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Feedback feedback = new Feedback();
+
+                feedback.id_Feedback = feedbacks.Count() + 1;
+
+                feedback.Feedback1 = CommentTextBox.Text;
+
+                feedback.id_Publication = publication.id_Publication;
+
+                dataBasePostOffice.postOfficeEntities.Feedback.Add(feedback);
+
+                MessageBox.Show("Отзыв был успешно добавлен!");
+
+                dataBasePostOffice.postOfficeEntities.SaveChanges();
+
+                DataGridTableReview.ItemsSource = null;
+
+                DataGridTableReview.ItemsSource = UpdateInfo();
+
+                CommentTextBox.Clear();
+            }
         }
     }
 }

@@ -9,6 +9,23 @@
       Title="PagePublication">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="397*"></RowDefinition>
+            <RowDefinition Height="55*"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="dgPublication" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Наименование издания"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding TypePublication.Name}" Header="Тип публикации"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding TypeViewPublication.Name}" Header="Вид публикации"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding PricePerMonthRounded}" Header="Цена за 1 месяц"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Cover}" Header="Обложка"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding NumberIssuesPerMonth}" Header="Количество выпусков в месяц"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Margin="0 0 10 0" Background="#a7c3c6" FontSize="16" Height="40" Click="Button_Add">Добавить</Button>
+            <Button Background="#a7c3c6" FontSize="16" Height="40" Click="Button_Delete">Удалить</Button>
+        </StackPanel>
     </Grid>
 </Page>

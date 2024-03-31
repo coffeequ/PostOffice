@@ -135,6 +135,16 @@ namespace PostOffice.View
                 dataBasePostOffice.postOfficeEntities.SaveChanges();
             }
             MessageBox.Show($"Успешно были добавлены {publicationsSelected.Count} публикации в подписку!");
+
+            MessageBoxResult messageBoxResult = MessageBox.Show(
+                "Вывести чек?",
+                "Внимание!",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                //Вывод чека в ворд
+            }
             
         }
 

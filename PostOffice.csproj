@@ -151,6 +151,9 @@
     <Compile Include="View\PageWatchPublicationOperator.xaml.cs">
       <DependentUpon>PageWatchPublicationOperator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\WinAddAndEditPublication.xaml.cs">
+      <DependentUpon>WinAddAndEditPublication.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\WinEntrance.xaml.cs">
       <DependentUpon>WinEntrance.xaml</DependentUpon>
     </Compile>
@@ -200,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PageWatchPublicationOperator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WinAddAndEditPublication.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
