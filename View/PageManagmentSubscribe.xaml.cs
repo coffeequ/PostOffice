@@ -143,7 +143,7 @@ namespace PostOffice.View
                 MessageBoxImage.Question);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-
+                //Вывод чека в ворд
             }
             
         }

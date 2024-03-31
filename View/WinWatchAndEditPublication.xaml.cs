@@ -56,7 +56,7 @@ namespace PostOffice.View
             DataGridTableReview.ItemsSource = UpdateInfo();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Exit(object sender, RoutedEventArgs e)
         {
             Close();
         }

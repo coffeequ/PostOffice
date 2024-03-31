@@ -20,9 +20,38 @@ namespace PostOffice.View
     /// </summary>
     public partial class PagePublication : Page
     {
+        Model.DataBasePostOffice dataBasePostOffice;
+
         public PagePublication()
         {
             InitializeComponent();
+
+            try
+            {
+                dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+        }
+
+        private void Button_Add(object sender, RoutedEventArgs e)
+        {
+            Publication publication = new Publication();
+
+            new WinAddAndEditPublication(publication).ShowDialog();
+
+            dgPublication.ItemsSource = null;
+
+            dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+        }
+
+        private void Button_Delete(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

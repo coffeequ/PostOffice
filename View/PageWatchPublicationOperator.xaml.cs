@@ -50,17 +50,6 @@ namespace PostOffice.View
             MessageBox.Show("Выход или редактириование личных данных");
         }
 
-        private void btnWatch(object sender, RoutedEventArgs e)
-        {
-            var item = sender as Button;
-
-            var selectedItem = item.DataContext as Publication;
-
-            WinWatchAndEditPublication win = new WinWatchAndEditPublication(selectedItem);
-
-            win.Show();
-        }
-
         private void ButtonSubsribes(object sender, RoutedEventArgs e)
         {
             frameToAction.NavigationService.Navigate(new View.PageSubscribers());
