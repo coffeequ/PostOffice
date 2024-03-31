@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PostOffice.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="WinWatchAndEditPublication" MinHeight="450" Height="450" MaxHeight="500" MinWidth="800" Width="800" MaxWidth="900">
     <ScrollViewer>
@@ -40,7 +40,12 @@
                         </StackPanel>
                     </Grid>
                 </Grid>
-                <Label Margin="10" FontSize="16">Отзывы:</Label>
+                <Label Margin="10" FontSize="16" FontWeight="Black">Оставить отзыв</Label>
+                <TextBox Margin="12" FontSize="16" KeyDown="KeyDownFeedback"
+                  x:Name="CommentTextBox"
+                  materialDesign:HintAssist.HelperTextFontSize="16"
+                  materialDesign:HintAssist.Hint="Комментарий" />
+                <Label Margin="10" FontSize="16" FontWeight="Black">Отзывы:</Label>
                 <DataGrid Background="AliceBlue" Margin="10 5 10 10" FontSize="16" Grid.Row="1" Name="DataGridTableReview" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Комментарий" Binding="{Binding Feedback1}"></DataGridTextColumn>

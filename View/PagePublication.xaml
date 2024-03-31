@@ -9,6 +9,12 @@
       Title="PagePublication">
 
     <Grid>
-        
+        <DataGrid>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование издания">
+                    
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

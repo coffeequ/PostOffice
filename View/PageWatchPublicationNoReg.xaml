@@ -51,8 +51,8 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="2" Width="599">
-                            <StackPanel>
+                        <Border BorderBrush="Black" BorderThickness="2" Width="400">
+                            <StackPanel Width="200" >
                                 <Image Height="300" Source="{Binding CoverImage}"></Image>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}"></Label>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding NewNumberIssuesPerMonth}"></Label>
@@ -66,16 +66,16 @@
             <Border Background="#a7c3c6" Grid.Row="2" BorderThickness="1" BorderBrush="Black">
                 <StackPanel Orientation="Horizontal" Name="spList" HorizontalAlignment="Center">
                     <Button Click="btnFirstPage" Style="{StaticResource TabButton}" BorderBrush="White" Margin="0 0 10 0">
-                        <Image Height="30" Source="/Pic/free-icon-font-arrow-small-left-3916837.png" />
+                        <materialDesign:PackIcon Height="40" Width="20" Kind="ArrowLeftThick" />
                     </Button>
                     <Button Click="btnBackPage" Style="{StaticResource TabButton}" BorderBrush="White" Margin="0 0 10 0">
-                        <Image Height="30" Source="/Pic/free-icon-font-angle-left-3916912.png" />
+                        <materialDesign:PackIcon Height="40" Width="40" Kind="ArrowLeft" />
                     </Button>
                     <Button Click="btnNextPage" Style="{StaticResource TabButton}" BorderBrush="White" Margin="0 0 10 0">
-                        <Image Height="30" Source="/Pic/free-icon-font-angle-right-3916907.png" />
+                        <materialDesign:PackIcon Height="40" Width="40" Kind="ArrowRight" />
                     </Button>
                     <Button Click="btnLastPage" Style="{StaticResource TabButton}" BorderBrush="White">
-                        <Image Height="30" Source="/Pic/free-icon-font-arrow-small-right-3916831.png" />
+                        <materialDesign:PackIcon Height="40" Width="20" Kind="ArrowRightThick" />
                     </Button>
                     <Label Name="InfoPages" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="200"></Label>
                 </StackPanel>
