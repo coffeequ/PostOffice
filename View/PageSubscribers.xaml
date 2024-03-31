@@ -31,8 +31,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Grid.Row="1" FontSize="14" Width="100" Margin="10 0 0 0" Click="Button_Click_1">Добавить</Button>
-            <Button Grid.Row="1" FontSize="14" Width="100" Margin="10 0 0 0">Удалить</Button>
+            <Button Grid.Row="1" Background="#a7c3c6" Width="120" FontSize="16" Height="40" Click="Button_Click_1">Добавить</Button>
+            <Button Grid.Row="1"  Background="#a7c3c6" Width="120" FontSize="16" Height="40" Margin="10 0 0 0">Удалить</Button>
         </StackPanel>
     </Grid>
 </Page>

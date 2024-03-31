@@ -41,8 +41,8 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Column="1">
-                <Button FontSize="14" Margin="10" Height="40" Style="{StaticResource BackroundButton}" Click="Button_Add_Publication">Добавить подписку</Button>
-                <Button FontSize="14" Margin="10" Height="40" Style="{StaticResource BackroundButton}" Click="Button_saveData" >Сохранить</Button>
+                <Button Margin="0 10 0 0" Background="#a7c3c6" Width="220" FontSize="16" Height="40" Click="Button_Add_Publication">Добавить подписку</Button>
+                <Button Margin="0 10 0 0" Background="#a7c3c6" Width="220" FontSize="16" Height="40" Click="Button_saveData" >Сохранить</Button>
             </StackPanel>
         </Grid>
         <DataGrid Grid.Row="1" Name="dgSubsriberPublication" AutoGenerateColumns="False">
