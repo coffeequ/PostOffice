@@ -134,6 +134,7 @@ namespace PostOffice.View
 
                 dataBasePostOffice.postOfficeEntities.SaveChanges();
             }
+
             MessageBox.Show($"Успешно были добавлены {publicationsSelected.Count} публикации в подписку!");
 
             MessageBoxResult messageBoxResult = MessageBox.Show(
