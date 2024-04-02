@@ -43,7 +43,7 @@ namespace PostOffice.View
             dgSubscribers.ItemsSource = subscriberOfThePostOffices;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_More(object sender, RoutedEventArgs e)
         {
             var item = sender as Button;
 
@@ -57,7 +57,12 @@ namespace PostOffice.View
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Delete(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Add(object sender, RoutedEventArgs e)
         {
 
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +29,8 @@ namespace PostOffice.View
         Model.DataBasePostOffice dataBasePostOffice;
 
         Publication Publication;
+
+        string pattern = @"^\D+";
 
         public WinAddAndEditPublication(Publication Publication)
         {
@@ -58,6 +61,52 @@ namespace PostOffice.View
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
+            decimal pricePerMonthCheck = 0;
+
+            int numberIssuePerMonthCheck = 0;
+
+            try
+            {
+                pricePerMonthCheck = decimal.Parse(tbPriceMonth.Text);
+
+                numberIssuePerMonthCheck = int.Parse(tbNumberIssuesPerMonth.Text);
+
+                if (string.IsNullOrWhiteSpace(tbName.Text))
+                {
+                    throw new Exception("Наименование издания не может быть пустым");
+                }
+
+                if (cbTypePublication.SelectedItem == null)
+                {
+                    throw new Exception("Тип издания не может быть пустым");
+                }
+
+                if (string.IsNullOrWhiteSpace(cbTypeViewPublication.SelectedItem.ToString()))
+                {
+                    throw new Exception("Вид издания не может быть пустым");
+                }
+
+                if (string.IsNullOrWhiteSpace(tbPathToPhoto.Text))
+                {
+                    throw new Exception("Не указан путь до фото");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+                return;
+            }
+
+            Publication.Cover = tbPathToPhoto.Text;
+
+            Publication.PricePerMonth = pricePerMonthCheck;
+
+            Publication.NumberIssuesPerMonth = numberIssuePerMonthCheck;
+
+            dataBasePostOffice.postOfficeEntities.Publication.Add(Publication);
+
             Publication.id_Publication = allPublication.Count() + 1;
 
             Publication.Name = tbName.Text;
@@ -66,12 +115,6 @@ namespace PostOffice.View
 
             Publication.id_TypeViewPublication = keyValuePairsTypeView[cbTypeViewPublication.SelectedItem.ToString()];
 
-            Publication.PricePerMonth = decimal.Parse(tbPriceMonth.Text);
-
-            Publication.NumberIssuesPerMonth = int.Parse(tbNumberIssuesPerMonth.Text);
-
-            dataBasePostOffice.postOfficeEntities.Publication.Add(Publication);
-
             MessageBox.Show("Издание было успешно добавлено!");
 
             dataBasePostOffice.postOfficeEntities.SaveChanges();
@@ -79,7 +122,7 @@ namespace PostOffice.View
 
         private void Button_Exit(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }
