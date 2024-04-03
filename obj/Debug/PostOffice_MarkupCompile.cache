@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\App.xaml
-13-1856911457
+17-2085743135
 2-1742115314
-33771336355
+37178788483
 24-893584652
-MainWindow.xaml;View\PageLogin.xaml;View\PageManagmentSubscribe.xaml;View\PageMoreDetailsSubscriber.xaml;View\PagePublication.xaml;View\PageSubscribers.xaml;View\PageWatchPublicationNoReg.xaml;View\PageWatchPublicationOperator.xaml;View\WinAddAndEditPublication.xaml;View\WinEntrance.xaml;View\WinMoreDetailsSubscriber.xaml;View\WinWatchAndEditPublication.xaml;View\WinWatchPublication.xaml;
+MainWindow.xaml;View\PageCorrespondenceStatistic.xaml;View\PageLogin.xaml;View\PageManagmentSubscribe.xaml;View\PageMoreDetailsSubscriber.xaml;View\PagePublication.xaml;View\PageStatistic.xaml;View\PageSubscribers.xaml;View\PageSubscribeStatistic.xaml;View\PageWatchPublicationNoReg.xaml;View\PageWatchPublicationOperator.xaml;View\WinAddAndEditPublication.xaml;View\WinEntrance.xaml;View\WinMoreDetailsSubscriber.xaml;View\WinStatistic.xaml;View\WinWatchAndEditPublication.xaml;View\WinWatchPublication.xaml;
 
 False
 

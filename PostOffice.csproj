@@ -130,6 +130,9 @@
     <Compile Include="User.cs">
       <DependentUpon>PostOfficeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\PageCorrespondenceStatistic.xaml.cs">
+      <DependentUpon>PageCorrespondenceStatistic.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PageLogin.xaml.cs">
       <DependentUpon>PageLogin.xaml</DependentUpon>
     </Compile>
@@ -142,8 +145,14 @@
     <Compile Include="View\PagePublication.xaml.cs">
       <DependentUpon>PagePublication.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PageStatistic.xaml.cs">
+      <DependentUpon>PageStatistic.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PageSubscribers.xaml.cs">
       <DependentUpon>PageSubscribers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageSubscribeStatistic.xaml.cs">
+      <DependentUpon>PageSubscribeStatistic.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PageWatchPublicationNoReg.xaml.cs">
       <DependentUpon>PageWatchPublicationNoReg.xaml</DependentUpon>
@@ -159,6 +168,9 @@
     </Compile>
     <Compile Include="View\WinMoreDetailsSubscriber.xaml.cs">
       <DependentUpon>WinMoreDetailsSubscriber.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WinStatistic.xaml.cs">
+      <DependentUpon>WinStatistic.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\WinWatchAndEditPublication.xaml.cs">
       <DependentUpon>WinWatchAndEditPublication.xaml</DependentUpon>
@@ -178,6 +190,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\PageCorrespondenceStatistic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PageLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,7 +210,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PageStatistic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PageSubscribers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageSubscribeStatistic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -215,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\WinMoreDetailsSubscriber.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WinStatistic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
