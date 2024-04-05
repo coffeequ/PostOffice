@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="PostOfficeModel.OperatorPostOffice" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PostOfficeModel.Publication" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="PostOfficeModel.Role" Width="1.5" PointX="1.5" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PostOfficeModel.Subscribe" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PostOfficeModel.Subscribe" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PostOfficeModel.SubscriberOfThePostOffice" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PostOfficeModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PostOfficeModel.TypePublication" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />

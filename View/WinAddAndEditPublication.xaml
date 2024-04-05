@@ -14,7 +14,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Margin="10">
                 <Image Width="300" Height="350">
-
+                    
                 </Image>
                 <Label FontSize="16" Margin="10">Путь до фото:</Label>
                 <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" x:Name="tbPathToPhoto">

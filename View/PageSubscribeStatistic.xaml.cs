@@ -24,6 +24,8 @@ namespace PostOffice.View
 
         List<Subscribe> subscribes;
 
+        List<Subscribe> corrSubs;
+
         public PageSubscribeStatistic()
         {
             InitializeComponent();
@@ -41,21 +43,21 @@ namespace PostOffice.View
         {
             var item = dgPublication.SelectedItem as Publication;
 
-            var temp = new List<Subscribe>();
+            corrSubs = new List<Subscribe>();
 
             for (int i = 0; i < subscribes.Count(); i++)
             {
                 if (item.id_Publication == subscribes[i].id_Publication)
                 {
-                    temp.Add(subscribes[i]);
+                    corrSubs.Add(subscribes[i]);
                 }
             }
-            dgSubscribers.ItemsSource = temp;
+            dgSubscribers.ItemsSource = corrSubs;
         }
 
         private void Button_statisticToExcel(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Вывод в excel");
+            
         }
     }
 }
