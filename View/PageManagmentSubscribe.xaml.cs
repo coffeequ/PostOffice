@@ -173,7 +173,7 @@ namespace PostOffice.View
                 {
 
                 }
-
+                NavigationService.Navigate(new View.PageMoreDetailsSubscriber(subscriberOfThePostOffice));
             }
             else
             {

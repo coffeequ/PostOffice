@@ -155,6 +155,9 @@
     <Compile Include="View\PageSubscribeStatistic.xaml.cs">
       <DependentUpon>PageSubscribeStatistic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PageViewPublication.xaml.cs">
+      <DependentUpon>PageViewPublication.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PageWatchPublicationNoReg.xaml.cs">
       <DependentUpon>PageWatchPublicationNoReg.xaml</DependentUpon>
     </Compile>
@@ -220,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PageSubscribeStatistic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageViewPublication.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
