@@ -30,7 +30,11 @@ namespace PostOffice.View
 
         List<Subscribe> subscribes;
 
+        Random rnd;
+
         int yearEnd = 0;
+
+        string toUpperWord = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         public PageManagmentSubscribe(SubscriberOfThePostOffice subscriberOfThePostOffice)
         {
@@ -56,6 +60,8 @@ namespace PostOffice.View
             subscribes = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
 
             lvSelectedPublication.Items.Clear();
+
+            rnd = new Random();
         }
 
         private void Grid_LoadedMonth(object sender, RoutedEventArgs e)
@@ -94,78 +100,90 @@ namespace PostOffice.View
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            Subscribe subscribe;
-
-            for (int i = 0; i < publicationsSelected.Count(); i++)
+            if (publicationsSelected.Count > 0)
             {
-                subscribe = new Subscribe();
-
-                subscribe.Publication = publicationsSelected[i];
-
-                subscribe.DateRegistration = DateTime.Now;
-
-                subscribe.EntryTime = DateTime.Now;
-
-                subscribe.StatusActive = 1;
-
                 try
                 {
+                    yearEnd = int.Parse(tbMonthEnd.Text);
+
                     if (string.IsNullOrWhiteSpace(yearEnd.ToString()))
                     {
                         throw new Exception($"Введите правильный месяц");
                     }
+
                     if (string.IsNullOrWhiteSpace(tbAdressDelivery.Text))
                     {
                         throw new Exception($"Введите адресс доставки");
                     }
+
+                    if (int.Parse(tbMonthEnd.Text) < int.Parse(tbMonthStart.Text))
+                    {
+                        throw new Exception($"Дата окончания не может быть меньше чем дата начала");
+                    }
+
+                    if (yearEnd >= 13)
+                    {
+                       throw new Exception("Введите корректный месяц!");
+                    }
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    return;
                 }
 
-                DateTime dateTime = new DateTime(int.Parse(tbYearEnd.Text), yearEnd, int.Parse(tbDayEnd.Text));
+                Subscribe subscribe;
 
-                subscribe.EndTime = dateTime;
+                int numberSubscribeGeneration = GetHashCode();
 
-                subscribe.id_Subscriber = subscriberOfThePostOffice.id_Subscriber;
+                for (int i = 0; i < publicationsSelected.Count(); i++)
+                {
+                    subscribe = new Subscribe();
 
-                dataBasePostOffice.postOfficeEntities.Subscribe.Add(subscribe);
+                    subscribe.Publication = publicationsSelected[i];
 
-                dataBasePostOffice.postOfficeEntities.SaveChanges();
+                    subscribe.DateRegistration = DateTime.Now;
+
+                    subscribe.EntryTime = DateTime.Now;
+
+                    subscribe.StatusActive = 1;
+
+                    DateTime dateTime = new DateTime(int.Parse(tbYearEnd.Text), yearEnd, int.Parse(tbDayEnd.Text));
+
+                    subscribe.EndTime = dateTime;
+
+                    subscribe.id_Subscriber = subscriberOfThePostOffice.id_Subscriber;
+
+                    subscribe.NumberSubscribe = numberSubscribeGeneration.ToString();
+
+                    dataBasePostOffice.postOfficeEntities.Subscribe.Add(subscribe);
+
+                    dataBasePostOffice.postOfficeEntities.SaveChanges();
+                }
+
+                MessageBox.Show($"Успешно были добавлены {publicationsSelected.Count} публикаций в подписку!");
+
+                MessageBoxResult messageBoxResult = MessageBox.Show(
+                    "Вывести чек?",
+                    "Внимание!",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+
+                }
+
             }
-
-            MessageBox.Show($"Успешно были добавлены {publicationsSelected.Count} публикаций в подписку!");
-
-            MessageBoxResult messageBoxResult = MessageBox.Show(
-                "Вывести чек?",
-                "Внимание!",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Question);
-            if (messageBoxResult == MessageBoxResult.Yes)
+            else
             {
-                //Вывод чека в ворд
+                MessageBox.Show("Выберите подписки");
             }
-            
         }
 
         private void tbMonthEnd_TextChanged(object sender, TextChangedEventArgs e)
         {
-            try
-            {
-                yearEnd = int.Parse(tbMonthEnd.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + $". Введите корректный месяц!");
-                tbYearEnd.Clear();
-            }
 
-            if (yearEnd >= 13)
-            {
-                MessageBox.Show("Введите корректный месяц!");
-                tbYearEnd.Clear();
-            }
         }
 
         private void dgPublication_MouseDoubleClick(object sender, MouseButtonEventArgs e)

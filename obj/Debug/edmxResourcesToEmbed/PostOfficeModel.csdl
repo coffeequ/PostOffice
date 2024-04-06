@@ -76,6 +76,7 @@
     <Property Name="EntryTime" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="DateRegistration" Type="DateTime" Precision="0" />
+    <Property Name="NumberSubscribe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Correspondence" Relationship="Self.FK_Correspondence_Subscribe" FromRole="Subscribe" ToRole="Correspondence" />
     <NavigationProperty Name="Publication" Relationship="Self.FK_Subscribe_Publication" FromRole="Subscribe" ToRole="Publication" />
     <NavigationProperty Name="SubscriberOfThePostOffice" Relationship="Self.FK_Subscribe_SubscriberOfThePostOffice" FromRole="Subscribe" ToRole="SubscriberOfThePostOffice" />
