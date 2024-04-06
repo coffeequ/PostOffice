@@ -57,7 +57,8 @@ namespace PostOffice.View
 
         private void Button_statisticToExcel(object sender, RoutedEventArgs e)
         {
-            
+            Model.IOExcel iOExcel = new Model.IOExcel(dataBasePostOffice);
+            iOExcel.DBToExcelTablePubAndSub();
         }
     }
 }

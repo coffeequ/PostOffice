@@ -32,13 +32,13 @@ namespace PostOffice.Model
             allPublication = dataBasePostOffice.postOfficeEntities.Publication.ToList();
 
             allSubscriberOfThePostOffices = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
+
+            excelApp = new Excel.Application();
         }
 
         public void DBToExcelTablePubAndSub()
         {
             int row = 1;
-
-            int col = 1;
 
             workbook = excelApp.Workbooks.Add();
 
@@ -46,31 +46,62 @@ namespace PostOffice.Model
 
             for (int i = 0; i < allPublication.Count(); i++)
             {
-                worksheet.Cells[row, col] = $"Публикация: {allPublication[i].Name}";
-                
-                worksheet.Cells[row, col].Font.Bold = true;
-                
-                worksheet.Cells[row, col].Font.size = 16;
-                
+                List<Subscribe> tempSubs = new List<Subscribe>();
+
+                for (int o = 0; o < allSubs.Count(); o++)
+                {
+                    if (allPublication[i].id_Publication == allSubs[o].id_Publication)
+                    {
+                        tempSubs.Add(allSubs[o]);
+                    }
+                }
+
+                List<SubscriberOfThePostOffice> tempSubscruber = new List<SubscriberOfThePostOffice>();
+
+                for (int d = 0; d < tempSubs.Count(); d++)
+                {
+                    for (int s = 0; s < allSubscriberOfThePostOffices.Count(); s++)
+                    {
+                        if (tempSubs[d].id_Subscriber == allSubscriberOfThePostOffices[s].id_Subscriber)
+                        {
+                            tempSubscruber.Add(allSubscriberOfThePostOffices[s]);
+                        }
+                    }
+                }
+
+                worksheet.Cells[row, 1] = $"Публикация: {allPublication[i].Name}";
+
+                worksheet.Cells[row, 1].Font.Bold = true;
+
+                worksheet.Cells[row, 1].Font.size = 14;
+
                 row++;
-                
-                worksheet.Cells[row, col] = $"Подписчик";
-                
-                col++;
-                
-                worksheet.Cells[row, col] = $"Статус активности";
-                
-                col++;
-                
-                worksheet.Cells[row, col] = $"Дата начала действия подписки";
-                
-                col++;
-                
-                worksheet.Cells[row, col] = $"Дата окончания действия подписки";
-                
-                col++;
-                
-                worksheet.Cells[row, col] = $"Дата регистрации";
+
+                if (tempSubscruber.Count() == 1)
+                {
+                    worksheet.Cells[row, 1] = $"Подписчик";
+
+                    worksheet.Cells[row, 1].Font.Size = 12;
+                }
+
+                if (tempSubscruber.Count() > 1)
+                {
+                    worksheet.Cells[row, 1] = $"Подписчики";
+
+                    worksheet.Cells[row, 1].Font.Size = 12;
+                }
+
+                row++;
+
+                worksheet.Cells[row, 1] = $"Фамилия";
+
+                worksheet.Cells[row, 2] = $"Имя";
+
+                worksheet.Cells[row, 3] = $"Отчество";
+
+                worksheet.Cells[row, 4] = $"Номер телефона";
+
+                worksheet.Cells[row, 5] = $"Дата рождения";
 
                 Excel.Range rangeTitle = worksheet.Range[$"A{row}: E{row}"];
 
@@ -82,9 +113,33 @@ namespace PostOffice.Model
 
                 row++;
 
-               
-            }
+                for (int k = 0, col = 1; k < tempSubscruber.Count(); k++, row++)
+                {
+                    worksheet.Cells[row, col] = tempSubscruber[k].Surname;
+                    
+                    col++;
+                    
+                    worksheet.Cells[row, col] = tempSubscruber[k].Name;
+                    
+                    col++;
 
+                    worksheet.Cells[row, col] = tempSubscruber[k].MiddleName;
+
+                    col++;
+
+                    worksheet.Cells[row, col] = tempSubscruber[k].NumberPhone;
+
+                    col++;
+
+                    worksheet.Cells[row, col] = tempSubscruber[k].Birthday;
+
+                    col = 1;
+                }
+                row++;
+            }
+            excelApp.Visible = true;
+
+            excelApp.UserControl = true;
         }
     }
 }
