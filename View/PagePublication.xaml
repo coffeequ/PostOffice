@@ -21,11 +21,17 @@
                 <DataGridTextColumn Binding="{Binding PricePerMonthRounded}" Header="Цена за 1 месяц"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Cover}" Header="Обложка"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding NumberIssuesPerMonth}" Header="Количество выпусков в месяц"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Действие">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Grid.Row="1"  Background="#a7c3c6" Width="120" FontSize="16" Height="40" Margin="10 0 0 0" Click="Button_Delete">Удалить</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Margin="0 0 10 0" Background="#a7c3c6" FontSize="16" Height="40" Click="Button_Add">Добавить</Button>
-            <Button Background="#a7c3c6" FontSize="16" Height="40" Click="Button_Delete">Удалить</Button>
+            <Button Grid.Row="1" Background="#a7c3c6" Width="120" FontSize="16" Height="40" Click="Button_Add">Добавить</Button>
         </StackPanel>
     </Grid>
 </Page>

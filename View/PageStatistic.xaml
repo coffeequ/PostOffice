@@ -1,0 +1,56 @@
+﻿<Page x:Class="PostOffice.View.PageStatistic"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PostOffice.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageStatistic">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="Black" BorderThickness="1">
+            <StackPanel Background="#a7c3c6">
+                <TextBlock HorizontalAlignment="Left" Width="200" Padding="0 10 0 5" >
+                    <InlineUIContainer>
+                        <TextBox Background="AliceBlue" TextWrapping="Wrap" Text="Почтовое отделение Cтатистика" Height="60" VerticalContentAlignment="Center" Width="200" HorizontalContentAlignment="Center" FontSize="18"/>
+                    </InlineUIContainer>
+                </TextBlock>
+                <Border Background="AliceBlue" Margin="5 10 5 0">
+                    <StackPanel Height="300">
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonSubsribesStatic">Подписчики изданий</Button>
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="50" Margin="0 0 0 10" Click="ButtonCorrespondenceStatic">
+                            <TextBlock TextWrapping="Wrap" Width="160">
+                                Движение корреспонденции
+                            </TextBlock></Button>
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonExit">Назад</Button>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25*"></RowDefinition>
+                <RowDefinition Height="179*"/>
+            </Grid.RowDefinitions>
+            <Border Background="#a7c3c6" BorderBrush="Black" BorderThickness="1">
+                <StackPanel Orientation="Horizontal" Name="spLogin" HorizontalAlignment="Right">
+                    <Button Style="{StaticResource BackroundButton}" Margin="0 0 5 0" >
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <Label Name="lbLogin" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16">Войти</Label>
+                            <materialDesign:PackIcon Height="45" Width="50" Kind="AccountCircle" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Frame Grid.Row="1" Name="frameToAction">
+
+            </Frame>
+        </Grid>
+    </Grid>
+</Page>

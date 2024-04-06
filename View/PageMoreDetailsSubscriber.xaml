@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PostOffice.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageMoreDetailsSubscriber">
@@ -20,24 +20,19 @@
             </Grid.ColumnDefinitions>
             <StackPanel Margin="10">
                 <StackPanel Orientation="Vertical">
-                    <Label FontSize="14" Height="30">Фамилия</Label>
-                    <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Surname}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
+                    <TextBox HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Фамилия" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding Surname}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <Label FontSize="14" Height="30">Имя</Label>
-                    <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding Name}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
+                <StackPanel Orientation="Vertical" Margin="0 25 0 0">
+                    <TextBox HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Имя" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding Name}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <Label FontSize="14" Height="30">Отчество</Label>
-                    <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding MiddleName}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
+                <StackPanel Orientation="Vertical"  Margin="0 25 0 0">
+                    <TextBox HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Отчество" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding MiddleName}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <Label FontSize="14" Height="30">Номер телефона</Label>
-                    <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding NumberPhone}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
+                <StackPanel Orientation="Vertical" Margin="0 25 0 0">
+                    <TextBox HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Номер телефона" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center"  Text="{Binding NumberPhone}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
                 </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <Label FontSize="14" Height="30">Дата рождения</Label>
-                    <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Text="{Binding MiddleName}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
+                <StackPanel Orientation="Vertical" Margin="0 25 0 0">
+                    <TextBox HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Дата рождения" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding Birthday}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Column="1">
@@ -45,7 +40,7 @@
                 <Button Margin="0 10 0 0" Background="#a7c3c6" Width="220" FontSize="16" Height="40" Click="Button_saveData" >Сохранить</Button>
             </StackPanel>
         </Grid>
-        <DataGrid Grid.Row="1" Name="dgSubsriberPublication" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" IsReadOnly="True" Name="dgSubsriberPublication" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование" Binding="{Binding Publication.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Дата начала подписки" Binding="{Binding EntryTime}"></DataGridTextColumn>

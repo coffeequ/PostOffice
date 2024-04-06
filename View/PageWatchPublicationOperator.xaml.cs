@@ -31,18 +31,8 @@ namespace PostOffice.View
             dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
 
             this.user = user;
-        }
 
-        private void GridLoaded(object sender, RoutedEventArgs e)
-        {
             lbLogin.Content = user.Login;
-            Image image = new Image()
-            { 
-                Height = 40, 
-                Width = 40
-            };
-
-            spLogin.Children.Add(image);
         }
 
         private void btnEntrance(object sender, RoutedEventArgs e)
@@ -58,6 +48,11 @@ namespace PostOffice.View
         private void ButtonPublication(object sender, RoutedEventArgs e)
         {
             frameToAction.NavigationService.Navigate(new View.PagePublication());
+        }
+
+        private void ButtonWatchStatis(object sender, RoutedEventArgs e)
+        {
+            new View.WinStatistic(user).Show();
         }
     }
 }

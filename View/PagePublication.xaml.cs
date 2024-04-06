@@ -51,7 +51,25 @@ namespace PostOffice.View
 
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult messageBoxResult = MessageBox.Show(
+                "Удалить выбранную запись??",
+                "Внимание!",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                var item = sender as Button;
 
+                var selectedItem = item.DataContext as Publication;
+
+                dataBasePostOffice.postOfficeEntities.Publication.Remove(selectedItem);
+
+                dataBasePostOffice.postOfficeEntities.SaveChanges();
+
+                dgPublication.ItemsSource = null;
+
+                dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+            }
         }
     }
 }
