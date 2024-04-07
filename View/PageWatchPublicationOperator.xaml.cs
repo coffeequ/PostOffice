@@ -59,5 +59,10 @@ namespace PostOffice.View
         {
             frameToAction.NavigationService.Navigate(new View.PageViewPublication());
         }
+
+        private void ButtonTypeViewPublication(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

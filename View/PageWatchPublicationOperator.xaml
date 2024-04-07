@@ -22,7 +22,7 @@
                         <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonSubsribes">Подписчики</Button>
                         <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonPublication">Список изданий</Button>
                         <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonTypePublication">Категория изданий</Button>
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Виды изданий</Button>
+                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonTypeViewPublication">Виды изданий</Button>
                         <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonWatchStatis">Просмотр статистики</Button>
                     </StackPanel>
                 </Border>

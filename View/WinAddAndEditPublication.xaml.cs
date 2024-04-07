@@ -47,15 +47,17 @@ namespace PostOffice.View
                 MessageBox.Show(ex.Message);
             }
 
-            keyValuePairsType = dataBasePostOffice.postOfficeEntities.TypePublication.ToDictionary(value => value.Name, item => item.id_TypePublication);
+            //keyValuePairsType = dataBasePostOffice.postOfficeEntities.TypePublication.ToDictionary(value => value.Name, item => item.id_TypePublication);
 
-            keyValuePairsTypeView = dataBasePostOffice.postOfficeEntities.TypeViewPublication.ToDictionary(value => value.Name, item => item.id_TypeViewPublication);
+            //keyValuePairsTypeView = dataBasePostOffice.postOfficeEntities.TypeViewPublication.ToDictionary(value => value.Name, item => item.id_TypeViewPublication);
 
             allPublication = dataBasePostOffice.postOfficeEntities.Publication.ToList();
 
-            cbTypePublication.ItemsSource = keyValuePairsType.Keys;
+            //cbTypePublication.ItemsSource = keyValuePairsType.Keys;
 
-            cbTypeViewPublication.ItemsSource = keyValuePairsTypeView.Keys;
+            //cbTypeViewPublication.ItemsSource = keyValuePairsTypeView.Keys;
+
+            DataContext = Publication;
 
         }
 
@@ -105,8 +107,6 @@ namespace PostOffice.View
 
             Publication.NumberIssuesPerMonth = numberIssuePerMonthCheck;
 
-            dataBasePostOffice.postOfficeEntities.Publication.Add(Publication);
-
             Publication.id_Publication = allPublication.Count() + 1;
 
             Publication.Name = tbName.Text;
@@ -114,6 +114,8 @@ namespace PostOffice.View
             Publication.id_TypePublication = keyValuePairsType[cbTypePublication.SelectedItem.ToString()];
 
             Publication.id_TypeViewPublication = keyValuePairsTypeView[cbTypeViewPublication.SelectedItem.ToString()];
+
+            dataBasePostOffice.postOfficeEntities.Publication.Add(Publication);
 
             MessageBox.Show("Издание было успешно добавлено!");
 

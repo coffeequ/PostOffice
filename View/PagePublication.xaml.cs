@@ -71,5 +71,19 @@ namespace PostOffice.View
                 dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
             }
         }
+
+        private void Button_Edit(object sender, RoutedEventArgs e)
+        {
+            var item = sender as Button;
+
+            var itemSelected = item.DataContext as Publication;
+
+            new WinAddAndEditPublication(itemSelected).ShowDialog();
+
+            dgPublication.ItemsSource = null;
+
+            dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+
+        }
     }
 }

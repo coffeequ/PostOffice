@@ -47,6 +47,7 @@
                 <DataGridTextColumn Header="Дата окончания подписки" Binding="{Binding EndTime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Дата регистрации" Binding="{Binding DateRegistration}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Статус подписки" Binding="{Binding GetStringStatusActive}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер подписки" Binding="{Binding NumberSubscribe}"></DataGridTextColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

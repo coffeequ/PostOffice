@@ -13,15 +13,15 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Margin="10">
-                <Image Width="300" Height="350">
+                <Image Width="300" Height="350" Source="{Binding Cover}">
                     
                 </Image>
                 <Label FontSize="16" Margin="10">Путь до фото:</Label>
-                <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" x:Name="tbPathToPhoto">
+                <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" x:Name="tbPathToPhoto" Text="{Binding Cover}">
                     
                 </TextBox>
                 <Button Margin="0 10 0 10" Width="300" Height="40" FontSize="16" Background="#a7c3c6" Click="Button_Add">
-                    Добавить
+                    Сохранить
                 </Button>
                 <Button Margin="0 10 0 10" Width="300" Height="40" FontSize="16" Background="#a7c3c6" Click="Button_Exit">
                     Назад
@@ -33,15 +33,15 @@
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0">
                     <Label FontSize="16">Наименование издания:</Label>
-                    <TextBox x:Name="tbName" TextAlignment="Left" Margin="5" FontSize="16"></TextBox>
+                    <TextBox x:Name="tbName" TextAlignment="Left" Margin="5" FontSize="16" Text="{Binding Name}"></TextBox>
                     <Label FontSize="16">Тип издания:</Label>
-                    <ComboBox x:Name="cbTypePublication" Margin="5" FontSize="16"></ComboBox>
+                    <ComboBox x:Name="cbTypePublication" Margin="5" FontSize="16" SelectedValuePath="id" SelectedValue="{Binding TypePublication}" ItemsSource="{Binding TypePublication}"></ComboBox>
                     <Label FontSize="16">Вид издания:</Label>
-                    <ComboBox x:Name="cbTypeViewPublication" Margin="5" FontSize="16"></ComboBox>
+                    <ComboBox x:Name="cbTypeViewPublication" Margin="5" FontSize="16" ItemsSource="{Binding TypeViewPublication}"></ComboBox>
                     <Label FontSize="16">Цена за месяц:</Label>
-                    <TextBox x:Name="tbPriceMonth" Margin="5" FontSize="16"></TextBox>
+                    <TextBox x:Name="tbPriceMonth" Margin="5" FontSize="16" Text="{Binding PricePerMonth}"></TextBox>
                     <Label FontSize="16">Количество выпусков в месяц:</Label>
-                    <TextBox Margin="5" FontSize="16" x:Name="tbNumberIssuesPerMonth"></TextBox>
+                    <TextBox Margin="5" FontSize="16" x:Name="tbNumberIssuesPerMonth" Text="{Binding NumberIssuesPerMonth}"></TextBox>
                 </StackPanel>
             </Grid>
         </Grid>
