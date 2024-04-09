@@ -38,39 +38,42 @@ namespace PostOffice.View
             dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
         }
 
-        private void Button_Add(object sender, RoutedEventArgs e)
-        {
-            Publication publication = new Publication();
+        //Перенести метод для админа
+        //
+        //private void Button_Add(object sender, RoutedEventArgs e)
+        //{
+        //    Publication publication = new Publication();
 
-            new WinAddAndEditPublication(publication).ShowDialog();
+        //    new WinAddAndEditPublication(publication).ShowDialog();
 
-            dgPublication.ItemsSource = null;
+        //    dgPublication.ItemsSource = null;
 
-            dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
-        }
+        //    dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+        //}
 
-        private void Button_Delete(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult messageBoxResult = MessageBox.Show(
-                "Удалить выбранную запись??",
-                "Внимание!",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Warning);
-            if (messageBoxResult == MessageBoxResult.Yes)
-            {
-                var item = sender as Button;
 
-                var selectedItem = item.DataContext as Publication;
+        //private void Button_Delete(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBoxResult messageBoxResult = MessageBox.Show(
+        //        "Удалить выбранную запись??",
+        //        "Внимание!",
+        //        MessageBoxButton.YesNo,
+        //        MessageBoxImage.Warning);
+        //    if (messageBoxResult == MessageBoxResult.Yes)
+        //    {
+        //        var item = sender as Button;
 
-                dataBasePostOffice.postOfficeEntities.Publication.Remove(selectedItem);
+        //        var selectedItem = item.DataContext as Publication;
 
-                dataBasePostOffice.postOfficeEntities.SaveChanges();
+        //        dataBasePostOffice.postOfficeEntities.Publication.Remove(selectedItem);
 
-                dgPublication.ItemsSource = null;
+        //        dataBasePostOffice.postOfficeEntities.SaveChanges();
 
-                dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
-            }
-        }
+        //        dgPublication.ItemsSource = null;
+
+        //        dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+        //    }
+        //}
 
         private void Button_Edit(object sender, RoutedEventArgs e)
         {

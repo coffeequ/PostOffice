@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Почтовое отделение" Height="360" Width="600" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <Frame Name="frameLog">
+        <Frame Name="frameLog" NavigationUIVisibility="Hidden">
             
         </Frame>
     </Grid>

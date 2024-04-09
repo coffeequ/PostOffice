@@ -34,8 +34,6 @@ namespace PostOffice.View
 
         int yearEnd = 0;
 
-        string toUpperWord = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
         public PageManagmentSubscribe(SubscriberOfThePostOffice subscriberOfThePostOffice)
         {
             InitializeComponent();

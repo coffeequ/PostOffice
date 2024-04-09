@@ -26,7 +26,7 @@ namespace PostOffice.View
         {
             InitializeComponent();
 
-            this.User = user;
+            User = user;
 
             lbLogin.Content = user.Login;
         }
@@ -42,6 +42,11 @@ namespace PostOffice.View
         }
 
         private void ButtonExit(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnEntrance(object sender, RoutedEventArgs e)
         {
 
         }

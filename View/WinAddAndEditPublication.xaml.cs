@@ -30,8 +30,6 @@ namespace PostOffice.View
 
         Publication Publication;
 
-        string pattern = @"^\D+";
-
         public WinAddAndEditPublication(Publication Publication)
         {
             this.Publication = Publication;
@@ -47,15 +45,33 @@ namespace PostOffice.View
                 MessageBox.Show(ex.Message);
             }
 
-            //keyValuePairsType = dataBasePostOffice.postOfficeEntities.TypePublication.ToDictionary(value => value.Name, item => item.id_TypePublication);
+            keyValuePairsType = dataBasePostOffice.postOfficeEntities.TypePublication.ToDictionary(value => value.Name, item => item.id_TypePublication);
 
-            //keyValuePairsTypeView = dataBasePostOffice.postOfficeEntities.TypeViewPublication.ToDictionary(value => value.Name, item => item.id_TypeViewPublication);
+            keyValuePairsTypeView = dataBasePostOffice.postOfficeEntities.TypeViewPublication.ToDictionary(value => value.Name, item => item.id_TypeViewPublication);
 
             allPublication = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+            //Вывод в ComboBox не работает
+            if (Publication.TypePublication == null)
+            {
+                cbTypePublication.ItemsSource = keyValuePairsType.Keys;
+            }
+            else
+            {
+                cbTypePublication.ItemsSource = keyValuePairsType.Keys;
 
-            //cbTypePublication.ItemsSource = keyValuePairsType.Keys;
+                cbTypePublication.SelectedItem = Publication.TypePublication;
+            }
 
-            //cbTypeViewPublication.ItemsSource = keyValuePairsTypeView.Keys;
+            if (Publication.TypeViewPublication == null)
+            {
+                cbTypeViewPublication.ItemsSource = keyValuePairsTypeView.Keys;
+            }
+            else
+            {
+                cbTypeViewPublication.ItemsSource = keyValuePairsTypeView.Keys;
+
+                cbTypeViewPublication.SelectedItem = Publication.TypeViewPublication;
+            }
 
             DataContext = Publication;
 
