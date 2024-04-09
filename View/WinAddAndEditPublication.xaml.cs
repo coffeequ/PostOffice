@@ -75,6 +75,19 @@ namespace PostOffice.View
 
             DataContext = Publication;
 
+            List<Feedback> allFeedBacks = dataBasePostOffice.postOfficeEntities.Feedback.ToList();
+
+            var temp = new List<Feedback>();
+
+            for (int i = 0; i < allFeedBacks.Count(); i++)
+            {
+                if (allFeedBacks[i].id_Publication == Publication.id_Publication)
+                {
+                    temp.Add(allFeedBacks[i]);
+                }
+            }
+
+            DataGridTableReview.ItemsSource = temp.ToList();
         }
 
         private void Button_Add(object sender, RoutedEventArgs e)
@@ -141,6 +154,40 @@ namespace PostOffice.View
         private void Button_Exit(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Button_Delete(object sender, RoutedEventArgs e)
+        {
+            var item = sender as Button;
+
+            var selectedItem = item.DataContext as Feedback;
+
+            if (selectedItem == null)
+            {
+                MessageBox.Show("Не возможно удалить данное поле");
+                return;
+            }
+
+            dataBasePostOffice.postOfficeEntities.Feedback.Remove(selectedItem);
+
+            dataBasePostOffice.postOfficeEntities.SaveChanges();
+
+            MessageBox.Show("Комментарий удален!");
+
+            List<Feedback> allFeedBacks = dataBasePostOffice.postOfficeEntities.Feedback.ToList();
+
+            var temp = new List<Feedback>();
+
+            for (int i = 0; i < allFeedBacks.Count(); i++)
+            {
+                if (allFeedBacks[i].id_Publication == Publication.id_Publication)
+                {
+                    temp.Add(allFeedBacks[i]);
+                }
+            }
+
+            DataGridTableReview.ItemsSource = temp.ToList();
+
         }
     }
 }

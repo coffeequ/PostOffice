@@ -20,6 +20,7 @@
                 <DataGridTextColumn Binding="{Binding PricePerMonthRounded}" Header="Цена за 1 месяц"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Cover}" Header="Обложка"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding NumberIssuesPerMonth}" Header="Количество выпусков в месяц"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding CountFeedBack}" Header="Количество отзывов"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="Действие">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
