@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="WinStatistic" Height="450" Width="800">
     <Grid>
-        <Frame x:Name="frameStatistic">
+        <Frame x:Name="frameStatistic" NavigationUIVisibility="Hidden">
             
         </Frame>
     </Grid>

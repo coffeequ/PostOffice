@@ -26,6 +26,10 @@ namespace PostOffice.View
 
         Model.DataBasePostOffice dataBasePostOffice;
 
+        public delegate void CloseWin();
+
+        public static event CloseWin closeWin;
+
         public PageMoreDetailsSubscriber(SubscriberOfThePostOffice subscriberOfThePostOffice)
         {
             InitializeComponent();
@@ -57,6 +61,7 @@ namespace PostOffice.View
         private void Button_saveData(object sender, RoutedEventArgs e)
         {
             MessageBox.Show($"Данные сохранены");
+            closeWin();
         }
 
         private void Button_wordCheck(object sender, RoutedEventArgs e)

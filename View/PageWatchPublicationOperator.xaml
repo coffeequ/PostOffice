@@ -9,21 +9,19 @@
       Title="Просмотр изданий">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="220"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Border BorderBrush="Black" BorderThickness="1">
             <StackPanel Background="#a7c3c6">
-                <TextBlock HorizontalAlignment="Left" Width="200" Padding="0 10 0 5" ><InlineUIContainer>
-                    <Label Background="AliceBlue" Content="Почтовое отделение" Height="50" VerticalContentAlignment="Center" Width="200" HorizontalContentAlignment="Center" FontSize="18"/>
+                <TextBlock HorizontalAlignment="Left" Width="220" Padding="0 10 0 5" ><InlineUIContainer>
+                    <Label Background="AliceBlue" Content="Почтовое отделение" Height="50" VerticalContentAlignment="Center" Width="220" HorizontalContentAlignment="Center" FontSize="18"/>
                 </InlineUIContainer></TextBlock>
                 <Border Background="AliceBlue" Margin="5 10 5 0">
                     <StackPanel Height="300">
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonSubsribes">Подписчики</Button>
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonPublication">Список изданий</Button>
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Категория изданий</Button>
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10">Виды изданий</Button>
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonWatchStatis">Просмотр статистики</Button>
+                        <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonSubsribes">Подписчики</Button>
+                        <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonPublication">Список изданий</Button>
+                        <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonWatchStatis">Просмотр статистики</Button>
                     </StackPanel>
                 </Border>
             </StackPanel>
@@ -35,10 +33,10 @@
             </Grid.RowDefinitions>
             <Border Background="#a7c3c6" BorderBrush="Black" BorderThickness="1">
                 <StackPanel Orientation="Horizontal" Name="spLogin" HorizontalAlignment="Right">
-                    <Button Style="{StaticResource BackroundButton}" Click="btnEntrance" Margin="0 0 5 0" >
+                    <Button Height="45" Background="AliceBlue" Click="btnEntrance" Margin="0 0 5 0" >
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Label Name="lbLogin" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16">Войти</Label>
-                            <materialDesign:PackIcon Height="45" Width="50" Kind="AccountCircle" />
+                            <Label Name="lbLogin" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16"></Label>
+                            <materialDesign:PackIcon Height="35" Width="35" Kind="AccountCircle" />
                         </StackPanel>
                     </Button>
                 </StackPanel>

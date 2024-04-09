@@ -23,6 +23,8 @@ namespace PostOffice.Model
 
         List<SubscriberOfThePostOffice> allSubscriberOfThePostOffices;
 
+        List<Correspondence> AllCorrespondences;
+
         public IOExcel(Model.DataBasePostOffice dataBasePostOffice)
         {
             this.dataBasePostOffice = dataBasePostOffice;
@@ -32,6 +34,8 @@ namespace PostOffice.Model
             allPublication = dataBasePostOffice.postOfficeEntities.Publication.ToList();
 
             allSubscriberOfThePostOffices = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
+
+            AllCorrespondences = dataBasePostOffice.postOfficeEntities.Correspondence.ToList();
 
             excelApp = new Excel.Application();
         }
@@ -140,6 +144,11 @@ namespace PostOffice.Model
             excelApp.Visible = true;
 
             excelApp.UserControl = true;
+        }
+
+        public void DBToExcelTableCorrespondence()
+        {
+
         }
     }
 }

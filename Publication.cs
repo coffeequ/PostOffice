@@ -60,5 +60,12 @@ namespace PostOffice
             }
         }
 
+        public int CountFeedBack
+        {
+            get
+            {
+                return Feedback.Count;
+            }
+        }
     }
 }

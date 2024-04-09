@@ -30,8 +30,6 @@ namespace PostOffice.View
 
         Publication Publication;
 
-        string pattern = @"^\D+";
-
         public WinAddAndEditPublication(Publication Publication)
         {
             this.Publication = Publication;
@@ -52,11 +50,44 @@ namespace PostOffice.View
             keyValuePairsTypeView = dataBasePostOffice.postOfficeEntities.TypeViewPublication.ToDictionary(value => value.Name, item => item.id_TypeViewPublication);
 
             allPublication = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+            //Вывод в ComboBox не работает
+            if (Publication.TypePublication == null)
+            {
+                cbTypePublication.ItemsSource = keyValuePairsType.Keys;
+            }
+            else
+            {
+                cbTypePublication.ItemsSource = keyValuePairsType.Keys;
 
-            cbTypePublication.ItemsSource = keyValuePairsType.Keys;
+                cbTypePublication.SelectedItem = Publication.TypePublication;
+            }
 
-            cbTypeViewPublication.ItemsSource = keyValuePairsTypeView.Keys;
+            if (Publication.TypeViewPublication == null)
+            {
+                cbTypeViewPublication.ItemsSource = keyValuePairsTypeView.Keys;
+            }
+            else
+            {
+                cbTypeViewPublication.ItemsSource = keyValuePairsTypeView.Keys;
 
+                cbTypeViewPublication.SelectedItem = Publication.TypeViewPublication;
+            }
+
+            DataContext = Publication;
+
+            List<Feedback> allFeedBacks = dataBasePostOffice.postOfficeEntities.Feedback.ToList();
+
+            var temp = new List<Feedback>();
+
+            for (int i = 0; i < allFeedBacks.Count(); i++)
+            {
+                if (allFeedBacks[i].id_Publication == Publication.id_Publication)
+                {
+                    temp.Add(allFeedBacks[i]);
+                }
+            }
+
+            DataGridTableReview.ItemsSource = temp.ToList();
         }
 
         private void Button_Add(object sender, RoutedEventArgs e)
@@ -105,8 +136,6 @@ namespace PostOffice.View
 
             Publication.NumberIssuesPerMonth = numberIssuePerMonthCheck;
 
-            dataBasePostOffice.postOfficeEntities.Publication.Add(Publication);
-
             Publication.id_Publication = allPublication.Count() + 1;
 
             Publication.Name = tbName.Text;
@@ -114,6 +143,8 @@ namespace PostOffice.View
             Publication.id_TypePublication = keyValuePairsType[cbTypePublication.SelectedItem.ToString()];
 
             Publication.id_TypeViewPublication = keyValuePairsTypeView[cbTypeViewPublication.SelectedItem.ToString()];
+
+            dataBasePostOffice.postOfficeEntities.Publication.Add(Publication);
 
             MessageBox.Show("Издание было успешно добавлено!");
 
@@ -123,6 +154,40 @@ namespace PostOffice.View
         private void Button_Exit(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Button_Delete(object sender, RoutedEventArgs e)
+        {
+            var item = sender as Button;
+
+            var selectedItem = item.DataContext as Feedback;
+
+            if (selectedItem == null)
+            {
+                MessageBox.Show("Не возможно удалить данное поле");
+                return;
+            }
+
+            dataBasePostOffice.postOfficeEntities.Feedback.Remove(selectedItem);
+
+            dataBasePostOffice.postOfficeEntities.SaveChanges();
+
+            MessageBox.Show("Комментарий удален!");
+
+            List<Feedback> allFeedBacks = dataBasePostOffice.postOfficeEntities.Feedback.ToList();
+
+            var temp = new List<Feedback>();
+
+            for (int i = 0; i < allFeedBacks.Count(); i++)
+            {
+                if (allFeedBacks[i].id_Publication == Publication.id_Publication)
+                {
+                    temp.Add(allFeedBacks[i]);
+                }
+            }
+
+            DataGridTableReview.ItemsSource = temp.ToList();
+
         }
     }
 }

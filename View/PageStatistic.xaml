@@ -22,12 +22,12 @@
                 </TextBlock>
                 <Border Background="AliceBlue" Margin="5 10 5 0">
                     <StackPanel Height="300">
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonSubsribesStatic">Подписчики изданий</Button>
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="50" Margin="0 0 0 10" Click="ButtonCorrespondenceStatic">
-                            <TextBlock TextWrapping="Wrap" Width="160">
+                        <Button FontSize="14" Background="AliceBlue" Height="40" Margin="0 0 0 10" Click="ButtonSubsribesStatic">Подписчики изданий</Button>
+                        <Button FontSize="14" Background="AliceBlue" Height="50" Margin="0 0 0 10" Click="ButtonCorrespondenceStatic">
+                            <TextBlock TextWrapping="Wrap" Width="160" >
                                 Движение корреспонденции
                             </TextBlock></Button>
-                        <Button Style="{StaticResource BackroundButton}" FontSize="16" Height="25" Margin="0 0 0 10" Click="ButtonExit">Назад</Button>
+                        <Button Background="AliceBlue" FontSize="14" Height="40" Margin="0 0 0 10" Click="ButtonExit">Назад</Button>
                     </StackPanel>
                 </Border>
             </StackPanel>
@@ -39,10 +39,10 @@
             </Grid.RowDefinitions>
             <Border Background="#a7c3c6" BorderBrush="Black" BorderThickness="1">
                 <StackPanel Orientation="Horizontal" Name="spLogin" HorizontalAlignment="Right">
-                    <Button Style="{StaticResource BackroundButton}" Margin="0 0 5 0" >
+                    <Button Height="45" Background="AliceBlue" Click="btnEntrance" Margin="0 0 5 0" >
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Label Name="lbLogin" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16">Войти</Label>
-                            <materialDesign:PackIcon Height="45" Width="50" Kind="AccountCircle" />
+                            <Label Name="lbLogin" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16"></Label>
+                            <materialDesign:PackIcon Height="35" Width="35" Kind="AccountCircle" />
                         </StackPanel>
                     </Button>
                 </StackPanel>

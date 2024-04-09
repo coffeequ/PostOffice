@@ -23,7 +23,14 @@ namespace PostOffice.View
         {
             InitializeComponent();
 
+            View.PageMoreDetailsSubscriber.closeWin += PageMoreDetailsSubscriber_closeWin;
+
             MyFrame.NavigationService.Navigate(new View.PageMoreDetailsSubscriber(subscriberOfThePostOffice));
+        }
+
+        private void PageMoreDetailsSubscriber_closeWin()
+        {
+            Close();
         }
     }
 }

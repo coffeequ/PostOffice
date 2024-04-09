@@ -9,20 +9,28 @@
       Title="Просмотр изданий">
     <Grid Loaded="GridLoaded">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="220"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Border BorderBrush="Black" BorderThickness="1">
             <StackPanel Background="#a7c3c6">
-                <TextBlock HorizontalAlignment="Left" Width="200" Padding="0 10 0 5" ><InlineUIContainer>
-                    <Label Background="AliceBlue" Content="Почтовое отделение" Height="50" VerticalContentAlignment="Center" Width="200" HorizontalContentAlignment="Center" FontSize="18"/>
-                </InlineUIContainer></TextBlock>
-                <TextBox TextChanged="TextChangedSearch" VerticalContentAlignment="Center" Background="AliceBlue" HorizontalContentAlignment="Left" Height="25" x:Name="tbSearch" BorderThickness="1" BorderBrush="Black" Margin="5 5 5 0"/>
+                <TextBlock HorizontalAlignment="Left" Width="220" Padding="0 10 0 5" >
+                    <InlineUIContainer>
+                        <Label Background="AliceBlue" Content="Почтовое отделение" Height="50" VerticalContentAlignment="Center" Width="220" HorizontalContentAlignment="Center" FontSize="18"/>
+                    </InlineUIContainer>
+                </TextBlock>
+                <DockPanel Background="AliceBlue" Margin="0 2">
+                    <Button DockPanel.Dock="Left" Style="{StaticResource MaterialDesignToolButton}">
+                        <materialDesign:PackIcon Kind="Search" Opacity=".56" />
+                    </Button>
+                    <TextBox FontSize="14" DockPanel.Dock="Right" Width="180" BorderBrush="AliceBlue" materialDesign:HintAssist.Hint="Наименование издания" TextChanged="TextChangedSearch" VerticalContentAlignment="Center"  HorizontalContentAlignment="Left" Height="48" x:Name="tbSearch" BorderThickness="1" />
+                </DockPanel>
+
                 <Border Background="AliceBlue" Margin="5 10 5 0">
                     <StackPanel Height="310">
                         <ComboBox Name="cbCatergoriaPublication" SelectionChanged="cbCategoriaChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>
                         <ComboBox Name="cbTypePublication" SelectionChanged="cbTypeChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>
-                        <ComboBox Name="cbPriorityGender" SelectionChanged="cbPriorityGenderChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>
+                        <!--<ComboBox Name="cbPriorityGender" SelectionChanged="cbPriorityGenderChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>-->
                     </StackPanel>
                 </Border>
             </StackPanel>
@@ -35,10 +43,10 @@
             </Grid.RowDefinitions>
             <Border Background="#a7c3c6" BorderBrush="Black" BorderThickness="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Style="{StaticResource BackroundButton}" Click="btnEntrance" Margin="0 0 5 0" >
+                    <Button Height="45" Background="AliceBlue" Click="btnEntrance" Margin="0 0 5 0" >
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                             <Label Name="lbLogin" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16">Войти</Label>
-                            <materialDesign:PackIcon Height="45" Width="50" Kind="AccountCircle" />
+                            <materialDesign:PackIcon Height="35" Width="35" Kind="AccountCircle" />
                         </StackPanel>
                     </Button>
                 </StackPanel>
@@ -57,7 +65,7 @@
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}"></Label>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding NewNumberIssuesPerMonth}"></Label>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="{Binding PricePerMonthRounded}"></Label>
-                                <Button Name="btnWatch" FontSize="16" Click="btnWatch" Width="200" Height="25" Margin="0 0 0 10" Style="{StaticResource BackroundButton}">Посмотреть</Button>
+                                <Button Name="btnWatch" FontSize="16" Click="btnWatch" Width="200" Height="40" Margin="0 0 0 10" Background="AliceBlue" >Посмотреть</Button>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
@@ -65,17 +73,17 @@
             </ListView>
             <Border Background="#a7c3c6" Grid.Row="2" BorderThickness="1" BorderBrush="Black">
                 <StackPanel Orientation="Horizontal" Name="spList" HorizontalAlignment="Center">
-                    <Button Click="btnFirstPage" Style="{StaticResource TabButton}" BorderBrush="White" Margin="0 0 10 0">
-                        <materialDesign:PackIcon Height="40" Width="20" Kind="ArrowLeftThick" />
+                    <Button Click="btnFirstPage" Background="AliceBlue"  BorderBrush="White" Margin="0 0 10 0">
+                        <materialDesign:PackIcon Kind="ArrowLeftThick" />
                     </Button>
-                    <Button Click="btnBackPage" Style="{StaticResource TabButton}" BorderBrush="White" Margin="0 0 10 0">
-                        <materialDesign:PackIcon Height="40" Width="40" Kind="ArrowLeft" />
+                    <Button Click="btnBackPage" Background="AliceBlue" BorderBrush="White" Margin="0 0 10 0">
+                        <materialDesign:PackIcon Kind="ArrowLeft" />
                     </Button>
-                    <Button Click="btnNextPage" Style="{StaticResource TabButton}" BorderBrush="White" Margin="0 0 10 0">
-                        <materialDesign:PackIcon Height="40" Width="40" Kind="ArrowRight" />
+                    <Button Click="btnNextPage" Background="AliceBlue" BorderBrush="White" Margin="0 0 10 0">
+                        <materialDesign:PackIcon Kind="ArrowRight" />
                     </Button>
-                    <Button Click="btnLastPage" Style="{StaticResource TabButton}" BorderBrush="White">
-                        <materialDesign:PackIcon Height="40" Width="20" Kind="ArrowRightThick" />
+                    <Button Click="btnLastPage" Background="AliceBlue" BorderBrush="White">
+                        <materialDesign:PackIcon Kind="ArrowRightThick" />
                     </Button>
                     <Label Name="InfoPages" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="200"></Label>
                 </StackPanel>

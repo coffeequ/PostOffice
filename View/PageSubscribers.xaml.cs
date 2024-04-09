@@ -60,44 +60,6 @@ namespace PostOffice.View
 
         }
 
-        private void Button_Delete(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult messageBoxResult = MessageBox.Show(
-               "Удалить выбранную запись??",
-               "Внимание!",
-               MessageBoxButton.YesNo,
-               MessageBoxImage.Warning);
-            if (messageBoxResult == MessageBoxResult.Yes)
-            {
-                //var item = sender as Button;
-
-                //var selectedItem = item.DataContext as SubscriberOfThePostOffice;
-
-                //dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.Remove(selectedItem);
-
-                //List<Subscribe> allActiveSubs = new List<Subscribe>();
-
-                //for (int i = 0; i < subscribes.Count(); i++)
-                //{
-                //    if (selectedItem.id_Subscriber == subscribes[i].id_Subscriber)
-                //    {
-                //        allActiveSubs.Add(subscribes[i]);
-                //    }
-                //}
-
-                //for (int i = 0; i < allActiveSubs.Count(); i++)
-                //{
-                //    dataBasePostOffice.postOfficeEntities.Subscribe.Remove(allActiveSubs[i]);
-                //}
-
-                //dataBasePostOffice.postOfficeEntities.SaveChanges();
-
-                //dgSubscribers.ItemsSource = null;
-
-                //dgSubscribers.ItemsSource = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
-            }
-        }
-
         private void Button_Add(object sender, RoutedEventArgs e)
         {
             SubscriberOfThePostOffice subscriberOfThePostOffice = new SubscriberOfThePostOffice();

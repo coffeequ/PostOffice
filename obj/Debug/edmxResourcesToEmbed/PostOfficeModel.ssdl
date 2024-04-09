@@ -66,6 +66,7 @@
     <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
     <Property Name="EndTime" Type="smalldatetime" Nullable="false" />
     <Property Name="DateRegistration" Type="smalldatetime" />
+    <Property Name="NumberSubscribe" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="SubscriberOfThePostOffice">
     <Key>

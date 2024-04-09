@@ -47,10 +47,11 @@
                 <DataGridTextColumn Header="Дата окончания подписки" Binding="{Binding EndTime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Дата регистрации" Binding="{Binding DateRegistration}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Статус подписки" Binding="{Binding GetStringStatusActive}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер подписки" Binding="{Binding NumberSubscribe}"></DataGridTextColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button FontSize="14" Padding="5" Height="40" Style="{StaticResource BackroundButton}" Click="Button_Delete_Publication">Убрать подписку</Button>
+                            <Button FontSize="14" Padding="5" Height="40" Background="#a7c3c6" Click="Button_Delete_Publication">Убрать подписку</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
