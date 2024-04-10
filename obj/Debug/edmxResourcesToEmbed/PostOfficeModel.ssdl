@@ -25,7 +25,6 @@
     <Property Name="id Journal" Type="int" Nullable="false" />
     <Property Name="id User" Type="int" Nullable="false" />
     <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
-    <Property Name="ExitTime" Type="smalldatetime" Nullable="false" />
   </EntityType>
   <EntityType Name="OperatorPostOffice">
     <Key>
@@ -78,7 +77,7 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
     <Property Name="Birthday" Type="date" Nullable="false" />
-    <Property Name="NumberPhone" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="NumberPhone" Type="nchar" MaxLength="11" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

@@ -20,13 +20,21 @@ namespace PostOffice.View
     public partial class WinWatchPublication : Window
     {
         User user;
+
         public WinWatchPublication(User user)
         {
             InitializeComponent();
 
             this.user = user;
 
-            mainFrame.NavigationService.Navigate(new View.PageWatchPublicationOperator(user));
+            if (user.Login == "Admin")
+            {
+                mainFrame.NavigationService.Navigate(new View.Admin.PageWachPublicationAdmin(user));
+            }
+            else
+            {
+                mainFrame.NavigationService.Navigate(new View.PageWatchPublicationOperator(user));
+            }
         }
     }
 }

@@ -131,6 +131,9 @@
     <Compile Include="User.cs">
       <DependentUpon>PostOfficeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\PageWachPublicationAdmin.xaml.cs">
+      <DependentUpon>PageWachPublicationAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PageCorrespondenceStatistic.xaml.cs">
       <DependentUpon>PageCorrespondenceStatistic.xaml</DependentUpon>
     </Compile>
@@ -194,6 +197,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Admin\PageWachPublicationAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PageCorrespondenceStatistic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
