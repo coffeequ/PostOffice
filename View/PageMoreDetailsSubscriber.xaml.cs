@@ -96,8 +96,6 @@ namespace PostOffice.View
                     dgSubsriberPublication.ItemsSource = publicationSubscriber;
                 }
             }
-
-
         }
     }
 }

@@ -27,29 +27,36 @@ namespace PostOffice.View.Admin
             InitializeComponent();
 
             this.user = user;
+
+            lbLogin.Content = user.Login;
+        }
+
+        private void btnEntrance(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Выход или редактириование личных данных");
         }
 
         private void ButtonSubsribes(object sender, RoutedEventArgs e)
         {
-
+            frameToAction.NavigationService.Navigate(new View.Admin.PageSubscribersAdmin());
         }
 
         private void ButtonPublication(object sender, RoutedEventArgs e)
         {
+            frameToAction.NavigationService.Navigate(new View.PagePublication());
+        }
 
+        private void ButtonWatchStatis(object sender, RoutedEventArgs e)
+        {
+            new View.WinStatistic(user).Show();
         }
 
         private void ButtonTypePublication(object sender, RoutedEventArgs e)
         {
-
+            frameToAction.NavigationService.Navigate(new View.PageViewPublication());
         }
 
         private void ButtonTypeViewPublication(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ButtonWatchStatis(object sender, RoutedEventArgs e)
         {
 
         }
@@ -58,5 +65,6 @@ namespace PostOffice.View.Admin
         {
 
         }
+
     }
 }
