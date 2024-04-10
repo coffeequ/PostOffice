@@ -27,7 +27,6 @@
     <Property Name="id_Journal" Type="Int32" Nullable="false" />
     <Property Name="id_User" Type="Int32" Nullable="false" />
     <Property Name="EntryTime" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="ExitTime" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="User" Relationship="Self.FK_LogIO_User" FromRole="LogIO" ToRole="User" />
   </EntityType>
   <EntityType Name="OperatorPostOffice">
@@ -91,7 +90,7 @@
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="NumberPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NumberPhone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
     <NavigationProperty Name="OperatorPostOffice" Relationship="Self.FK_SubscriberOfThePostOffice_OperatorPostOffice" FromRole="SubscriberOfThePostOffice" ToRole="OperatorPostOffice" />
     <NavigationProperty Name="Subscribe" Relationship="Self.FK_Subscribe_SubscriberOfThePostOffice" FromRole="SubscriberOfThePostOffice" ToRole="Subscribe" />
   </EntityType>

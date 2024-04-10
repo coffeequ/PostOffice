@@ -30,7 +30,6 @@
           <Property Name="id Journal" Type="int" Nullable="false" />
           <Property Name="id User" Type="int" Nullable="false" />
           <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
-          <Property Name="ExitTime" Type="smalldatetime" Nullable="false" />
         </EntityType>
         <EntityType Name="OperatorPostOffice">
           <Key>
@@ -83,7 +82,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
           <Property Name="Birthday" Type="date" Nullable="false" />
-          <Property Name="NumberPhone" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="NumberPhone" Type="nchar" MaxLength="11" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -324,7 +323,6 @@
           <Property Name="id_Journal" Type="Int32" Nullable="false" />
           <Property Name="id_User" Type="Int32" Nullable="false" />
           <Property Name="EntryTime" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ExitTime" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="User" Relationship="Self.FK_LogIO_User" FromRole="LogIO" ToRole="User" />
         </EntityType>
         <EntityType Name="OperatorPostOffice">
@@ -388,7 +386,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="NumberPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="NumberPhone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="OperatorPostOffice" Relationship="Self.FK_SubscriberOfThePostOffice_OperatorPostOffice" FromRole="SubscriberOfThePostOffice" ToRole="OperatorPostOffice" />
           <NavigationProperty Name="Subscribe" Relationship="Self.FK_Subscribe_SubscriberOfThePostOffice" FromRole="SubscriberOfThePostOffice" ToRole="Subscribe" />
         </EntityType>
@@ -636,7 +634,6 @@
                 <ScalarProperty Name="id_Journal" ColumnName="id Journal" />
                 <ScalarProperty Name="id_User" ColumnName="id User" />
                 <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
-                <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

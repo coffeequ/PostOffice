@@ -65,7 +65,7 @@
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}"></Label>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding NewNumberIssuesPerMonth}"></Label>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="{Binding PricePerMonthRounded}"></Label>
-                                <Button Name="btnWatch" FontSize="16" Click="btnWatch" Width="200" Height="40" Margin="0 0 0 10" Background="AliceBlue" >Посмотреть</Button>
+                                <Button Name="btnWatch" FontSize="16" Click="btnWatch" Width="200" Height="40" Margin="0 0 0 10" Background="AliceBlue">Посмотреть</Button>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
