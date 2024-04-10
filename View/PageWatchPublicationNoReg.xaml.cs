@@ -38,6 +38,8 @@ namespace PostOffice.View
 
         private int _currentPage = 1;
 
+        private bool isLoginPageTap;
+
         public PageWatchPublicationNoReg()
         {
             InitializeComponent();
@@ -62,6 +64,8 @@ namespace PostOffice.View
             comboBoxTypePublication(cbTypePublication, dataBasePostOffice.postOfficeEntities.TypePublication.ToList());
 
             comboBoxTypeViewPubication(cbCatergoriaPublication, dataBasePostOffice.postOfficeEntities.TypeViewPublication.ToList());
+
+            isLoginPageTap = false;
         }
 
         private void WinEntrance_closePage()
@@ -214,7 +218,16 @@ namespace PostOffice.View
 
         private void btnEntrance(object sender, RoutedEventArgs e)
         {
-            new WinEntrance().Show();
+            isLoginPageTap = true;
+
+            if (isLoginPageTap)
+            {
+                new WinEntrance().Show();
+            }
+            else
+            {
+                MessageBox.Show("Окно уже открыто");
+            }
         }
 
         private void btnWatch(object sender, RoutedEventArgs e)

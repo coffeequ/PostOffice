@@ -24,7 +24,7 @@
                 <DataGridTemplateColumn Header="Подробнее">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Grid.Row="1" FontSize="14" Width="120" Click="Button_More">Подробнее</Button>
+                            <Button Grid.Row="1" FontSize="14" Width="120" Background="#a7c3c6" Click="Button_More">Подробнее</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

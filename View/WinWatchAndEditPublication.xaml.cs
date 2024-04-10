@@ -65,9 +65,22 @@ namespace PostOffice.View
         {
             if (e.Key == Key.Enter)
             {
+                try
+                {
+                    if (string.IsNullOrWhiteSpace(CommentTextBox.Text))
+                    {
+                        new Exception("Поле не может быть пустым");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+
                 Feedback feedback = new Feedback();
 
-                feedback.id_Feedback = feedbacks.Count() + 1;
+                feedback.id_Feedback = feedbacks[feedbacks.Count() - 1].id_Feedback + 1;
 
                 feedback.Feedback1 = CommentTextBox.Text;
 
