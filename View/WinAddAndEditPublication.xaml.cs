@@ -70,7 +70,7 @@ namespace PostOffice.View
             {
                 cbTypeViewPublication.ItemsSource = keyValuePairsTypeView.Keys;
 
-                cbTypeViewPublication.SelectedItem = Publication.TypeViewPublication;
+                cbTypeViewPublication.SelectedValue = Publication.TypeViewPublication;
             }
 
             DataContext = Publication;
@@ -92,63 +92,57 @@ namespace PostOffice.View
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            decimal pricePerMonthCheck = 0;
-
-            int numberIssuePerMonthCheck = 0;
-
-            try
+            if (Publication.id_Publication == 0)
             {
-                pricePerMonthCheck = decimal.Parse(tbPriceMonth.Text);
+                decimal pricePerMonthCheck = 0;
 
-                numberIssuePerMonthCheck = int.Parse(tbNumberIssuesPerMonth.Text);
+                int numberIssuePerMonthCheck = 0;
 
-                if (string.IsNullOrWhiteSpace(tbName.Text))
+                try
                 {
-                    throw new Exception("Наименование издания не может быть пустым");
+                    pricePerMonthCheck = decimal.Parse(tbPriceMonth.Text);
+
+                    numberIssuePerMonthCheck = int.Parse(tbNumberIssuesPerMonth.Text);
+
+                    if (string.IsNullOrWhiteSpace(tbName.Text))
+                    {
+                        throw new Exception("Наименование издания не может быть пустым");
+                    }
+
+                    if (cbTypePublication.SelectedItem == null)
+                    {
+                        throw new Exception("Тип издания не может быть пустым");
+                    }
+
+                    if (string.IsNullOrWhiteSpace(cbTypeViewPublication.SelectedItem.ToString()))
+                    {
+                        throw new Exception("Вид издания не может быть пустым");
+                    }
+
+                    if (string.IsNullOrWhiteSpace(tbPathToPhoto.Text))
+                    {
+                        throw new Exception("Не указан путь до фото");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
                 }
 
-                if (cbTypePublication.SelectedItem == null)
-                {
-                    throw new Exception("Тип издания не может быть пустым");
-                }
+                Publication.id_Publication = allPublication.Count() + 1;
 
-                if (string.IsNullOrWhiteSpace(cbTypeViewPublication.SelectedItem.ToString()))
-                {
-                    throw new Exception("Вид издания не может быть пустым");
-                }
+                Publication.id_TypePublication = keyValuePairsType[cbTypePublication.SelectedItem.ToString()];
 
-                if (string.IsNullOrWhiteSpace(tbPathToPhoto.Text))
-                {
-                    throw new Exception("Не указан путь до фото");
-                }
+                Publication.id_TypeViewPublication = keyValuePairsTypeView[cbTypeViewPublication.SelectedItem.ToString()];
 
+                dataBasePostOffice.postOfficeEntities.Publication.Add(Publication);
+
+                MessageBox.Show("Издание было успешно добавлено!");
+
+                dataBasePostOffice.postOfficeEntities.SaveChanges();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-                return;
-            }
-
-            Publication.Cover = tbPathToPhoto.Text;
-
-            Publication.PricePerMonth = pricePerMonthCheck;
-
-            Publication.NumberIssuesPerMonth = numberIssuePerMonthCheck;
-
-            Publication.id_Publication = allPublication.Count() + 1;
-
-            Publication.Name = tbName.Text;
-
-            Publication.id_TypePublication = keyValuePairsType[cbTypePublication.SelectedItem.ToString()];
-
-            Publication.id_TypeViewPublication = keyValuePairsTypeView[cbTypeViewPublication.SelectedItem.ToString()];
-
-            dataBasePostOffice.postOfficeEntities.Publication.Add(Publication);
-
-            MessageBox.Show("Издание было успешно добавлено!");
-
-            dataBasePostOffice.postOfficeEntities.SaveChanges();
         }
 
         private void Button_Exit(object sender, RoutedEventArgs e)

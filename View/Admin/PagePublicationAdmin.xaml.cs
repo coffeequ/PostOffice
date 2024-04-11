@@ -57,6 +57,8 @@ namespace PostOffice.View.Admin
                 {
                     dataBasePostOffice.postOfficeEntities.Publication.Remove(selectedItem);
                     dataBasePostOffice.postOfficeEntities.SaveChanges();
+                    dgPublication.ItemsSource = null;
+                    dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
                 }
             }
         }
@@ -68,6 +70,17 @@ namespace PostOffice.View.Admin
             var itemSelected = item.DataContext as Publication;
 
             new WinAddAndEditPublication(itemSelected).ShowDialog();
+
+            dgPublication.ItemsSource = null;
+
+            dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+        }
+
+        private void Button_Add(object sender, RoutedEventArgs e)
+        {
+            Publication publication = new Publication();
+
+            new WinAddAndEditPublication(publication).ShowDialog();
 
             dgPublication.ItemsSource = null;
 

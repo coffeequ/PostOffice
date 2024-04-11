@@ -53,7 +53,7 @@ namespace PostOffice.View.Admin
 
         private void ButtonTypePublication(object sender, RoutedEventArgs e)
         {
-            frameToAction.NavigationService.Navigate(new View.PageViewPublication());
+            frameToAction.NavigationService.Navigate(new View.Admin.PageTypePublication());
         }
 
         private void ButtonTypeViewPublication(object sender, RoutedEventArgs e)

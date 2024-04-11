@@ -18,7 +18,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Column="0" Margin="10">
-                    <Image Width="300" Height="350" Source="{Binding Cover}">
+                    <Image Width="300" Height="350" Source="{Binding CoverImage}">
 
                     </Image>
                     <Label FontSize="16" Margin="10">Путь до фото:</Label>
@@ -40,9 +40,9 @@
                         <Label FontSize="16">Наименование издания:</Label>
                         <TextBox x:Name="tbName" TextAlignment="Left" Margin="5" FontSize="16" Text="{Binding Name}"></TextBox>
                         <Label FontSize="16">Тип издания:</Label>
-                        <ComboBox x:Name="cbTypePublication" Margin="5" FontSize="16" SelectedValuePath="id" SelectedValue="{Binding TypePublication}" ItemsSource="{Binding TypePublication}"></ComboBox>
+                        <ComboBox x:Name="cbTypePublication" Margin="5" FontSize="16"></ComboBox>
                         <Label FontSize="16">Вид издания:</Label>
-                        <ComboBox x:Name="cbTypeViewPublication" Margin="5" FontSize="16" ItemsSource="{Binding TypeViewPublication}"></ComboBox>
+                        <ComboBox x:Name="cbTypeViewPublication" Margin="5" FontSize="16"></ComboBox>
                         <Label FontSize="16">Цена за месяц:</Label>
                         <TextBox x:Name="tbPriceMonth" Margin="5" FontSize="16" Text="{Binding PricePerMonth}"></TextBox>
                         <Label FontSize="16">Количество выпусков в месяц:</Label>
