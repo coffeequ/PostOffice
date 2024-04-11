@@ -38,12 +38,12 @@ namespace PostOffice.View.Admin
 
         private void ButtonSubsribes(object sender, RoutedEventArgs e)
         {
-            frameToAction.NavigationService.Navigate(new View.Admin.PageSubscribersAdmin());
+            frameToAction.NavigationService.Navigate(new View.Admin.PageSubscribersAdmin(user));
         }
 
         private void ButtonPublication(object sender, RoutedEventArgs e)
         {
-            frameToAction.NavigationService.Navigate(new View.PagePublication());
+            frameToAction.NavigationService.Navigate(new View.Admin.PagePublicationAdmin());
         }
 
         private void ButtonWatchStatis(object sender, RoutedEventArgs e)

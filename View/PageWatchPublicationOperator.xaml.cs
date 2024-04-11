@@ -30,8 +30,6 @@ namespace PostOffice.View
 
             dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
 
-            this.user = user;
-
             lbLogin.Content = user.Login;
         }
 
@@ -42,7 +40,7 @@ namespace PostOffice.View
 
         private void ButtonSubsribes(object sender, RoutedEventArgs e)
         {
-            frameToAction.NavigationService.Navigate(new View.PageSubscribers());
+            frameToAction.NavigationService.Navigate(new View.PageSubscribers(user));
         }
 
         private void ButtonPublication(object sender, RoutedEventArgs e)

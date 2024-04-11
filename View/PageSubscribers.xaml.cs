@@ -26,7 +26,9 @@ namespace PostOffice.View
 
         Model.DataBasePostOffice dataBasePostOffice;
 
-        public PageSubscribers()
+        User user;
+
+        public PageSubscribers(User user)
         {
             InitializeComponent();
 
@@ -44,6 +46,8 @@ namespace PostOffice.View
             subscriberOfThePostOffices = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
 
             dgSubscribers.ItemsSource = subscriberOfThePostOffices;
+
+            this.user = user;
         }
 
         private void Button_More(object sender, RoutedEventArgs e)
@@ -52,7 +56,7 @@ namespace PostOffice.View
 
             var selectedItem = item.DataContext as SubscriberOfThePostOffice;
 
-            new WinMoreDetailsSubscriber(selectedItem).ShowDialog();
+            new WinMoreDetailsSubscriber(selectedItem, null).ShowDialog();
 
             dgSubscribers.ItemsSource = null;
 
@@ -64,7 +68,7 @@ namespace PostOffice.View
         {
             SubscriberOfThePostOffice subscriberOfThePostOffice = new SubscriberOfThePostOffice();
 
-            new WinMoreDetailsSubscriber(subscriberOfThePostOffice).ShowDialog();
+            new WinMoreDetailsSubscriber(subscriberOfThePostOffice, user).ShowDialog();
 
             dgSubscribers.ItemsSource = null;
 
