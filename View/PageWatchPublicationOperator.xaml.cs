@@ -30,6 +30,8 @@ namespace PostOffice.View
 
             dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
 
+            this.user = user;
+
             lbLogin.Content = user.Login;
         }
 

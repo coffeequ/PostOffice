@@ -13,7 +13,7 @@
             <RowDefinition Height="397*"></RowDefinition>
             <RowDefinition Height="55*"></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid Name="dgSubscribers" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*">
+        <DataGrid Name="dgSubscribers" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" FontSize="14">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>

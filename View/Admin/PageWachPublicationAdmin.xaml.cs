@@ -48,7 +48,7 @@ namespace PostOffice.View.Admin
 
         private void ButtonWatchStatis(object sender, RoutedEventArgs e)
         {
-            new View.WinStatistic(user).Show();
+            new View.WinStatistic(user).ShowDialog();
         }
 
         private void ButtonTypePublication(object sender, RoutedEventArgs e)
@@ -58,7 +58,7 @@ namespace PostOffice.View.Admin
 
         private void ButtonTypeViewPublication(object sender, RoutedEventArgs e)
         {
-
+            frameToAction.NavigationService.Navigate(new View.Admin.PageTypeViewPublication());
         }
 
         private void ButtonLoginIO(object sender, RoutedEventArgs e)

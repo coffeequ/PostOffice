@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PostOffice.View.Admin"
         mc:Ignorable="d"
-        Title="Почтовое отделение" Height="200" Width="400" Background="#a7c3c6" MinHeight="210" MaxHeight="210" MinWidth="400" MaxWidth="400">
+        Title="Почтовое отделение" Height="220" Width="400" Background="#a7c3c6" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <StackPanel Margin="15">
             <TextBox FontSize="14" Text="{Binding Name}" materialDesign:HintAssist.HelperText="Наименование" materialDesign:HintAssist.HelperTextFontSize="14"></TextBox>

@@ -20,13 +20,13 @@ namespace PostOffice.View
     /// </summary>
     public partial class PageStatistic : Page
     {
-        User User;
+        public delegate void closeWin();
+
+        public static event closeWin closewin;
 
         public PageStatistic(User user)
         {
             InitializeComponent();
-
-            User = user;
 
             lbLogin.Content = user.Login;
         }
@@ -43,12 +43,12 @@ namespace PostOffice.View
 
         private void ButtonExit(object sender, RoutedEventArgs e)
         {
-            
+            closewin();
         }
 
         private void btnEntrance(object sender, RoutedEventArgs e)
         {
-
+  
         }
     }
 }

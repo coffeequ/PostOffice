@@ -140,6 +140,9 @@
     <Compile Include="View\Admin\PageTypePublication.xaml.cs">
       <DependentUpon>PageTypePublication.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\PageTypeViewPublication.xaml.cs">
+      <DependentUpon>PageTypeViewPublication.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\PageWachPublicationAdmin.xaml.cs">
       <DependentUpon>PageWachPublicationAdmin.xaml</DependentUpon>
     </Compile>
@@ -215,6 +218,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Admin\PageTypePublication.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\PageTypeViewPublication.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

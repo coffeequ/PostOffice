@@ -12,7 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dgPublication" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="dgPublication" AutoGenerateColumns="False" IsReadOnly="True" FontSize="14">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Наименование издания"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding TypePublication.Name}" Header="Тип публикации"></DataGridTextColumn>
