@@ -21,6 +21,11 @@
                     <StackPanel Height="300">
                         <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonSubsribes">Подписчики</Button>
                         <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonPublication">Список изданий</Button>
+                        <Button Background="AliceBlue" FontSize="16" Height="50" Margin="0 0 0 10" Click="ButtonTypePublication">
+                            <TextBlock TextWrapping="Wrap">Список катеогрий изданий</TextBlock>
+                        </Button>
+                        <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonTypeViewPublication">Виды изданий</Button>
+
                         <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonWatchStatis">Просмотр статистики</Button>
                     </StackPanel>
                 </Border>

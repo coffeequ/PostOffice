@@ -54,5 +54,15 @@ namespace PostOffice.View
         {
             new View.WinStatistic(user).ShowDialog();
         }
+
+        private void ButtonTypePublication(object sender, RoutedEventArgs e)
+        {
+            frameToAction.NavigationService.Navigate(new View.PageTypePublication());
+        }
+
+        private void ButtonTypeViewPublication(object sender, RoutedEventArgs e)
+        {
+            frameToAction.NavigationService.Navigate(new View.PageTypeViewPublication());
+        }
     }
 }
