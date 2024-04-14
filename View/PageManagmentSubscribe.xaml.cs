@@ -30,11 +30,13 @@ namespace PostOffice.View
 
         List<Subscribe> subscribes;
 
+        User user;
+
         Random rnd;
 
         int yearEnd = 0;
 
-        public PageManagmentSubscribe(SubscriberOfThePostOffice subscriberOfThePostOffice)
+        public PageManagmentSubscribe(SubscriberOfThePostOffice subscriberOfThePostOffice, User user)
         {
             InitializeComponent();
 
@@ -52,6 +54,8 @@ namespace PostOffice.View
             {
                 MessageBox.Show(ex.Message);
             }
+
+            this.user = user;
 
             dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
 
@@ -171,7 +175,7 @@ namespace PostOffice.View
                 {
 
                 }
-                NavigationService.Navigate(new View.PageMoreDetailsSubscriber(subscriberOfThePostOffice));
+                NavigationService.Navigate(new View.PageMoreDetailsSubscriber(subscriberOfThePostOffice, user));
             }
             else
             {

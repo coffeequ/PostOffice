@@ -131,11 +131,23 @@
     <Compile Include="User.cs">
       <DependentUpon>PostOfficeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\PagePublicationAdmin.xaml.cs">
+      <DependentUpon>PagePublicationAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\PageSubscribersAdmin.xaml.cs">
       <DependentUpon>PageSubscribersAdmin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\PageTypePublication.xaml.cs">
+      <DependentUpon>PageTypePublication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\PageTypeViewPublication.xaml.cs">
+      <DependentUpon>PageTypeViewPublication.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\PageWachPublicationAdmin.xaml.cs">
       <DependentUpon>PageWachPublicationAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\WinEditAndAddTypePublication.xaml.cs">
+      <DependentUpon>WinEditAndAddTypePublication.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PageCorrespondenceStatistic.xaml.cs">
       <DependentUpon>PageCorrespondenceStatistic.xaml</DependentUpon>
@@ -160,9 +172,6 @@
     </Compile>
     <Compile Include="View\PageSubscribeStatistic.xaml.cs">
       <DependentUpon>PageSubscribeStatistic.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\PageViewPublication.xaml.cs">
-      <DependentUpon>PageViewPublication.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PageWatchPublicationNoReg.xaml.cs">
       <DependentUpon>PageWatchPublicationNoReg.xaml</DependentUpon>
@@ -200,11 +209,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Admin\PagePublicationAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Admin\PageSubscribersAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Admin\PageTypePublication.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\PageTypeViewPublication.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Admin\PageWachPublicationAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\WinEditAndAddTypePublication.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,10 +262,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PageSubscribeStatistic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\PageViewPublication.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

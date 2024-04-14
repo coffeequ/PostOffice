@@ -42,7 +42,7 @@ namespace PostOffice.View
 
         private void ButtonSubsribes(object sender, RoutedEventArgs e)
         {
-            frameToAction.NavigationService.Navigate(new View.PageSubscribers());
+            frameToAction.NavigationService.Navigate(new View.PageSubscribers(user));
         }
 
         private void ButtonPublication(object sender, RoutedEventArgs e)
@@ -52,17 +52,7 @@ namespace PostOffice.View
 
         private void ButtonWatchStatis(object sender, RoutedEventArgs e)
         {
-            new View.WinStatistic(user).Show();
-        }
-
-        private void ButtonTypePublication(object sender, RoutedEventArgs e)
-        {
-            frameToAction.NavigationService.Navigate(new View.PageViewPublication());
-        }
-
-        private void ButtonTypeViewPublication(object sender, RoutedEventArgs e)
-        {
-
+            new View.WinStatistic(user).ShowDialog();
         }
     }
 }

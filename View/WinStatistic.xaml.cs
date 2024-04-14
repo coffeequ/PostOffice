@@ -24,6 +24,13 @@ namespace PostOffice.View
             InitializeComponent();
 
             frameStatistic.NavigationService.Navigate(new View.PageStatistic(user));
+
+            View.PageStatistic.closewin += PageStatistic_closewin;
+        }
+
+        private void PageStatistic_closewin()
+        {
+            Close();
         }
     }
 }

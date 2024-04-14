@@ -36,11 +36,11 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Column="1">
-                <Button Margin="0 10 0 0" Background="#a7c3c6" Width="220" FontSize="16" Height="40" Click="Button_Add_Publication">Добавить подписку</Button>
-                <Button Margin="0 10 0 0" Background="#a7c3c6" Width="220" FontSize="16" Height="40" Click="Button_saveData" >Сохранить</Button>
+                <Button Margin="0 10 0 0" Background="AliceBlue" Width="220" FontSize="16" Height="40" Click="Button_Add_Publication">Добавить подписку</Button>
+                <Button Margin="0 10 0 0" Background="AliceBlue" Width="220" FontSize="16" Height="40" Click="Button_saveData" >Сохранить</Button>
             </StackPanel>
         </Grid>
-        <DataGrid Grid.Row="1" IsReadOnly="True" Name="dgSubsriberPublication" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" IsReadOnly="True" Name="dgSubsriberPublication" AutoGenerateColumns="False" FontSize="14">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование" Binding="{Binding Publication.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Дата начала подписки" Binding="{Binding EntryTime}"></DataGridTextColumn>

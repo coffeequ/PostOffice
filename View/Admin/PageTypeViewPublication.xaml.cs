@@ -13,16 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PostOffice.View
+namespace PostOffice.View.Admin
 {
     /// <summary>
-    /// Логика взаимодействия для PageViewPublication.xaml
+    /// Логика взаимодействия для PageTypeViewPublication.xaml
     /// </summary>
-    public partial class PageViewPublication : Page
+    public partial class PageTypeViewPublication : Page
     {
-        public PageViewPublication()
+        Model.DataBasePostOffice dataBasePostOffice;
+
+        public PageTypeViewPublication()
         {
             InitializeComponent();
+
+            dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
+
+            dgTypeViewPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.TypeViewPublication.ToList();
         }
     }
 }

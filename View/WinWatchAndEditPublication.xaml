@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="WinWatchAndEditPublication" MinHeight="450" Height="450" MaxHeight="500" MinWidth="800" Width="800" MaxWidth="900">
+        Title="WinWatchAndEditPublication" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <ScrollViewer>
         <Grid Background="#a7c3c6" Loaded="isLoaded" ScrollViewer.CanContentScroll="True">
             <StackPanel>

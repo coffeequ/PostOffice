@@ -30,7 +30,9 @@ namespace PostOffice.View
 
         public static event CloseWin closeWin;
 
-        public PageMoreDetailsSubscriber(SubscriberOfThePostOffice subscriberOfThePostOffice)
+        User user;
+
+        public PageMoreDetailsSubscriber(SubscriberOfThePostOffice subscriberOfThePostOffice, User user)
         {
             InitializeComponent();
             try
@@ -44,6 +46,8 @@ namespace PostOffice.View
 
             this.subscriberOfThePostOffice = subscriberOfThePostOffice;
 
+            this.user = user;
+
             DataContext = subscriberOfThePostOffice;
 
             allSubscribes = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
@@ -53,15 +57,38 @@ namespace PostOffice.View
             dgSubsriberPublication.ItemsSource = publicationSubscriber;
         }
 
+        private void SaveSubscrubers()
+        {
+            if (subscriberOfThePostOffice.id_Subscriber == 0)
+            {
+                var allOperator = dataBasePostOffice.postOfficeEntities.OperatorPostOffice.ToList();
+
+                OperatorPostOffice tempOperator = new OperatorPostOffice();
+
+                foreach (var item in allOperator)
+                {
+                    if (item.id_Operator == user.id_User)
+                    {
+                        tempOperator = item;
+                    }
+                }
+                subscriberOfThePostOffice.id_Subscriber = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.Count() + 1;
+                subscriberOfThePostOffice.OperatorPostOffice = tempOperator;
+                dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.Add(subscriberOfThePostOffice);
+                dataBasePostOffice.postOfficeEntities.SaveChanges();
+            }
+        }
+
         private void Button_Add_Publication(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new View.PageManagmentSubscribe(subscriberOfThePostOffice));
+            SaveSubscrubers();
+            NavigationService.Navigate(new View.PageManagmentSubscribe(subscriberOfThePostOffice, user));
         }
 
         private void Button_saveData(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"Данные сохранены");
-            closeWin();
+            SaveSubscrubers();
+            MessageBox.Show("Данные сохранились");
         }
 
         private void Button_wordCheck(object sender, RoutedEventArgs e)

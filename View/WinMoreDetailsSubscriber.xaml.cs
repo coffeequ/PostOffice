@@ -19,13 +19,15 @@ namespace PostOffice.View
     /// </summary>
     public partial class WinMoreDetailsSubscriber : Window
     {
-        public WinMoreDetailsSubscriber(SubscriberOfThePostOffice subscriberOfThePostOffice)
+        User user;
+
+        public WinMoreDetailsSubscriber(SubscriberOfThePostOffice subscriberOfThePostOffice, User user)
         {
             InitializeComponent();
 
             View.PageMoreDetailsSubscriber.closeWin += PageMoreDetailsSubscriber_closeWin;
 
-            MyFrame.NavigationService.Navigate(new View.PageMoreDetailsSubscriber(subscriberOfThePostOffice));
+            MyFrame.NavigationService.Navigate(new View.PageMoreDetailsSubscriber(subscriberOfThePostOffice, user));
         }
 
         private void PageMoreDetailsSubscriber_closeWin()

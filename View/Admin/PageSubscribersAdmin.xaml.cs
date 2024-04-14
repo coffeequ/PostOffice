@@ -26,7 +26,9 @@ namespace PostOffice.View.Admin
 
         Model.DataBasePostOffice dataBasePostOffice;
 
-        public PageSubscribersAdmin()
+        User user;
+
+        public PageSubscribersAdmin(User user)
         {
             InitializeComponent();
 
@@ -38,6 +40,8 @@ namespace PostOffice.View.Admin
             {
                 MessageBox.Show(ex.Message);
             }
+
+            this.user = user;
 
             subscribes = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
 
@@ -52,7 +56,7 @@ namespace PostOffice.View.Admin
 
             var selectedItem = item.DataContext as SubscriberOfThePostOffice;
 
-            new WinMoreDetailsSubscriber(selectedItem).ShowDialog();
+            new WinMoreDetailsSubscriber(selectedItem, user).ShowDialog();
 
             dgSubscribers.ItemsSource = null;
 
@@ -64,7 +68,7 @@ namespace PostOffice.View.Admin
         {
             SubscriberOfThePostOffice subscriberOfThePostOffice = new SubscriberOfThePostOffice();
 
-            new WinMoreDetailsSubscriber(subscriberOfThePostOffice).ShowDialog();
+            new WinMoreDetailsSubscriber(subscriberOfThePostOffice, user).ShowDialog();
 
             dgSubscribers.ItemsSource = null;
 

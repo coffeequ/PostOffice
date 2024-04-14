@@ -42,7 +42,7 @@
                 <TextBox x:Name="tbAdressDelivery" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="14"></TextBox>
             </StackPanel>
             <StackPanel Margin="10" Grid.Column="1">
-                <Button Margin="0 0 0 10" Background="#a7c3c6" FontSize="16" Height="40" Click="Button_Add">Сохранить</Button>
+                <Button Margin="0 0 0 10" Background="AliceBlue" FontSize="16" Width="220" Height="40" Click="Button_Add">Сохранить</Button>
                 <Label>Список выбранных изданий: </Label>
                 <ListView Name="lvSelectedPublication" FontSize="14">
                     <ListView.ItemTemplate>
@@ -56,7 +56,7 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        <DataGrid Grid.Row="1" Name="dgPublication" AutoGenerateColumns="False" MouseDoubleClick="dgPublication_MouseDoubleClick" IsReadOnly="True">
+        <DataGrid Grid.Row="1" Name="dgPublication" AutoGenerateColumns="False" MouseDoubleClick="dgPublication_MouseDoubleClick" IsReadOnly="True" FontSize="14">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование публикации" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Цена за 1 месяц" Binding="{Binding PricePerMonth}"></DataGridTextColumn>
