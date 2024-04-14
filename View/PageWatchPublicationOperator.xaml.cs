@@ -52,7 +52,7 @@ namespace PostOffice.View
 
         private void ButtonWatchStatis(object sender, RoutedEventArgs e)
         {
-            new View.WinStatistic(user).Show();
+            new View.WinStatistic(user).ShowDialog();
         }
     }
 }

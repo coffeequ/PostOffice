@@ -133,7 +133,9 @@
     <NavigationProperty Name="Role" Relationship="Self.FK_User_Role1" FromRole="User" ToRole="Role" />
   </EntityType>
   <Association Name="FK_Correspondence_Subscribe">
-    <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="1" />
+    <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Correspondence" Type="Self.Correspondence" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Subscribe">
@@ -241,7 +243,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Subscribe_SubscriberOfThePostOffice">
-    <End Role="SubscriberOfThePostOffice" Type="Self.SubscriberOfThePostOffice" Multiplicity="1" />
+    <End Role="SubscriberOfThePostOffice" Type="Self.SubscriberOfThePostOffice" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Subscribe" Type="Self.Subscribe" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SubscriberOfThePostOffice">

@@ -20,11 +20,15 @@ namespace PostOffice.View
     /// </summary>
     public partial class PageLogin : Page
     {
-        Model.DataBasePostOffice DataBasePostOffice;
+        Model.DataBasePostOffice dataBasePostOffice;
 
         public delegate void CloseWin();
 
         public static event CloseWin closeWin;
+
+        private List<OperatorPostOffice> AllOperatorPostOffices;
+
+        private List<LogIO> allLog;
 
         public PageLogin()
         {
@@ -32,13 +36,17 @@ namespace PostOffice.View
 
             try
             {
-                DataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
+                dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
                 throw;
             }
+
+            AllOperatorPostOffices = dataBasePostOffice.postOfficeEntities.OperatorPostOffice.ToList();
+
+            allLog = dataBasePostOffice.postOfficeEntities.LogIO.ToList();
         }
 
         private void btnEntrance(object sender, RoutedEventArgs e)
@@ -47,7 +55,7 @@ namespace PostOffice.View
 
             string inputPassword = tbPassword.Password.Trim();
 
-            var operatorPostOffice = DataBasePostOffice.postOfficeEntities.User.ToList().Where(personal => personal.Login == inputLogin).ToList();
+            var operatorPostOffice = dataBasePostOffice.postOfficeEntities.User.ToList().Where(personal => personal.Login == inputLogin).ToList();
 
             if (string.IsNullOrWhiteSpace(tbLogin.Text))
             {
@@ -62,6 +70,15 @@ namespace PostOffice.View
                 if (operatorPostOffice[0].Password == inputPassword)
                 {
                     View.WinWatchPublication win = new WinWatchPublication(operatorPostOffice[0]);
+
+                    LogIO logIO = new LogIO()
+                    {
+                        id_Journal = allLog.Count + 1,
+                        id_User = operatorPostOffice[0].id_User,
+                        EntryTime = DateTime.Now
+                    };
+                    dataBasePostOffice.postOfficeEntities.LogIO.Add(logIO);
+                    dataBasePostOffice.postOfficeEntities.SaveChanges();
                     win.Show();
                     closeWin();
                 }

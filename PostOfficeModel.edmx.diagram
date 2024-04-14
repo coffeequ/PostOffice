@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="27e05de00ef2492a91b9d303a45c4360" Name="Diagram1">
+      <Diagram DiagramId="f7a66ae70b0c45aba03edbd8d29b9695" Name="Diagram1">
         <EntityTypeShape EntityType="PostOfficeModel.Correspondence" Width="1.5" PointX="10.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PostOfficeModel.Feedback" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PostOfficeModel.LogIO" Width="1.5" PointX="3.75" PointY="11.625" IsExpanded="true" />
