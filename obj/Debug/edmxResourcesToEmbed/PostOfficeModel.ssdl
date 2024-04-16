@@ -91,16 +91,16 @@
   </EntityType>
   <EntityType Name="TypePublication">
     <Key>
-      <PropertyRef Name="id TypePublication" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="id TypePublication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="TypeViewPublication">
     <Key>
-      <PropertyRef Name="id TypeViewPublication" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="id TypeViewPublication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
@@ -167,7 +167,7 @@
     <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TypePublication">
-        <PropertyRef Name="id TypePublication" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Publication">
         <PropertyRef Name="id TypePublication" />
@@ -179,7 +179,7 @@
     <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TypeViewPublication">
-        <PropertyRef Name="id TypeViewPublication" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Publication">
         <PropertyRef Name="id TypeViewPublication" />

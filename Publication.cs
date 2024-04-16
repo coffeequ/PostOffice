@@ -11,7 +11,8 @@ namespace PostOffice
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class Publication
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -67,5 +68,20 @@ namespace PostOffice
                 return Feedback.Count;
             }
         }
+
+        //public List<string> allTypePublication
+        //{
+        //    get
+        //    {
+        //        List<TypePublication> typePublications = MainWindow.postOfficeEntity.TypePublication.ToList();
+        //        List<string> stringTypePublication = new List<string>();
+        //        foreach (var item in typePublications)
+        //        {
+        //            stringTypePublication.Add(item.Name);
+        //        }
+
+        //        return stringTypePublication;
+        //    }
+        //}
     }
 }

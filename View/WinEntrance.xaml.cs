@@ -29,7 +29,14 @@ namespace PostOffice.View
 
             View.PageLogin.closeWin += PageLogin_closeWin;
 
+            View.PageLogin.closeWin1 += PageLogin_closeWin1;
+
             frameLog.NavigationService.Navigate(new View.PageLogin());
+        }
+
+        private void PageLogin_closeWin1()
+        {
+            Close();
         }
 
         private void PageLogin_closeWin()

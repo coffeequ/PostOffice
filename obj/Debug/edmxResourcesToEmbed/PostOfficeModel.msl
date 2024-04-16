@@ -102,7 +102,7 @@
     <EntitySetMapping Name="TypePublication">
       <EntityTypeMapping TypeName="PostOfficeModel.TypePublication">
         <MappingFragment StoreEntitySet="TypePublication">
-          <ScalarProperty Name="id_TypePublication" ColumnName="id TypePublication" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -110,7 +110,7 @@
     <EntitySetMapping Name="TypeViewPublication">
       <EntityTypeMapping TypeName="PostOfficeModel.TypeViewPublication">
         <MappingFragment StoreEntitySet="TypeViewPublication">
-          <ScalarProperty Name="id_TypeViewPublication" ColumnName="id TypeViewPublication" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>

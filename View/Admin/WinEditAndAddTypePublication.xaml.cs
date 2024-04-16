@@ -43,9 +43,9 @@ namespace PostOffice.View.Admin
 
         private void Button_Save(object sender, RoutedEventArgs e)
         {
-            if (typePublication.id_TypePublication == 0)
+            if (typePublication.Id == 0)
             {
-                typePublication.id_TypePublication = dataBasePostOffice.postOfficeEntities.TypePublication.Count() + 1;
+                typePublication.Id = dataBasePostOffice.postOfficeEntities.TypePublication.Count() + 1;
                 dataBasePostOffice.postOfficeEntities.TypePublication.Add(typePublication);
                 dataBasePostOffice.postOfficeEntities.SaveChanges();
             }
