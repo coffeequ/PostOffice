@@ -81,6 +81,38 @@ namespace PostOffice.View
 
         private void Button_Add_Publication(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(tbSurname.Text))
+                {
+                    throw new Exception("Введите фамилию");
+                }
+
+                if (string.IsNullOrWhiteSpace(tbName.Text))
+                {
+                    throw new Exception("Введите имя");
+                }
+
+                if (string.IsNullOrWhiteSpace(tbMiddleName.Text))
+                {
+                    throw new Exception("Введите отчество");
+                }
+
+                if (string.IsNullOrWhiteSpace(tbPhone.Text))
+                {
+                    throw new Exception("Введите номер телефона");
+                }
+
+                if (string.IsNullOrWhiteSpace(tbBrithday.Text))
+                {
+                    throw new Exception("Введите дату рождения");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
             SaveSubscrubers();
             NavigationService.Navigate(new View.PageManagmentSubscribe(subscriberOfThePostOffice, user));
         }

@@ -11,7 +11,9 @@ namespace PostOffice
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using System.Windows.Controls;
 
     public partial class Publication
     {
@@ -27,7 +29,7 @@ namespace PostOffice
         public int id_TypeViewPublication { get; set; }
         public string Name { get; set; }
         public decimal PricePerMonth { get; set; }
-        public string Cover { get; set; }
+        public byte[] Cover { get; set; }
         public int NumberIssuesPerMonth { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -53,13 +55,13 @@ namespace PostOffice
             }
         }
 
-        public string CoverImage
-        {
-            get
-            {
-                return $"/Pic/" + Cover;
-            }
-        }
+        //public string CoverImageTemp
+        //{
+        //    get
+        //    {
+        //        return System.IO.File.ReadAllBytes("temp.doc");
+        //    }
+        //}
 
         public int CountFeedBack
         {

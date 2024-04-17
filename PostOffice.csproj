@@ -79,57 +79,57 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Correspondence.cs">
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
     <Compile Include="Feedback.cs">
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
     <Compile Include="LogIO.cs">
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DataBasePostOffice.cs" />
     <Compile Include="Model\IOExcel.cs" />
     <Compile Include="OperatorPostOffice.cs">
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
-    <Compile Include="PostOfficeModel.Context.cs">
+    <Compile Include="PostModelOffice.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PostOfficeModel.Context.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="PostOfficeModel.cs">
+    <Compile Include="PostModelOffice.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
-    <Compile Include="PostOfficeModel.Designer.cs">
+    <Compile Include="PostModelOffice.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PostOfficeModel.edmx</DependentUpon>
+      <DependentUpon>PostModelOffice.edmx</DependentUpon>
     </Compile>
     <Compile Include="Publication.cs">
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
     <Compile Include="Subscribe.cs">
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
     <Compile Include="SubscriberOfThePostOffice.cs">
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
     <Compile Include="TypePublication.cs">
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
     <Compile Include="TypeViewPublication.cs">
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>PostOfficeModel.tt</DependentUpon>
+      <DependentUpon>PostModelOffice.tt</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\PagePublicationAdmin.xaml.cs">
       <DependentUpon>PagePublicationAdmin.xaml</DependentUpon>
@@ -331,12 +331,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <EntityDeploy Include="PostOfficeModel.edmx">
+    <EntityDeploy Include="PostModelOffice.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PostOfficeModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>PostModelOffice.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="PostOfficeModel.edmx.diagram">
-      <DependentUpon>PostOfficeModel.edmx</DependentUpon>
+    <None Include="PostModelOffice.edmx.diagram">
+      <DependentUpon>PostModelOffice.edmx</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -401,15 +401,15 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PostOfficeModel.Context.tt">
+    <Content Include="PostModelOffice.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PostOfficeModel.edmx</DependentUpon>
-      <LastGenOutput>PostOfficeModel.Context.cs</LastGenOutput>
+      <DependentUpon>PostModelOffice.edmx</DependentUpon>
+      <LastGenOutput>PostModelOffice.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="PostOfficeModel.tt">
+    <Content Include="PostModelOffice.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PostOfficeModel.edmx</DependentUpon>
-      <LastGenOutput>PostOfficeModel.cs</LastGenOutput>
+      <DependentUpon>PostModelOffice.edmx</DependentUpon>
+      <LastGenOutput>PostModelOffice.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

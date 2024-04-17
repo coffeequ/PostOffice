@@ -49,7 +49,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Label FontSize="16" Content="{Binding Name}"></Label>
-                                <Button Click="button_delete" Width="50" Height="45">X</Button>
+                                <Button Background="Red" Click="button_delete" Width="50" Height="45">X</Button>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>

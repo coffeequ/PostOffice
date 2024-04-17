@@ -20,19 +20,19 @@
             </Grid.ColumnDefinitions>
             <StackPanel Margin="10">
                 <StackPanel Orientation="Vertical">
-                    <TextBox HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Фамилия" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding Surname}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
+                    <TextBox x:Name="tbSurname" HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Фамилия" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding Surname}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="0 25 0 0">
-                    <TextBox HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Имя" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding Name}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
+                    <TextBox x:Name="tbName" HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Имя" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding Name}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical"  Margin="0 25 0 0">
-                    <TextBox HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Отчество" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding MiddleName}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
+                    <TextBox x:Name="tbMiddleName" HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Отчество" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding MiddleName}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="0 25 0 0">
-                    <TextBox HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Номер телефона" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center"  Text="{Binding NumberPhone}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
+                    <TextBox x:Name="tbPhone" HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Номер телефона" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center"  Text="{Binding NumberPhone}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="0 25 0 0">
-                    <TextBox HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Дата рождения" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding Birthday}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
+                    <TextBox x:Name="tbBrithday" HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Дата рождения" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding Birthday}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Column="1">

@@ -34,7 +34,7 @@ namespace PostOffice.View
 
         Random rnd;
 
-        int yearEnd = 0;
+        int yearMonthEnd = 0;
 
         public PageManagmentSubscribe(SubscriberOfThePostOffice subscriberOfThePostOffice, User user)
         {
@@ -106,9 +106,9 @@ namespace PostOffice.View
             {
                 try
                 {
-                    yearEnd = int.Parse(tbMonthEnd.Text);
+                    yearMonthEnd = int.Parse(tbMonthEnd.Text);
 
-                    if (string.IsNullOrWhiteSpace(yearEnd.ToString()))
+                    if (string.IsNullOrWhiteSpace(yearMonthEnd.ToString()))
                     {
                         throw new Exception($"Введите правильный месяц");
                     }
@@ -123,7 +123,7 @@ namespace PostOffice.View
                         throw new Exception($"Дата окончания не может быть меньше чем дата начала");
                     }
 
-                    if (yearEnd >= 13)
+                    if (yearMonthEnd >= 13)
                     {
                        throw new Exception("Введите корректный месяц!");
                     }
@@ -137,11 +137,19 @@ namespace PostOffice.View
 
                 Subscribe subscribe;
 
+                Correspondence correspondence;
+
                 int numberSubscribeGeneration = GetHashCode();
+
+                int deliveryBreak = 4;
 
                 for (int i = 0; i < publicationsSelected.Count(); i++)
                 {
                     subscribe = new Subscribe();
+
+                    correspondence = new Correspondence();
+
+                    int lastIndexCorrespondence = dataBasePostOffice.postOfficeEntities.Correspondence.Count() + 1;
 
                     subscribe.Publication = publicationsSelected[i];
 
@@ -151,7 +159,7 @@ namespace PostOffice.View
 
                     subscribe.StatusActive = 1;
 
-                    DateTime dateTime = new DateTime(int.Parse(tbYearEnd.Text), yearEnd, int.Parse(tbDayEnd.Text));
+                    DateTime dateTime = new DateTime(int.Parse(tbYearEnd.Text), yearMonthEnd, int.Parse(tbDayEnd.Text));
 
                     subscribe.EndTime = dateTime;
 
@@ -161,7 +169,21 @@ namespace PostOffice.View
 
                     dataBasePostOffice.postOfficeEntities.Subscribe.Add(subscribe);
 
+                    correspondence.DeliveryAddres = tbAdressDelivery.Text;
+
+                    correspondence.DateOfDispatch = new DateTime(int.Parse(tbYearEnd.Text), yearMonthEnd, int.Parse(tbDayEnd.Text) + deliveryBreak);
+
+                    correspondence.DateOfDelivery = new DateTime(int.Parse(tbYearEnd.Text), yearMonthEnd, int.Parse(tbDayEnd.Text) + deliveryBreak + 2);
+
+                    correspondence.Subscribe = subscribe;
+
+                    correspondence.id_Correspondence = lastIndexCorrespondence;
+
+                    dataBasePostOffice.postOfficeEntities.Correspondence.Add(correspondence);
+
                     dataBasePostOffice.postOfficeEntities.SaveChanges();
+
+                    deliveryBreak += 3;
                 }
 
                 MessageBox.Show($"Успешно были добавлены {publicationsSelected.Count} публикаций в подписку!");
