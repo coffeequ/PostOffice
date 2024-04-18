@@ -149,6 +149,9 @@
     <Compile Include="View\Admin\WinEditAndAddTypePublication.xaml.cs">
       <DependentUpon>WinEditAndAddTypePublication.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PageAboutUser.xaml.cs">
+      <DependentUpon>PageAboutUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PageCorrespondenceStatistic.xaml.cs">
       <DependentUpon>PageCorrespondenceStatistic.xaml</DependentUpon>
     </Compile>
@@ -184,6 +187,9 @@
     </Compile>
     <Compile Include="View\PageWatchPublicationOperator.xaml.cs">
       <DependentUpon>PageWatchPublicationOperator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WinAboutUser.xaml.cs">
+      <DependentUpon>WinAboutUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\WinAddAndEditPublication.xaml.cs">
       <DependentUpon>WinAddAndEditPublication.xaml</DependentUpon>
@@ -239,6 +245,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PageAboutUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PageCorrespondenceStatistic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -284,6 +294,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PageWatchPublicationOperator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WinAboutUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

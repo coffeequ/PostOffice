@@ -25,6 +25,10 @@ namespace PostOffice.View
         {
             InitializeComponent();
 
+            View.PageWatchPublicationOperator.closeWin += PageWatchPublicationOperator_closeWin;
+
+            View.Admin.PageWachPublicationAdmin.closeWin += PageWachPublicationAdmin_closeWin;
+
             this.user = user;
 
             if (user.Login == "Admin")
@@ -35,6 +39,18 @@ namespace PostOffice.View
             {
                 mainFrame.NavigationService.Navigate(new View.PageWatchPublicationOperator(user));
             }
+        }
+
+        private void PageWachPublicationAdmin_closeWin()
+        {
+            Close();
+            new MainWindow().Show();
+        }
+
+        private void PageWatchPublicationOperator_closeWin()
+        {
+            Close();
+            new MainWindow().Show();
         }
     }
 }
