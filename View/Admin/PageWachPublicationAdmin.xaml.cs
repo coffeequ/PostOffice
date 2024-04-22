@@ -77,5 +77,14 @@ namespace PostOffice.View.Admin
 
         }
 
+        private void ButtonOperators(object sender, RoutedEventArgs e)
+        {
+            frameToAction.NavigationService.Navigate(new View.Admin.PageOperators());
+        }
+
+        private void ButtonCorrespondence(object sender, RoutedEventArgs e)
+        {
+            frameToAction.NavigationService.Navigate(new View.PageCorrespondence());
+        }
     }
 }

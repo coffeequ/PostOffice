@@ -141,13 +141,17 @@ namespace PostOffice.View
 
                 int numberSubscribeGeneration = GetHashCode();
 
-                int deliveryBreak = 4;
+                int deliveryBreak = 0;
+
+                int monthStart = int.Parse(tbMonthStart.Text);
+
+                int monthEnd = int.Parse(tbMonthEnd.Text);
+
+                int dayStart = int.Parse(tbDayStart.Text);
 
                 for (int i = 0; i < publicationsSelected.Count(); i++)
                 {
                     subscribe = new Subscribe();
-
-                    correspondence = new Correspondence();
 
                     int lastIndexCorrespondence = dataBasePostOffice.postOfficeEntities.Correspondence.Count() + 1;
 
@@ -169,21 +173,44 @@ namespace PostOffice.View
 
                     dataBasePostOffice.postOfficeEntities.Subscribe.Add(subscribe);
 
-                    correspondence.DeliveryAddres = tbAdressDelivery.Text;
+                    for (int month = monthStart; month < monthEnd; month++)
+                    {
+                        for (int k = 0; k < publicationsSelected[i].NumberIssuesPerMonth; k++)
+                        {
+                            correspondence = new Correspondence();
 
-                    correspondence.DateOfDispatch = new DateTime(int.Parse(tbYearEnd.Text), yearMonthEnd, int.Parse(tbDayEnd.Text) + deliveryBreak);
+                            correspondence.DeliveryAddres = tbAdressDelivery.Text;
 
-                    correspondence.DateOfDelivery = new DateTime(int.Parse(tbYearEnd.Text), yearMonthEnd, int.Parse(tbDayEnd.Text) + deliveryBreak + 2);
+                            dayStart += 3;
 
-                    correspondence.Subscribe = subscribe;
+                            correspondence.DateOfDispatch = new DateTime(int.Parse(tbYearEnd.Text), monthStart, dayStart);
 
-                    correspondence.id_Correspondence = lastIndexCorrespondence;
+                            dayStart += 4;
 
-                    dataBasePostOffice.postOfficeEntities.Correspondence.Add(correspondence);
+                            if (dayStart >= 25)
+                            {
+                                monthStart += 1;
 
-                    dataBasePostOffice.postOfficeEntities.SaveChanges();
+                                dayStart = 1;
+                            }
+
+                            correspondence.DateOfDelivery = new DateTime(int.Parse(tbYearEnd.Text), monthStart, dayStart);
+
+                            correspondence.Subscribe = subscribe;
+
+                            correspondence.id_Correspondence = lastIndexCorrespondence;
+
+                            dataBasePostOffice.postOfficeEntities.Correspondence.Add(correspondence);
+                        }
+                    }
+
+                    deliveryBreak = 4;
+
+                    
 
                     deliveryBreak += 3;
+
+                    dataBasePostOffice.postOfficeEntities.SaveChanges();
                 }
 
                 MessageBox.Show($"Успешно были добавлены {publicationsSelected.Count} публикаций в подписку!");

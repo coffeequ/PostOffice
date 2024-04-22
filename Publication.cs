@@ -71,19 +71,46 @@ namespace PostOffice
             }
         }
 
-        //public List<string> allTypePublication
-        //{
-        //    get
-        //    {
-        //        List<TypePublication> typePublications = MainWindow.postOfficeEntity.TypePublication.ToList();
-        //        List<string> stringTypePublication = new List<string>();
-        //        foreach (var item in typePublications)
-        //        {
-        //            stringTypePublication.Add(item.Name);
-        //        }
+        public List<string> allTypePublicationString
+        {
+            get
+            {
+                List<TypePublication> typePublications = MainWindow.postOfficeEntity.TypePublication.ToList();
+                List<string> stringTypePublication = new List<string>();
+                foreach (var item in typePublications)
+                {
+                    stringTypePublication.Add(item.Name);
+                }
 
-        //        return stringTypePublication;
-        //    }
-        //}
+                return stringTypePublication;
+            }
+
+            set
+            {
+                allTypePublicationString = value;
+            }
+        }
+
+        public List<string> allTypeViewPublicationString
+        {
+            get
+            {
+                List<string> temp = new List<string>();
+
+                List<TypeViewPublication> typeViewPublications = MainWindow.postOfficeEntity.TypeViewPublication.ToList();
+
+                for (int i = 0; i < typeViewPublications.Count; i++)
+                {
+                    temp.Add(typeViewPublications[i].Name);
+                }
+
+                return temp;
+            }
+
+            set
+            {
+                allTypeViewPublicationString = value;
+            }
+        }
     }
 }

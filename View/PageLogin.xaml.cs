@@ -77,7 +77,7 @@ namespace PostOffice.View
 
                     LogIO logIO = new LogIO()
                     {
-                        id_Journal = allLog.Count + 1,
+                        id_Journal = allLog[allLog.Count() - 1].id_Journal + 1,
                         id_User = operatorPostOffice[0].id_User,
                         EntryTime = DateTime.Now
                     };

@@ -39,11 +39,11 @@
                     <StackPanel Grid.Row="0">
                         <Label FontSize="16">Наименование издания:</Label>
                         <TextBox x:Name="tbName" TextAlignment="Left" Margin="5" FontSize="16" Text="{Binding Name}"></TextBox>
-                        <Label FontSize="16">Тип издания:</Label>
-                        <!--SelectedValuePath="Id" SelectedValue="{Binding TypePublication}" ItemsSource="{Binding allTypePublication}"-->
-                        <ComboBox x:Name="cbTypePublication" Margin="5"  FontSize="16"></ComboBox>
+                        <!--<Label FontSize="16">Тип издания:</Label>
+                        --><!--SelectedValuePath="Id" SelectedValue="{Binding TypePublication}" ItemsSource="{Binding allTypePublication}"--><!--
+                        <ComboBox ItemsSource="{Binding allTypePublicationString}" SelectedItem="{Binding TypePublication.Name}" SelectedValuePath="id_TypePublication"  x:Name="cbTypePublication" Margin="5"  FontSize="16"></ComboBox>
                         <Label FontSize="16">Вид издания:</Label>
-                        <ComboBox x:Name="cbTypeViewPublication" Margin="5" FontSize="16"></ComboBox>
+                        <ComboBox ItemsSource="{Binding allTypeViewPublicationString}" SelectedItem="{Binding TypeViewPublication.Name}" SelectedValuePath="id_TypeViewPublication" x:Name="cbTypeViewPublication" Margin="5" FontSize="16"></ComboBox>-->
                         <Label FontSize="16">Цена за месяц:</Label>
                         <TextBox x:Name="tbPriceMonth" Margin="5" FontSize="16" Text="{Binding PricePerMonth}"></TextBox>
                         <Label FontSize="16">Количество выпусков в месяц:</Label>

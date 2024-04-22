@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PostOffice.View.Admin" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="PageWachPublicationAdmin">
 
     <Grid>
@@ -19,16 +19,21 @@
                     <Label Background="AliceBlue" Content="Почтовое отделение" Height="50" VerticalContentAlignment="Center" Width="220" HorizontalContentAlignment="Center" FontSize="18"/>
                 </InlineUIContainer></TextBlock>
                 <Border Background="AliceBlue" Margin="5 10 5 0">
-                    <StackPanel Height="300">
+                    <StackPanel Height="370">
                         <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonSubsribes">Подписчики</Button>
                         <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonPublication">Список изданий</Button>
                         <Button Background="AliceBlue" FontSize="16" Height="50" Margin="0 0 0 10" Click="ButtonTypePublication">
                             <TextBlock TextWrapping="Wrap">Список катеогрий изданий</TextBlock>
                         </Button>
+                        <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonOperators">Список операторов</Button>
+                        <Button Background="AliceBlue" FontSize="16" Height="50" Margin="0 0 0 10" Click="ButtonCorrespondence">
+                            <TextBlock TextWrapping="Wrap">
+                                Список корреспонденций
+                            </TextBlock>
+                        </Button>
                         <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonTypeViewPublication">Виды изданий</Button>
                         <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonWatchStatis">Просмотр статистики</Button>
                         <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonLoginIO">Журнал входов</Button>
-                        <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonLoginIO">Список операторов</Button>
                     </StackPanel>
                 </Border>
             </StackPanel>
