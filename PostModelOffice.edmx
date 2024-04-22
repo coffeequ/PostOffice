@@ -49,7 +49,7 @@
           <Property Name="id TypeViewPublication" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PricePerMonth" Type="money" Nullable="false" />
-          <Property Name="Cover" Type="nvarchar" MaxLength="200" />
+          <Property Name="Cover" Type="varbinary(max)" />
           <Property Name="NumberIssuesPerMonth" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
@@ -96,16 +96,16 @@
         </EntityType>
         <EntityType Name="TypePublication">
           <Key>
-            <PropertyRef Name="id TypePublication" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id TypePublication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TypeViewPublication">
           <Key>
-            <PropertyRef Name="id TypeViewPublication" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id TypeViewPublication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
@@ -172,7 +172,7 @@
           <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypePublication">
-              <PropertyRef Name="id TypePublication" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Publication">
               <PropertyRef Name="id TypePublication" />
@@ -184,7 +184,7 @@
           <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypeViewPublication">
-              <PropertyRef Name="id TypeViewPublication" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Publication">
               <PropertyRef Name="id TypeViewPublication" />
@@ -349,7 +349,7 @@
           <Property Name="id_TypeViewPublication" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PricePerMonth" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Cover" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Cover" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="NumberIssuesPerMonth" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Feedback" Relationship="Self.FK_Feedback_Publication" FromRole="Publication" ToRole="Feedback" />
           <NavigationProperty Name="TypePublication" Relationship="Self.FK_Publication_TypePublication" FromRole="Publication" ToRole="TypePublication" />
@@ -406,17 +406,17 @@
         </EntityType>
         <EntityType Name="TypePublication">
           <Key>
-            <PropertyRef Name="id_TypePublication" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id_TypePublication" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Publication" Relationship="Self.FK_Publication_TypePublication" FromRole="TypePublication" ToRole="Publication" />
         </EntityType>
         <EntityType Name="TypeViewPublication">
           <Key>
-            <PropertyRef Name="id_TypeViewPublication" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id_TypeViewPublication" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Publication" Relationship="Self.FK_Publication_TypeViewPublication" FromRole="TypeViewPublication" ToRole="Publication" />
         </EntityType>
@@ -499,7 +499,7 @@
           <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypePublication">
-              <PropertyRef Name="id_TypePublication" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Publication">
               <PropertyRef Name="id_TypePublication" />
@@ -511,7 +511,7 @@
           <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypeViewPublication">
-              <PropertyRef Name="id_TypeViewPublication" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Publication">
               <PropertyRef Name="id_TypeViewPublication" />
@@ -717,7 +717,7 @@
           <EntitySetMapping Name="TypePublication">
             <EntityTypeMapping TypeName="PostOfficeModel.TypePublication">
               <MappingFragment StoreEntitySet="TypePublication">
-                <ScalarProperty Name="id_TypePublication" ColumnName="id TypePublication" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -725,7 +725,7 @@
           <EntitySetMapping Name="TypeViewPublication">
             <EntityTypeMapping TypeName="PostOfficeModel.TypeViewPublication">
               <MappingFragment StoreEntitySet="TypeViewPublication">
-                <ScalarProperty Name="id_TypeViewPublication" ColumnName="id TypeViewPublication" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>

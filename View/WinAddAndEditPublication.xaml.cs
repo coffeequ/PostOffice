@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +21,11 @@ namespace PostOffice.View
     /// </summary>
     public partial class WinAddAndEditPublication : Window
     {
-        Dictionary<string, int> keyValuePairsType;
-
-        Dictionary<string, int> keyValuePairsTypeView;
-
         List<Publication> allPublication;
+
+        List<TypePublication> allTypePublication;
+
+        List<TypeViewPublication> allTypeViewPublication;
 
         Model.DataBasePostOffice dataBasePostOffice;
 
@@ -45,36 +46,11 @@ namespace PostOffice.View
                 MessageBox.Show(ex.Message);
             }
 
-            keyValuePairsType = dataBasePostOffice.postOfficeEntities.TypePublication.ToDictionary(value => value.Name, item => item.id_TypePublication);
-
-            keyValuePairsTypeView = dataBasePostOffice.postOfficeEntities.TypeViewPublication.ToDictionary(value => value.Name, item => item.id_TypeViewPublication);
-
-            allPublication = dataBasePostOffice.postOfficeEntities.Publication.ToList();
-            //Вывод в ComboBox не работает
-            if (Publication.TypePublication == null)
-            {
-                cbTypePublication.ItemsSource = keyValuePairsType.Keys;
-            }
-            else
-            {
-                cbTypePublication.ItemsSource = keyValuePairsType.Keys;
-
-                cbTypePublication.SelectedItem = Publication.TypePublication;
-            }
-
-            if (Publication.TypeViewPublication == null)
-            {
-                cbTypeViewPublication.ItemsSource = keyValuePairsTypeView.Keys;
-            }
-            else
-            {
-                cbTypeViewPublication.ItemsSource = keyValuePairsTypeView.Keys;
-
-                cbTypeViewPublication.SelectedValue = Publication.TypeViewPublication;
-            }
-
             DataContext = Publication;
 
+            allTypePublication = dataBasePostOffice.postOfficeEntities.TypePublication.ToList();
+
+            //Комментарии
             List<Feedback> allFeedBacks = dataBasePostOffice.postOfficeEntities.Feedback.ToList();
 
             var temp = new List<Feedback>();
@@ -92,57 +68,24 @@ namespace PostOffice.View
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
+            //List<TypePublication> typePublications = allTypePublication.Where(item => item.Name.Contains(cbTypePublication.SelectedItem.ToString())).ToList();
+
+            //Publication.TypePublication = typePublications[0];
+
+            //List<TypeViewPublication> typeViewPublications = allTypeViewPublication.Where(item => item.Name.Contains(cbTypeViewPublication.SelectedItem.ToString())).ToList();
+
+            //Publication.TypeViewPublication = typeViewPublications[0];
+
             if (Publication.id_Publication == 0)
             {
-                decimal pricePerMonthCheck = 0;
-
-                int numberIssuePerMonthCheck = 0;
-
-                try
-                {
-                    pricePerMonthCheck = decimal.Parse(tbPriceMonth.Text);
-
-                    numberIssuePerMonthCheck = int.Parse(tbNumberIssuesPerMonth.Text);
-
-                    if (string.IsNullOrWhiteSpace(tbName.Text))
-                    {
-                        throw new Exception("Наименование издания не может быть пустым");
-                    }
-
-                    if (cbTypePublication.SelectedItem == null)
-                    {
-                        throw new Exception("Тип издания не может быть пустым");
-                    }
-
-                    if (string.IsNullOrWhiteSpace(cbTypeViewPublication.SelectedItem.ToString()))
-                    {
-                        throw new Exception("Вид издания не может быть пустым");
-                    }
-
-                    if (string.IsNullOrWhiteSpace(tbPathToPhoto.Text))
-                    {
-                        throw new Exception("Не указан путь до фото");
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return;
-                }
-
                 Publication.id_Publication = allPublication.Count() + 1;
 
-                Publication.id_TypePublication = keyValuePairsType[cbTypePublication.SelectedItem.ToString()];
-
-                Publication.id_TypeViewPublication = keyValuePairsTypeView[cbTypeViewPublication.SelectedItem.ToString()];
-
                 dataBasePostOffice.postOfficeEntities.Publication.Add(Publication);
-
-                MessageBox.Show("Издание было успешно добавлено!");
-
-                dataBasePostOffice.postOfficeEntities.SaveChanges();
             }
+
+            dataBasePostOffice.postOfficeEntities.SaveChanges();
+
+            MessageBox.Show("Издание было успешно сохранены");
         }
 
         private void Button_Exit(object sender, RoutedEventArgs e)
@@ -182,6 +125,16 @@ namespace PostOffice.View
 
             DataGridTableReview.ItemsSource = temp.ToList();
 
+        }
+
+        private void Button_add_cover(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var temp = openFileDialog.FileName;
+            }
         }
     }
 }

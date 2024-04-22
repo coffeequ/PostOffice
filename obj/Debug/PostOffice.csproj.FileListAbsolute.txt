@@ -125,3 +125,17 @@ C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсов
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\Admin\WinEditAndAddTypePublication.baml
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\Admin\PageTypeViewPublication.g.cs
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\Admin\PageTypeViewPublication.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageTypePublication.g.cs
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageTypeViewPublication.g.cs
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageTypePublication.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageTypeViewPublication.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageAboutUser.g.cs
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\WinAboutUser.g.cs
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageAboutUser.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\WinAboutUser.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\Admin\PageOperators.g.cs
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\Admin\WinAddAndEditOperators.g.cs
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\Admin\PageOperators.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\Admin\WinAddAndEditOperators.baml
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageCorrespondence.g.cs
+C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\obj\Debug\View\PageCorrespondence.baml

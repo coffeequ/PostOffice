@@ -22,6 +22,10 @@ namespace PostOffice.View.Admin
     {
         User user;
 
+        public delegate void CloseWin();
+
+        public static event CloseWin closeWin;
+
         public PageWachPublicationAdmin(User user)
         {
             InitializeComponent();
@@ -29,11 +33,18 @@ namespace PostOffice.View.Admin
             this.user = user;
 
             lbLogin.Content = user.Login;
+
+            View.PageAboutUser.closeWin += PageAboutUser_closeWin;
+        }
+
+        private void PageAboutUser_closeWin()
+        {
+            closeWin();
         }
 
         private void btnEntrance(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Выход или редактириование личных данных");
+            new WinAboutUser(user).ShowDialog();
         }
 
         private void ButtonSubsribes(object sender, RoutedEventArgs e)
@@ -66,5 +77,14 @@ namespace PostOffice.View.Admin
 
         }
 
+        private void ButtonOperators(object sender, RoutedEventArgs e)
+        {
+            frameToAction.NavigationService.Navigate(new View.Admin.PageOperators());
+        }
+
+        private void ButtonCorrespondence(object sender, RoutedEventArgs e)
+        {
+            frameToAction.NavigationService.Navigate(new View.PageCorrespondence());
+        }
     }
 }

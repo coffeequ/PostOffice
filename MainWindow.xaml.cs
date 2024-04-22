@@ -22,6 +22,17 @@ namespace PostOffice
     {
         public static PostOfficeEntities postOfficeEntity;
 
+        /*
+         * от [14.04.2024]
+         * Что надо доделать:
+         * Нормальную загрузку фотки для публикации
+         * Выбор combobox изданий
+         * Вывод чека после оформления в word
+         * Вывод отчета по корреспонденденциям в excel
+         * Проверить всю работоспособность
+         * Сделать маску для ввода даты рождения
+         */
+
         public MainWindow()
         {
             InitializeComponent();

@@ -11,7 +11,10 @@ namespace PostOffice
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.IO;
+    using System.Linq;
+    using System.Windows.Controls;
+
     public partial class Publication
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,7 +29,7 @@ namespace PostOffice
         public int id_TypeViewPublication { get; set; }
         public string Name { get; set; }
         public decimal PricePerMonth { get; set; }
-        public string Cover { get; set; }
+        public byte[] Cover { get; set; }
         public int NumberIssuesPerMonth { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -52,19 +55,61 @@ namespace PostOffice
             }
         }
 
-        public string CoverImage
-        {
-            get
-            {
-                return $"/Pic/" + Cover;
-            }
-        }
+        //public string CoverImageTemp
+        //{
+        //    get
+        //    {
+        //        return System.IO.File.ReadAllBytes("temp.doc");
+        //    }
+        //}
 
         public int CountFeedBack
         {
             get
             {
                 return Feedback.Count;
+            }
+        }
+
+        public List<string> allTypePublicationString
+        {
+            get
+            {
+                List<TypePublication> typePublications = MainWindow.postOfficeEntity.TypePublication.ToList();
+                List<string> stringTypePublication = new List<string>();
+                foreach (var item in typePublications)
+                {
+                    stringTypePublication.Add(item.Name);
+                }
+
+                return stringTypePublication;
+            }
+
+            set
+            {
+                allTypePublicationString = value;
+            }
+        }
+
+        public List<string> allTypeViewPublicationString
+        {
+            get
+            {
+                List<string> temp = new List<string>();
+
+                List<TypeViewPublication> typeViewPublications = MainWindow.postOfficeEntity.TypeViewPublication.ToList();
+
+                for (int i = 0; i < typeViewPublications.Count; i++)
+                {
+                    temp.Add(typeViewPublications[i].Name);
+                }
+
+                return temp;
+            }
+
+            set
+            {
+                allTypeViewPublicationString = value;
             }
         }
     }

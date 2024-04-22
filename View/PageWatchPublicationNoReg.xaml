@@ -27,7 +27,7 @@
                 </DockPanel>
 
                 <Border Background="AliceBlue" Margin="5 10 5 0">
-                    <StackPanel Height="310">
+                    <StackPanel Height="300">
                         <ComboBox Name="cbCatergoriaPublication" SelectionChanged="cbCategoriaChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>
                         <ComboBox Name="cbTypePublication" SelectionChanged="cbTypeChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>
                         <!--<ComboBox Name="cbPriorityGender" SelectionChanged="cbPriorityGenderChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>-->
@@ -61,7 +61,7 @@
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="2" Width="400">
                             <StackPanel Width="200" >
-                                <Image Height="300" Source="{Binding CoverImage}"></Image>
+                                <Image Height="300" Source="{Binding CoverImageTemp}"></Image>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}"></Label>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding NewNumberIssuesPerMonth}"></Label>
                                 <Label FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="{Binding PricePerMonthRounded}"></Label>

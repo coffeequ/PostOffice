@@ -26,6 +26,10 @@ namespace PostOffice.View
 
         public static event CloseWin closeWin;
 
+        public delegate void CloseWin1();
+
+        public static event CloseWin closeWin1;
+
         private List<OperatorPostOffice> AllOperatorPostOffices;
 
         private List<LogIO> allLog;
@@ -73,7 +77,7 @@ namespace PostOffice.View
 
                     LogIO logIO = new LogIO()
                     {
-                        id_Journal = allLog.Count + 1,
+                        id_Journal = allLog[allLog.Count() - 1].id_Journal + 1,
                         id_User = operatorPostOffice[0].id_User,
                         EntryTime = DateTime.Now
                     };
@@ -96,7 +100,7 @@ namespace PostOffice.View
 
         private void btnExit(object sender, RoutedEventArgs e)
         {
-            closeWin();
+            closeWin1();
         }
 
         private void btnPasswordRecovery(object sender, RoutedEventArgs e)

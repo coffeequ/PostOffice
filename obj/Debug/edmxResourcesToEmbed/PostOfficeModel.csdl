@@ -106,17 +106,17 @@
   </EntityType>
   <EntityType Name="TypePublication">
     <Key>
-      <PropertyRef Name="id_TypePublication" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="id_TypePublication" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Publication" Relationship="Self.FK_Publication_TypePublication" FromRole="TypePublication" ToRole="Publication" />
   </EntityType>
   <EntityType Name="TypeViewPublication">
     <Key>
-      <PropertyRef Name="id_TypeViewPublication" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="id_TypeViewPublication" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Publication" Relationship="Self.FK_Publication_TypeViewPublication" FromRole="TypeViewPublication" ToRole="Publication" />
   </EntityType>
@@ -199,7 +199,7 @@
     <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TypePublication">
-        <PropertyRef Name="id_TypePublication" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Publication">
         <PropertyRef Name="id_TypePublication" />
@@ -211,7 +211,7 @@
     <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TypeViewPublication">
-        <PropertyRef Name="id_TypeViewPublication" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Publication">
         <PropertyRef Name="id_TypeViewPublication" />
