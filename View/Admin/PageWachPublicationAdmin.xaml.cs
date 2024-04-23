@@ -74,7 +74,7 @@ namespace PostOffice.View.Admin
 
         private void ButtonLoginIO(object sender, RoutedEventArgs e)
         {
-
+            frameToAction.NavigationService.Navigate(new View.Admin.PageLogIO());
         }
 
         private void ButtonOperators(object sender, RoutedEventArgs e)

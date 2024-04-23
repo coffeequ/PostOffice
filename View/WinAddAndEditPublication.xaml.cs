@@ -50,6 +50,10 @@ namespace PostOffice.View
 
             allTypePublication = dataBasePostOffice.postOfficeEntities.TypePublication.ToList();
 
+            cbTypePublication.ItemsSource = MainWindow.postOfficeEntity.TypePublication.ToList();
+
+            cbTypeViewPublication.ItemsSource = MainWindow.postOfficeEntity.TypeViewPublication.ToList();
+
             //Комментарии
             List<Feedback> allFeedBacks = dataBasePostOffice.postOfficeEntities.Feedback.ToList();
 
