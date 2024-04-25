@@ -38,7 +38,6 @@ namespace PostOffice.View
 
             lbLogin.Content = user.Login;
 
-            View.PageAboutUser.closeWin += PageAboutUser_closeWin;
         }
 
         private void PageAboutUser_closeWin()
@@ -48,7 +47,7 @@ namespace PostOffice.View
 
         private void btnEntrance(object sender, RoutedEventArgs e)
         {
-            new WinAboutUser(user).ShowDialog();
+            new WinAboutUser(user).Show();
         }
 
         private void ButtonSubsribes(object sender, RoutedEventArgs e)

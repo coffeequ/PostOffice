@@ -19,17 +19,27 @@ namespace PostOffice.View
     /// </summary>
     public partial class WinAboutUser : Window
     {
+        User User;
+
+        public delegate void CloseWin();
+
+        public static event CloseWin closeWin;
+
         public WinAboutUser(User user)
         {
             InitializeComponent();
 
-            framePage.NavigationService.Navigate(new View.PageAboutUser(user));
+            DataContext = user;
 
-            View.PageAboutUser.closeWin += PageAboutUser_closeWin;
+            User = user;
+
+            tbPassword.Password = user.Password;
         }
 
-        private void PageAboutUser_closeWin()
+        private void Button_Exit(object sender, RoutedEventArgs e)
         {
+            new MainWindow().Show();
+            closeWin();
             Close();
         }
     }

@@ -22,7 +22,7 @@
     <Key>
       <PropertyRef Name="id Journal" />
     </Key>
-    <Property Name="id Journal" Type="int" Nullable="false" />
+    <Property Name="id Journal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id User" Type="int" Nullable="false" />
     <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
   </EntityType>

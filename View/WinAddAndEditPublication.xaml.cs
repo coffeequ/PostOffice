@@ -133,11 +133,14 @@ namespace PostOffice.View
 
         private void Button_add_cover(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            if (openFileDialog.ShowDialog() == true)
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            Nullable<bool> result = openFileDialog.ShowDialog();
+            if (result == true)
             {
-                var temp = openFileDialog.FileName;
+                string filename = openFileDialog.FileName;
+                var x = System.IO.File.ReadAllBytes(filename);
+                Publication.Cover = x;
             }
         }
     }

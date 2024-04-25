@@ -3,12 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PostOffice.View"
+        xmlns:local="clr-namespace:PostOffice.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="WinAboutUser" Height="250" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="WinAboutUser" Height="250" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="#a7c3c6">
     <Grid>
-        <Frame Name="framePage">
-            
-        </Frame>
+        <StackPanel Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Margin=" 5 2 5 0" VerticalAlignment="Center" FontSize="14" Kind="User"/>
+                <TextBox IsReadOnly="True" Text="{Binding Login}" FontSize="14" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  materialDesign:HintAssist.Hint="Логин" Name="tbLogin" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 10">
+                <materialDesign:PackIcon Margin="5 2 5 0" VerticalAlignment="Center" FontSize="14" Kind="Password"/>
+                <PasswordBox FontSize="14" Width="200" VerticalContentAlignment="Center" Name="tbPassword" materialDesign:HintAssist.Hint="Пароль" Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}" />
+            </StackPanel>
+            <Button Background="AliceBlue" Click="Button_Exit" Margin="10 0">Выйти</Button>
+        </StackPanel>
     </Grid>
 </Window>

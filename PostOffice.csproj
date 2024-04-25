@@ -158,17 +158,11 @@
     <Compile Include="View\Admin\WinEditAndAddTypePublication.xaml.cs">
       <DependentUpon>WinEditAndAddTypePublication.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PageAboutUser.xaml.cs">
-      <DependentUpon>PageAboutUser.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\PageCorrespondence.xaml.cs">
       <DependentUpon>PageCorrespondence.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PageCorrespondenceStatistic.xaml.cs">
       <DependentUpon>PageCorrespondenceStatistic.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\PageLogin.xaml.cs">
-      <DependentUpon>PageLogin.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PageManagmentSubscribe.xaml.cs">
       <DependentUpon>PageManagmentSubscribe.xaml</DependentUpon>
@@ -269,19 +263,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PageAboutUser.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\PageCorrespondence.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PageCorrespondenceStatistic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\PageLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

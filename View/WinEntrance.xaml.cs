@@ -19,30 +19,90 @@ namespace PostOffice.View
     /// </summary>
     public partial class WinEntrance : Window
     {
+        Model.DataBasePostOffice dataBasePostOffice;
+
         public delegate void CloseWin();
 
         public static event CloseWin closeWin;
+
+        private List<OperatorPostOffice> AllOperatorPostOffices;
+
+        private List<LogIO> allLog;
 
         public WinEntrance()
         {
             InitializeComponent();
 
-            View.PageLogin.closeWin += PageLogin_closeWin;
+            try
+            {
+                dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                throw;
+            }
 
-            View.PageLogin.closeWin1 += PageLogin_closeWin1;
+            AllOperatorPostOffices = dataBasePostOffice.postOfficeEntities.OperatorPostOffice.ToList();
 
-            frameLog.NavigationService.Navigate(new View.PageLogin());
+            allLog = dataBasePostOffice.postOfficeEntities.LogIO.ToList();
         }
 
-        private void PageLogin_closeWin1()
+
+        private void btnEntrance(object sender, RoutedEventArgs e)
         {
-            Close();
+            string inputLogin = tbLogin.Text.Trim();
+
+            string inputPassword = tbPassword.Password.Trim();
+
+            var operatorPostOffice = dataBasePostOffice.postOfficeEntities.User.ToList().Where(personal => personal.Login == inputLogin).ToList();
+
+            if (string.IsNullOrWhiteSpace(tbLogin.Text))
+            {
+                MessageBox.Show("Введите логин");
+            }
+            else if (string.IsNullOrWhiteSpace(tbPassword.Password))
+            {
+                MessageBox.Show("Введите пароль");
+            }
+            else if (operatorPostOffice.Count() != 0)
+            {
+                if (operatorPostOffice[0].Password == inputPassword)
+                {
+                    View.WinWatchPublication win = new WinWatchPublication(operatorPostOffice[0]);
+
+                    LogIO logIO = new LogIO()
+                    {
+                        id_User = operatorPostOffice[0].id_User,
+                        EntryTime = DateTime.Now
+                    };
+                    dataBasePostOffice.postOfficeEntities.LogIO.Add(logIO);
+                    dataBasePostOffice.postOfficeEntities.SaveChanges();
+                    win.Show();
+                    closeWin();
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Пароль был введен не правильно");
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Оператора с таким {inputLogin} не существует");
+            }
+
         }
 
-        private void PageLogin_closeWin()
+        private void btnPasswordRecovery(object sender, RoutedEventArgs e)
         {
-            closeWin();
+            MessageBox.Show("Восстановление пароля");
+        }
+
+        private void btnExit(object sender, RoutedEventArgs e)
+        {
             Close();
+
         }
     }
 }

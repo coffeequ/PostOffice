@@ -55,14 +55,6 @@ namespace PostOffice
             }
         }
 
-        //public string CoverImageTemp
-        //{
-        //    get
-        //    {
-        //        return System.IO.File.ReadAllBytes("temp.doc");
-        //    }
-        //}
-
         public int CountFeedBack
         {
             get
