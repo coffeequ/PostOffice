@@ -17,6 +17,7 @@ namespace PostOffice
         public int id_Journal { get; set; }
         public int id_User { get; set; }
         public System.DateTime EntryTime { get; set; }
+        public Nullable<System.DateTime> ExitTime { get; set; }
     
         public virtual User User { get; set; }
     }

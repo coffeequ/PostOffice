@@ -36,7 +36,7 @@ namespace PostOffice.View.Admin
                 MessageBox.Show(ex.Message);
             }
 
-            dgLogIO.ItemsSource = dataBasePostOffice.postOfficeEntities.LogIO.ToList();
+            dgLogIO.ItemsSource = dataBasePostOffice.postOfficeEntities.LogIO.OrderByDescending(item => item.id_Journal).ToList();
         }
 
         private void Button_Clear(object sender, RoutedEventArgs e)

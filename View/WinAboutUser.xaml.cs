@@ -19,6 +19,8 @@ namespace PostOffice.View
     /// </summary>
     public partial class WinAboutUser : Window
     {
+        Model.DataBasePostOffice dataBasePostOffice;
+
         User User;
 
         public delegate void CloseWin();
@@ -34,11 +36,20 @@ namespace PostOffice.View
             User = user;
 
             tbPassword.Password = user.Password;
+
+            dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
         }
 
         private void Button_Exit(object sender, RoutedEventArgs e)
         {
             new MainWindow().Show();
+
+            var list = dataBasePostOffice.postOfficeEntities.LogIO.ToList();
+
+            list[list.Count() - 1].ExitTime = DateTime.Now;
+
+            dataBasePostOffice.postOfficeEntities.SaveChanges();
+
             closeWin();
             Close();
         }

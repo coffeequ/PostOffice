@@ -27,6 +27,7 @@
           <ScalarProperty Name="id_Journal" ColumnName="id Journal" />
           <ScalarProperty Name="id_User" ColumnName="id User" />
           <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+          <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

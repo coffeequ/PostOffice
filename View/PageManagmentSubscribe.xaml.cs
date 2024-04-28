@@ -206,8 +206,6 @@ namespace PostOffice.View
 
                     deliveryBreak = 4;
 
-                    
-
                     deliveryBreak += 3;
 
                     dataBasePostOffice.postOfficeEntities.SaveChanges();

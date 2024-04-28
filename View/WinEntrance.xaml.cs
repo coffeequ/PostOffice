@@ -27,6 +27,8 @@ namespace PostOffice.View
 
         private List<OperatorPostOffice> AllOperatorPostOffices;
 
+        public LogIO logIO;
+
         private List<LogIO> allLog;
 
         public WinEntrance()
@@ -71,7 +73,7 @@ namespace PostOffice.View
                 {
                     View.WinWatchPublication win = new WinWatchPublication(operatorPostOffice[0]);
 
-                    LogIO logIO = new LogIO()
+                    logIO = new LogIO()
                     {
                         id_User = operatorPostOffice[0].id_User,
                         EntryTime = DateTime.Now

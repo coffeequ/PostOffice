@@ -13,12 +13,13 @@
             <RowDefinition Height="8*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="dgLogIO">
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="dgLogIO">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Логин" Binding="{Binding User.Login}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Пароль" Binding="{Binding User.Password}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Роль" Binding="{Binding User.Role.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Время входа" Binding="{Binding EntryTime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Время выхода" Binding="{Binding ExitTime}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Grid.Row="1" Background="#a7c3c6" Width="120" FontSize="16" Height="40" Click="Button_Clear">Очистка</Button>

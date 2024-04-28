@@ -22,9 +22,10 @@
     <Key>
       <PropertyRef Name="id Journal" />
     </Key>
-    <Property Name="id Journal" Type="int" Nullable="false" />
+    <Property Name="id Journal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id User" Type="int" Nullable="false" />
     <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
+    <Property Name="ExitTime" Type="smalldatetime" />
   </EntityType>
   <EntityType Name="OperatorPostOffice">
     <Key>
@@ -44,7 +45,7 @@
     <Property Name="id TypeViewPublication" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PricePerMonth" Type="money" Nullable="false" />
-    <Property Name="Cover" Type="nvarchar" MaxLength="200" />
+    <Property Name="Cover" Type="varbinary(max)" />
     <Property Name="NumberIssuesPerMonth" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Role">
