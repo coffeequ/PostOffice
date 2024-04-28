@@ -263,7 +263,7 @@ namespace PostOffice.View
 
                         cellRange = table.Cell(i + 4, 5).Range;
 
-                        cellRange.Text = "20%";
+                        cellRange.Text = "НДС 20%";
 
                         cellRange = table.Cell(i + 4, 6).Range;
 
@@ -278,7 +278,7 @@ namespace PostOffice.View
 
                     wordDocument.Bookmarks["TotalPrice2"].Range.Text = priceItog.ToString("F2");
 
-                    double nds = (double)priceItog - ((double)priceItog * 0.20);
+                    double nds = (double)priceItog * 0.20;
 
                     wordDocument.Bookmarks["Nds"].Range.Text = nds.ToString("F2");
 
