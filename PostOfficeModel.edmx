@@ -27,9 +27,10 @@
           <Key>
             <PropertyRef Name="id Journal" />
           </Key>
-          <Property Name="id Journal" Type="int" Nullable="false" />
+          <Property Name="id Journal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id User" Type="int" Nullable="false" />
           <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="ExitTime" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="OperatorPostOffice">
           <Key>
@@ -324,9 +325,10 @@
           <Key>
             <PropertyRef Name="id_Journal" />
           </Key>
-          <Property Name="id_Journal" Type="Int32" Nullable="false" />
+          <Property Name="id_Journal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_User" Type="Int32" Nullable="false" />
           <Property Name="EntryTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ExitTime" Type="DateTime" Precision="0" />
           <NavigationProperty Name="User" Relationship="Self.FK_LogIO_User" FromRole="LogIO" ToRole="User" />
         </EntityType>
         <EntityType Name="OperatorPostOffice">
@@ -642,6 +644,7 @@
                 <ScalarProperty Name="id_Journal" ColumnName="id Journal" />
                 <ScalarProperty Name="id_User" ColumnName="id User" />
                 <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+                <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\App.xaml
-30-1118802205
-22112789815
-522121078716
-27515057275
-MainWindow.xaml;View\Admin\PageOperators.xaml;View\Admin\PagePublicationAdmin.xaml;View\Admin\PageSubscribersAdmin.xaml;View\Admin\PageTypePublication.xaml;View\Admin\PageTypeViewPublication.xaml;View\Admin\PageWachPublicationAdmin.xaml;View\Admin\WinAddAndEditOperators.xaml;View\Admin\WinEditAndAddTypePublication.xaml;View\PageAboutUser.xaml;View\PageCorrespondence.xaml;View\PageCorrespondenceStatistic.xaml;View\PageLogin.xaml;View\PageManagmentSubscribe.xaml;View\PageMoreDetailsSubscriber.xaml;View\PagePublication.xaml;View\PageStatistic.xaml;View\PageSubscribers.xaml;View\PageSubscribeStatistic.xaml;View\PageTypePublication.xaml;View\PageTypeViewPublication.xaml;View\PageWatchPublicationNoReg.xaml;View\PageWatchPublicationOperator.xaml;View\WinAboutUser.xaml;View\WinAddAndEditPublication.xaml;View\WinEntrance.xaml;View\WinMoreDetailsSubscriber.xaml;View\WinStatistic.xaml;View\WinWatchAndEditPublication.xaml;View\WinWatchPublication.xaml;
+29-1825536356
+2-1742115314
+51-161345276
+281094644433
+MainWindow.xaml;View\Admin\PageLogIO.xaml;View\Admin\PageOperators.xaml;View\Admin\PagePublicationAdmin.xaml;View\Admin\PageSubscribersAdmin.xaml;View\Admin\PageTypePublication.xaml;View\Admin\PageTypeViewPublication.xaml;View\Admin\PageWachPublicationAdmin.xaml;View\Admin\WinAddAndEditOperators.xaml;View\Admin\WinEditAndAddTypePublication.xaml;View\PageCorrespondence.xaml;View\PageCorrespondenceStatistic.xaml;View\PageManagmentSubscribe.xaml;View\PageMoreDetailsSubscriber.xaml;View\PagePublication.xaml;View\PageStatistic.xaml;View\PageSubscribers.xaml;View\PageSubscribeStatistic.xaml;View\PageTypePublication.xaml;View\PageTypeViewPublication.xaml;View\PageWatchPublicationNoReg.xaml;View\PageWatchPublicationOperator.xaml;View\WinAboutUser.xaml;View\WinAddAndEditPublication.xaml;View\WinEntrance.xaml;View\WinMoreDetailsSubscriber.xaml;View\WinStatistic.xaml;View\WinWatchAndEditPublication.xaml;View\WinWatchPublication.xaml;
 
-False
+True
 

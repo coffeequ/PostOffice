@@ -19,12 +19,13 @@
                     <Label Background="AliceBlue" Content="Почтовое отделение" Height="50" VerticalContentAlignment="Center" Width="220" HorizontalContentAlignment="Center" FontSize="18"/>
                 </InlineUIContainer></TextBlock>
                 <Border Background="AliceBlue" Margin="5 10 5 0">
-                    <StackPanel Height="370">
+                    <StackPanel Height="400">
                         <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonSubsribes">Подписчики</Button>
                         <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonPublication">Список изданий</Button>
                         <Button Background="AliceBlue" FontSize="16" Height="50" Margin="0 0 0 10" Click="ButtonTypePublication">
-                            <TextBlock TextWrapping="Wrap">Список катеогрий изданий</TextBlock>
+                            <TextBlock TextWrapping="Wrap">Список категорий изданий</TextBlock>
                         </Button>
+                        <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonTypePublication">Список видов изданий</Button>
                         <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonOperators">Список операторов</Button>
                         <Button Background="AliceBlue" FontSize="16" Height="50" Margin="0 0 0 10" Click="ButtonCorrespondence">
                             <TextBlock TextWrapping="Wrap">

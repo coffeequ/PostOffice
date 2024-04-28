@@ -44,8 +44,6 @@ namespace PostOffice.View
         {
             InitializeComponent();
 
-            WinEntrance.closeWin += WinEntrance_closePage;
-
             sortPublication = new List<Publication>();
 
             temps = new List<Publication>();
@@ -68,10 +66,10 @@ namespace PostOffice.View
             isLoginPageTap = false;
         }
 
-        private void WinEntrance_closePage()
-        {
-            closePage();
-        }
+        //private void WinEntrance_closePage()
+        //{
+        //    closePage();
+        //}
 
         private int CountEntryMax(int AllCountData) => (int) Math.Ceiling(AllCountData * 1.0 / _countPublication);
 

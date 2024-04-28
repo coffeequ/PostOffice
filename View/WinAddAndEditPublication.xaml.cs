@@ -50,6 +50,10 @@ namespace PostOffice.View
 
             allTypePublication = dataBasePostOffice.postOfficeEntities.TypePublication.ToList();
 
+            cbTypePublication.ItemsSource = MainWindow.postOfficeEntity.TypePublication.ToList();
+
+            cbTypeViewPublication.ItemsSource = MainWindow.postOfficeEntity.TypeViewPublication.ToList();
+
             //Комментарии
             List<Feedback> allFeedBacks = dataBasePostOffice.postOfficeEntities.Feedback.ToList();
 
@@ -129,11 +133,14 @@ namespace PostOffice.View
 
         private void Button_add_cover(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            if (openFileDialog.ShowDialog() == true)
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            Nullable<bool> result = openFileDialog.ShowDialog();
+            if (result == true)
             {
-                var temp = openFileDialog.FileName;
+                string filename = openFileDialog.FileName;
+                var x = System.IO.File.ReadAllBytes(filename);
+                Publication.Cover = x;
             }
         }
     }

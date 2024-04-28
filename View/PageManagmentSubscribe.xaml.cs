@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace PostOffice.View
 {
@@ -29,6 +30,8 @@ namespace PostOffice.View
         List<Publication> activePublication;
 
         List<Subscribe> subscribes;
+
+        List<Correspondence> allCorrespondence;
 
         User user;
 
@@ -60,6 +63,8 @@ namespace PostOffice.View
             dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
 
             subscribes = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
+
+            allCorrespondence = dataBasePostOffice.postOfficeEntities.Correspondence.ToList();
 
             lvSelectedPublication.Items.Clear();
 
@@ -153,7 +158,7 @@ namespace PostOffice.View
                 {
                     subscribe = new Subscribe();
 
-                    int lastIndexCorrespondence = dataBasePostOffice.postOfficeEntities.Correspondence.Count() + 1;
+                    int lastIndexCorrespondence = allCorrespondence[allCorrespondence.Count() - 1].id_Correspondence + 1;
 
                     subscribe.Publication = publicationsSelected[i];
 
@@ -181,7 +186,7 @@ namespace PostOffice.View
 
                             correspondence.DeliveryAddres = tbAdressDelivery.Text;
 
-                            dayStart += 3;
+                            dayStart += 2;
 
                             correspondence.DateOfDispatch = new DateTime(int.Parse(tbYearEnd.Text), monthStart, dayStart);
 
@@ -206,8 +211,6 @@ namespace PostOffice.View
 
                     deliveryBreak = 4;
 
-                    
-
                     deliveryBreak += 3;
 
                     dataBasePostOffice.postOfficeEntities.SaveChanges();
@@ -222,6 +225,64 @@ namespace PostOffice.View
                     MessageBoxImage.Question);
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
+                    Word.Application wordApp = new Word.Application();
+
+                    Word.Document wordDocument = wordApp.Documents.Add(@"C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\bin\Debug\CheckPay.docx");
+
+                    wordDocument.Bookmarks["NumberSubscribeWord"].Range.Text = "N " + numberSubscribeGeneration.ToString();
+
+                    wordDocument.Bookmarks["DateNow"].Range.Text = DateTime.Now.ToString();
+
+                    Word.Table table = wordDocument.Tables[2];
+
+                    Word.Range cellRange;
+
+                    int countPublication = monthEnd - int.Parse(tbMonthStart.Text);
+
+                    decimal priceItog = 0;
+
+                    for (int i = 0; i < publicationsSelected.Count; i++)
+                    {
+                        table.Rows.Add();
+
+                        cellRange = table.Cell(i + 4, 1).Range;
+
+                        cellRange.Text = (i + 1).ToString();
+
+                        cellRange = table.Cell(i + 4, 2).Range;
+
+                        cellRange.Text = publicationsSelected[i].Name;
+
+                        cellRange = table.Cell(i + 4, 3).Range;
+
+                        cellRange.Text = publicationsSelected[i].PricePerMonthRounded;
+
+                        cellRange = table.Cell(i + 4, 4).Range;
+
+                        cellRange.Text = countPublication.ToString();
+
+                        cellRange = table.Cell(i + 4, 5).Range;
+
+                        cellRange.Text = "НДС 20%";
+
+                        cellRange = table.Cell(i + 4, 6).Range;
+
+                        decimal price = countPublication * publicationsSelected[i].PricePerMonth;
+
+                        priceItog += price;
+
+                        cellRange.Text = price.ToString("F2");
+                    }
+
+                    wordDocument.Bookmarks["TotalPrice"].Range.Text = priceItog.ToString("F2");
+
+                    wordDocument.Bookmarks["TotalPrice2"].Range.Text = priceItog.ToString("F2");
+
+                    double nds = (double)priceItog * 0.20;
+
+                    wordDocument.Bookmarks["Nds"].Range.Text = nds.ToString("F2");
+
+                    wordApp.Visible = true;
 
                 }
                 NavigationService.Navigate(new View.PageMoreDetailsSubscriber(subscriberOfThePostOffice, user));

@@ -34,17 +34,17 @@ namespace PostOffice.View.Admin
 
             lbLogin.Content = user.Login;
 
-            View.PageAboutUser.closeWin += PageAboutUser_closeWin;
+            //View.PageAboutUser.closeWin += PageAboutUser_closeWin;
         }
 
-        private void PageAboutUser_closeWin()
-        {
-            closeWin();
-        }
+        //private void PageAboutUser_closeWin()
+        //{
+        //    closeWin();
+        //}
 
         private void btnEntrance(object sender, RoutedEventArgs e)
         {
-            new WinAboutUser(user).ShowDialog();
+            new WinAboutUser(user).Show();
         }
 
         private void ButtonSubsribes(object sender, RoutedEventArgs e)
@@ -74,7 +74,7 @@ namespace PostOffice.View.Admin
 
         private void ButtonLoginIO(object sender, RoutedEventArgs e)
         {
-
+            frameToAction.NavigationService.Navigate(new View.Admin.PageLogIO());
         }
 
         private void ButtonOperators(object sender, RoutedEventArgs e)

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("postmodeloffice.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("postmodeloffice.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("postofficemodel.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("postofficemodel.tt")]
 
 
