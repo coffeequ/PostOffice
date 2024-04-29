@@ -19,7 +19,7 @@
           <Key>
             <PropertyRef Name="id Feedback" />
           </Key>
-          <Property Name="id Feedback" Type="int" Nullable="false" />
+          <Property Name="id Feedback" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id Publication" Type="int" Nullable="false" />
           <Property Name="Feedback" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>

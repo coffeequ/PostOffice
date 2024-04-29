@@ -51,7 +51,9 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button FontSize="14" Padding="5" Height="40" Background="#a7c3c6" Click="Button_Delete_Publication">Убрать подписку</Button>
+                            <Button Background="Red" Width="60" FontSize="16" Height="40" Click="Button_Delete_Publication">
+                                <materialDesign:PackIcon Kind="Cross"></materialDesign:PackIcon>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

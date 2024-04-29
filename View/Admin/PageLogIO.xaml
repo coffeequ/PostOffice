@@ -13,7 +13,7 @@
             <RowDefinition Height="8*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="dgLogIO">
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" x:Name="dgLogIO" FontSize="14">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Логин" Binding="{Binding User.Login}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Пароль" Binding="{Binding User.Password}"></DataGridTextColumn>

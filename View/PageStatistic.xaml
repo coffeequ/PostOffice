@@ -22,12 +22,13 @@
                 </TextBlock>
                 <Border Background="AliceBlue" Margin="5 10 5 0">
                     <StackPanel Height="300">
-                        <Button FontSize="14" Background="AliceBlue" Height="40" Margin="0 0 0 10" Click="ButtonSubsribesStatic">Подписчики изданий</Button>
+                        <Button FontSize="14" Background="AliceBlue" Height="30" Margin="0 0 0 10" Click="ButtonSubsribesStatic">Подписчики изданий</Button>
                         <Button FontSize="14" Background="AliceBlue" Height="50" Margin="0 0 0 10" Click="ButtonCorrespondenceStatic">
                             <TextBlock TextWrapping="Wrap" Width="160" >
                                 Движение корреспонденции
-                            </TextBlock></Button>
-                        <Button Background="AliceBlue" FontSize="14" Height="40" Margin="0 0 0 10" Click="ButtonExit">Назад</Button>
+                            </TextBlock>
+                        </Button>
+                        <Button Background="AliceBlue" FontSize="14" Height="30" Margin="0 0 0 10" Click="ButtonExit">Назад</Button>
                     </StackPanel>
                 </Border>
             </StackPanel>

@@ -9,7 +9,7 @@
       Title="PageCorrespondence">
 
     <Grid>
-        <DataGrid x:Name="dgCorrespondence" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True">
+        <DataGrid x:Name="dgCorrespondence" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True" FontSize="14">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Subscribe.SubscriberOfThePostOffice.Surname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Subscribe.SubscriberOfThePostOffice.Name}"></DataGridTextColumn>
@@ -19,10 +19,8 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="Button_Delete" Width="125" Background="AliceBlue">
-                                <materialDesign:PackIcon Kind="Delete">
-
-                                </materialDesign:PackIcon>
+                            <Button Background="Red" Width="60" FontSize="16" Height="40" Click="Button_Delete">
+                                <materialDesign:PackIcon Kind="Delete"></materialDesign:PackIcon>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
