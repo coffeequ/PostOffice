@@ -24,7 +24,7 @@
     </Key>
     <Property Name="id Journal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="id User" Type="int" Nullable="false" />
-    <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
+    <Property Name="EntryTime" Type="smalldatetime" />
     <Property Name="ExitTime" Type="smalldatetime" />
   </EntityType>
   <EntityType Name="OperatorPostOffice">

@@ -16,14 +16,21 @@ namespace PostOffice
     {
         public int id_Journal { get; set; }
         public int id_User { get; set; }
-        public System.DateTime EntryTime { get; set; }
+        public Nullable<System.DateTime> EntryTime { get; set; }
         public Nullable<System.DateTime> ExitTime { get; set; }
-
+        
         public string smallEntryTimeLogIO
         {
             get
             {
-                return EntryTime.ToShortDateString();
+                if (EntryTime == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    return EntryTime.Value.ToShortDateString();
+                }
             }
         }
 
@@ -39,7 +46,7 @@ namespace PostOffice
                 {
                     return ExitTime.Value.ToShortDateString();
                 }
-               
+
             }
         }
         public virtual User User { get; set; }

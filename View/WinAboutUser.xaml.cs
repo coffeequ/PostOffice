@@ -46,7 +46,7 @@ namespace PostOffice.View
 
             var list = dataBasePostOffice.postOfficeEntities.LogIO.ToList();
 
-            if (list.Count() == 0)
+            if (list.Count() <= 0)
             {
                 LogIO logIO = new LogIO();
 
@@ -55,7 +55,17 @@ namespace PostOffice.View
                 logIO.id_User = User.id_User;
 
                 dataBasePostOffice.postOfficeEntities.LogIO.Add(logIO);
+
+                dataBasePostOffice.postOfficeEntities.SaveChanges();
+
+                closeWin();
+
+                Close();
+
+                return;
             }
+
+            list[list.Count() - 1].ExitTime = DateTime.Now;
 
             dataBasePostOffice.postOfficeEntities.SaveChanges();
             

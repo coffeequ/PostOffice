@@ -26,7 +26,7 @@
     </Key>
     <Property Name="id_Journal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="id_User" Type="Int32" Nullable="false" />
-    <Property Name="EntryTime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EntryTime" Type="DateTime" Precision="0" />
     <Property Name="ExitTime" Type="DateTime" Precision="0" />
     <NavigationProperty Name="User" Relationship="Self.FK_LogIO_User" FromRole="LogIO" ToRole="User" />
   </EntityType>
