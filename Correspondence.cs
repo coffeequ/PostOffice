@@ -19,7 +19,23 @@ namespace PostOffice
         public string DeliveryAddres { get; set; }
         public System.DateTime DateOfDispatch { get; set; }
         public System.DateTime DateOfDelivery { get; set; }
-    
+
+        public string smallDateOfDispatch
+        {
+            get
+            {
+                return DateOfDispatch.ToShortDateString();
+            }
+        }
+
+        public string smallDateOfDelivery
+        {
+            get
+            {
+                return DateOfDelivery.ToShortDateString();
+            }
+        }
+
         public virtual Subscribe Subscribe { get; set; }
     }
 }

@@ -22,6 +22,8 @@ namespace PostOffice.View
     {
         SubscriberOfThePostOffice subscriberOfThePostOffice;
 
+        List<SubscriberOfThePostOffice> allSubscribers;
+
         List<Subscribe> allSubscribes;
 
         Model.DataBasePostOffice dataBasePostOffice;
@@ -52,6 +54,8 @@ namespace PostOffice.View
 
             allSubscribes = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
 
+            allSubscribers = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
+
             var publicationSubscriber = dataBasePostOffice.postOfficeEntities.Subscribe.Where(persona => persona.id_Subscriber == subscriberOfThePostOffice.id_Subscriber).ToList();
 
             dgSubsriberPublication.ItemsSource = publicationSubscriber;
@@ -72,11 +76,14 @@ namespace PostOffice.View
                         tempOperator = item;
                     }
                 }
-                subscriberOfThePostOffice.id_Subscriber = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.Count() + 1;
+                subscriberOfThePostOffice.id_Subscriber = allSubscribers[allSubscribers.Count() - 1].id_Subscriber + 1;
                 subscriberOfThePostOffice.OperatorPostOffice = tempOperator;
                 dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.Add(subscriberOfThePostOffice);
-                dataBasePostOffice.postOfficeEntities.SaveChanges();
             }
+
+            subscriberOfThePostOffice.Birthday = (DateTime)tbBrithday.SelectedDate;
+
+            dataBasePostOffice.postOfficeEntities.SaveChanges();
         }
 
         private void Button_Add_Publication(object sender, RoutedEventArgs e)
@@ -121,6 +128,7 @@ namespace PostOffice.View
         {
             SaveSubscrubers();
             MessageBox.Show("Данные сохранились");
+
         }
 
         private void Button_wordCheck(object sender, RoutedEventArgs e)

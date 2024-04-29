@@ -88,7 +88,7 @@ namespace PostOffice.Model
                     worksheet.Cells[row, 1].Font.Size = 12;
                 }
 
-                if (tempSubscruber.Count() > 1)
+                else if (tempSubscruber.Count() > 1)
                 {
                     worksheet.Cells[row, 1] = $"Подписчики";
 
@@ -135,7 +135,7 @@ namespace PostOffice.Model
 
                     col++;
 
-                    worksheet.Cells[row, col] = tempSubscruber[k].Birthday;
+                    worksheet.Cells[row, col] = tempSubscruber[k].smallBrithday;
 
                     col = 1;
                 }
@@ -148,7 +148,84 @@ namespace PostOffice.Model
 
         public void DBToExcelTableCorrespondence()
         {
+            int row = 1;
 
+            workbook = excelApp.Workbooks.Add();
+
+            worksheet = workbook.Worksheets[1];
+
+            for (int i = 0; i < allSubscriberOfThePostOffices.Count; i++)
+            {
+                List<Subscribe> subscribes = new List<Subscribe>();
+
+                for (int l = 0; l < allSubs.Count(); l++)
+                {
+                    if (allSubscriberOfThePostOffices[i].id_Subscriber == allSubs[l].id_Subscriber)
+                    {
+                        subscribes.Add(allSubs[l]);
+                    }
+                }
+
+                List<Correspondence> ActiveCorrespondence = new List<Correspondence>();
+
+                for (int m = 0; m < subscribes.Count; m++)
+                {
+                    for (int n = 0; n < AllCorrespondences.Count; n++)
+                    {
+                        if (subscribes[m].id_Subscribe == AllCorrespondences[n].id_Subscribe)
+                        {
+                            ActiveCorrespondence.Add(AllCorrespondences[n]);
+                        }
+                    }
+                }
+
+
+                worksheet.Cells[row, 1] = $"Подписчик: {allSubscriberOfThePostOffices[i].Surname} {allSubscriberOfThePostOffices[i].Name} {allSubscriberOfThePostOffices[i].MiddleName}";
+
+                worksheet.Cells[row, 1].Font.Bold = true;
+
+                worksheet.Cells[row, 1].Font.Size = 14;
+
+                row++;
+
+                worksheet.Cells[row, 1] = $"Адрес доставки";
+
+                worksheet.Cells[row, 2] = $"Дата отправки";
+
+                worksheet.Cells[row, 3] = $"Дата доставки";
+
+                Excel.Range rangeTitle = worksheet.Range[$"A{row}: C{row}"];
+
+                rangeTitle.EntireColumn.AutoFit();
+
+                rangeTitle.EntireRow.AutoFit();
+
+                rangeTitle.Interior.Color = Excel.XlRgbColor.rgbAliceBlue;
+
+                row++;
+
+                for (int j = 0, col = 1; j < ActiveCorrespondence.Count(); j++, row++)
+                {
+                    worksheet.Cells[row, col] = ActiveCorrespondence[j].DeliveryAddres;
+                    
+                    col++;
+
+                    worksheet.Cells[row, col] = ActiveCorrespondence[j].smallDateOfDispatch;
+
+                    col++;
+
+                    worksheet.Cells[row, col] = ActiveCorrespondence[j].smallDateOfDelivery;
+
+                    col = 1;
+                }
+
+                row++;
+
+            }
+
+            excelApp.Visible = true;
+
+            excelApp.UserControl = true;
         }
     }
 }

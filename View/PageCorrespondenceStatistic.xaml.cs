@@ -22,6 +22,8 @@ namespace PostOffice.View
     {
         Model.DataBasePostOffice dataBasePostOffice;
 
+        Model.IOExcel iOExcel;
+
         public PageCorrespondenceStatistic()
         {
             InitializeComponent();
@@ -29,11 +31,14 @@ namespace PostOffice.View
             dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
 
             dgCorrespondence.ItemsSource = dataBasePostOffice.postOfficeEntities.Correspondence.ToList();
+
+
         }
 
         private void Button_statisticToExcel(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Вывод в эксель");
+            iOExcel = new Model.IOExcel(dataBasePostOffice);
+            iOExcel.DBToExcelTableCorrespondence();
         }
     }
 }

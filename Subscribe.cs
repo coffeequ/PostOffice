@@ -49,5 +49,28 @@ namespace PostOffice
             }
         }
 
+        public string smallEntryTime
+        {
+            get
+            {
+                return EntryTime.ToShortDateString();
+            }
+        }
+
+        public string smallEndTime
+        {
+            get
+            {
+                return EntryTime.ToShortDateString();
+            }
+        }
+
+        public string smallDateRegistration
+        {
+            get
+            {
+                return DateRegistration.Value.ToShortDateString();
+            }
+        }
     }
 }

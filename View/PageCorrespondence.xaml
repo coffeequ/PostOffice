@@ -14,8 +14,8 @@
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Subscribe.SubscriberOfThePostOffice.Surname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Subscribe.SubscriberOfThePostOffice.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Адрес доставки" Binding="{Binding DeliveryAddres}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата отправки" Binding="{Binding DateOfDispatch}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата получения" Binding="{Binding DateOfDelivery}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата отправки" Binding="{Binding smallDateOfDispatch}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата получения" Binding="{Binding smallDateOfDelivery}"></DataGridTextColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

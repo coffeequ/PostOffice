@@ -18,7 +18,30 @@ namespace PostOffice
         public int id_User { get; set; }
         public System.DateTime EntryTime { get; set; }
         public Nullable<System.DateTime> ExitTime { get; set; }
-    
+
+        public string smallEntryTimeLogIO
+        {
+            get
+            {
+                return EntryTime.ToShortDateString();
+            }
+        }
+
+        public string smallExitTimeLogIO
+        {
+            get
+            {
+                if (ExitTime == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    return ExitTime.Value.ToShortDateString();
+                }
+               
+            }
+        }
         public virtual User User { get; set; }
     }
 }
