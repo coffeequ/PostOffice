@@ -22,6 +22,10 @@ namespace PostOffice.View.Admin
     {
         Model.DataBasePostOffice dataBasePostOffice;
 
+        List<Subscribe> allSubscribers;
+
+        List<Subscribe> activeSubscribers;
+
         public PagePublicationAdmin()
         {
             InitializeComponent();
@@ -36,10 +40,14 @@ namespace PostOffice.View.Admin
             }
 
             dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+
+            allSubscribers = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
         }
 
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
+            activeSubscribers = new List<Subscribe>();
+
             var item = sender as Button;
 
             var selectedItem = item.DataContext as Publication;
@@ -55,10 +63,28 @@ namespace PostOffice.View.Admin
 
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                    dataBasePostOffice.postOfficeEntities.Publication.Remove(selectedItem);
-                    dataBasePostOffice.postOfficeEntities.SaveChanges();
-                    dgPublication.ItemsSource = null;
-                    dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+                    foreach (var itemSubsribers in allSubscribers)
+                    {
+                        if (itemSubsribers.id_Publication == selectedItem.id_Publication)
+                        {
+                            activeSubscribers.Add(itemSubsribers);
+                        }
+                    }
+
+                    if (activeSubscribers.Count() == 0)
+                    {
+                        dataBasePostOffice.postOfficeEntities.Publication.Remove(selectedItem);
+
+                        dataBasePostOffice.postOfficeEntities.SaveChanges();
+                        
+                        dgPublication.ItemsSource = null;
+                        
+                        dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Удаление предотвращено! Вы не можете удалить это издание, так как у него есть активные подписки");
+                    }                   
                 }
             }
         }

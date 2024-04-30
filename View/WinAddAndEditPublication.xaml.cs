@@ -83,7 +83,7 @@ namespace PostOffice.View
 
             dataBasePostOffice.postOfficeEntities.SaveChanges();
 
-            MessageBox.Show("Издание было успешно сохранены");
+            MessageBox.Show("Издание было успешно сохранено");
         }
 
         private void Button_Exit(object sender, RoutedEventArgs e)
@@ -107,7 +107,7 @@ namespace PostOffice.View
 
             dataBasePostOffice.postOfficeEntities.SaveChanges();
 
-            MessageBox.Show("Комментарий удален!");
+            MessageBox.Show("Комментарий удалён!");
 
             List<Feedback> allFeedBacks = dataBasePostOffice.postOfficeEntities.Feedback.ToList();
 

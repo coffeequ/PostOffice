@@ -30,9 +30,7 @@ namespace PostOffice.View
 
             dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
 
-            dgCorrespondence.ItemsSource = dataBasePostOffice.postOfficeEntities.Correspondence.ToList();
-
-
+            dgCorrespondence.ItemsSource = dataBasePostOffice.postOfficeEntities.Correspondence.OrderByDescending(item => item.id_Correspondence).ToList();
         }
 
         private void Button_statisticToExcel(object sender, RoutedEventArgs e)
