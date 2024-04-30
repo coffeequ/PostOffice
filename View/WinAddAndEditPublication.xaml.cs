@@ -54,6 +54,8 @@ namespace PostOffice.View
 
             cbTypeViewPublication.ItemsSource = MainWindow.postOfficeEntity.TypeViewPublication.ToList();
 
+            allPublication = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+
             //Комментарии
             List<Feedback> allFeedBacks = dataBasePostOffice.postOfficeEntities.Feedback.ToList();
 
@@ -72,17 +74,9 @@ namespace PostOffice.View
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            //List<TypePublication> typePublications = allTypePublication.Where(item => item.Name.Contains(cbTypePublication.SelectedItem.ToString())).ToList();
-
-            //Publication.TypePublication = typePublications[0];
-
-            //List<TypeViewPublication> typeViewPublications = allTypeViewPublication.Where(item => item.Name.Contains(cbTypeViewPublication.SelectedItem.ToString())).ToList();
-
-            //Publication.TypeViewPublication = typeViewPublications[0];
-
             if (Publication.id_Publication == 0)
             {
-                Publication.id_Publication = allPublication.Count() + 1;
+                Publication.id_Publication = allPublication[allPublication.Count() - 1].id_Publication + 1;
 
                 dataBasePostOffice.postOfficeEntities.Publication.Add(Publication);
             }
@@ -142,6 +136,7 @@ namespace PostOffice.View
                 var x = System.IO.File.ReadAllBytes(filename);
                 Publication.Cover = x;
             }
+            
         }
     }
 }

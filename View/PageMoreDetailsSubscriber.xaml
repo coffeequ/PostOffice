@@ -32,7 +32,7 @@
                     <TextBox x:Name="tbPhone" HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Номер телефона" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center"  Text="{Binding NumberPhone}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="0 25 0 0">
-                    <TextBox x:Name="tbBrithday" HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Дата рождения" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding Birthday}" FontSize="14" HorizontalAlignment="Left" Width="200"></TextBox>
+                    <DatePicker IsTodayHighlighted="True" Language="Ru" x:Name="tbBrithday" HorizontalContentAlignment="Left" materialDesign:HintAssist.HelperText="Дата рождения" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding Birthday}" FontSize="14" HorizontalAlignment="Left" Width="200"></DatePicker>
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Column="1">
@@ -43,15 +43,17 @@
         <DataGrid Grid.Row="1" IsReadOnly="True" Name="dgSubsriberPublication" AutoGenerateColumns="False" FontSize="14">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование" Binding="{Binding Publication.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата начала подписки" Binding="{Binding EntryTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата окончания подписки" Binding="{Binding EndTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата регистрации" Binding="{Binding DateRegistration}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата начала подписки" Binding="{Binding smallEntryTime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата окончания подписки" Binding="{Binding smallEndTime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата регистрации" Binding="{Binding smallDateRegistration}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Статус подписки" Binding="{Binding GetStringStatusActive}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Номер подписки" Binding="{Binding NumberSubscribe}"></DataGridTextColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button FontSize="14" Padding="5" Height="40" Background="#a7c3c6" Click="Button_Delete_Publication">Убрать подписку</Button>
+                            <Button Background="Red" Width="60" FontSize="16" Height="40" Click="Button_Delete_Publication">
+                                <materialDesign:PackIcon Kind="Cross"></materialDesign:PackIcon>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

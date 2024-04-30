@@ -16,13 +16,13 @@
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
             <Button Grid.Row="1" Background="#a7c3c6" Width="155" FontSize="16" Height="40" Click="Button_statisticToExcel">Вывод в Excel</Button>
         </StackPanel>
-        <DataGrid x:Name="dgCorrespondence" IsReadOnly="True" AutoGenerateColumns="False">
+        <DataGrid x:Name="dgCorrespondence" IsReadOnly="True" AutoGenerateColumns="False" FontSize="14">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Subscribe.SubscriberOfThePostOffice.Surname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Subscribe.SubscriberOfThePostOffice.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Адрес доставки" Binding="{Binding DeliveryAddres}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата отправки" Binding="{Binding DateOfDispatch}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата получения" Binding="{Binding DateOfDelivery}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата отправки" Binding="{Binding smallDateOfDispatch}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата получения" Binding="{Binding smallDateOfDelivery}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

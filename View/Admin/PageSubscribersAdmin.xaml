@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PostOffice.View.Admin"
+      xmlns:local="clr-namespace:PostOffice.View.Admin" xmlns:materialDesing="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageSubscribersAdmin">
@@ -19,19 +19,23 @@
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Номер телефона" Binding="{Binding NumberPhone}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Birthday}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding smallBrithday}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество подписок" Binding="{Binding CountSubscribe}"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="Подробнее">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Grid.Row="1" FontSize="14" Width="100" Background="#a7c3c6" Click="Button_More">Подробнее</Button>
+                            <Button Grid.Row="1" FontSize="14" Width="60" Background="AliceBlue" Click="Button_More">
+                                <materialDesing:PackIcon Kind="About"></materialDesing:PackIcon>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="Действие">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Grid.Row="1" FontSize="14" Width="100" Background="#a7c3c6" Click="Button_Delete">X</Button>
+                            <Button Background="Red" Width="60" FontSize="16" Height="40" Click="Button_Delete">
+                                <materialDesing:PackIcon Kind="Delete"></materialDesing:PackIcon>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

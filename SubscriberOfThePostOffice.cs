@@ -32,6 +32,14 @@ namespace PostOffice
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subscribe> Subscribe { get; set; }
 
+        public string smallBrithday
+        {
+            get
+            {
+                return Birthday.ToShortDateString();
+            }
+        }
+
         public int CountSubscribe
         {
             get

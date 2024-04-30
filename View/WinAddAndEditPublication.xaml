@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PostOffice.View"
+        xmlns:local="clr-namespace:PostOffice.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Почтовое отделение" Height="450" Width="800">
     <Grid>
@@ -19,7 +19,7 @@
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Column="0" Margin="10">
                     <Button Width="300" Height="350" Background="Transparent" Click="Button_add_cover">
-                        <Image Source="{Binding Cover}"></Image>
+                        <Image Source="{Binding Cover}" x:Name="CoverPublicationWin"></Image>
                     </Button>
                     <Label FontSize="16" Margin="10">Путь до фото:</Label>
                     <TextBox HorizontalContentAlignment="Left" VerticalContentAlignment="Center" x:Name="tbPathToPhoto" Text="{Binding Cover}">
@@ -39,11 +39,6 @@
                     <StackPanel Grid.Row="0">
                         <Label FontSize="16">Наименование издания:</Label>
                         <TextBox x:Name="tbName" TextAlignment="Left" Margin="5" FontSize="16" Text="{Binding Name}"></TextBox>
-                        <!--<Label FontSize="16">Тип издания:</Label>
-                        --><!--SelectedValuePath="Id" SelectedValue="{Binding TypePublication}" ItemsSource="{Binding allTypePublication}"--><!--
-                        <ComboBox ItemsSource="{Binding allTypePublicationString}" SelectedItem="{Binding TypePublication.Name}" SelectedValuePath="id_TypePublication"  x:Name="cbTypePublication" Margin="5"  FontSize="16"></ComboBox>
-                        <Label FontSize="16">Вид издания:</Label>
-                        <ComboBox ItemsSource="{Binding allTypeViewPublicationString}" SelectedItem="{Binding TypeViewPublication.Name}" SelectedValuePath="id_TypeViewPublication" x:Name="cbTypeViewPublication" Margin="5" FontSize="16"></ComboBox>-->
                         <Label FontSize="16">Цена за месяц:</Label>
                         <TextBox x:Name="tbPriceMonth" Margin="5" FontSize="16" Text="{Binding PricePerMonth}"></TextBox>
                         <Label FontSize="14">Тип издания</Label>
@@ -64,7 +59,9 @@
                         <DataGridTemplateColumn Header="Действие">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Background="AliceBlue" Width="120" Click="Button_Delete">Удаление</Button>
+                                    <Button Background="Red" Width="50" Click="Button_Delete">
+                                        <materialDesign:PackIcon Kind="Delete"></materialDesign:PackIcon>
+                                    </Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

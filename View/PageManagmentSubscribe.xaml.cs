@@ -188,6 +188,13 @@ namespace PostOffice.View
 
                             dayStart += 2;
 
+                            if (dayStart >= 25)
+                            {
+                                monthStart += 1;
+
+                                dayStart = 1;
+                            }
+
                             correspondence.DateOfDispatch = new DateTime(int.Parse(tbYearEnd.Text), monthStart, dayStart);
 
                             dayStart += 4;
@@ -227,7 +234,7 @@ namespace PostOffice.View
                 {
                     Word.Application wordApp = new Word.Application();
 
-                    Word.Document wordDocument = wordApp.Documents.Add(@"C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\bin\Debug\CheckPay.docx");
+                    Word.Document wordDocument = wordApp.Documents.Add(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CheckPay.docx"));
 
                     wordDocument.Bookmarks["NumberSubscribeWord"].Range.Text = "N " + numberSubscribeGeneration.ToString();
 

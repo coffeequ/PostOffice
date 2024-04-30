@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище PostOfficeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище PostOfficeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Correspondence">
           <Key>
             <PropertyRef Name="id Correspondence" />
@@ -19,7 +19,7 @@
           <Key>
             <PropertyRef Name="id Feedback" />
           </Key>
-          <Property Name="id Feedback" Type="int" Nullable="false" />
+          <Property Name="id Feedback" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id Publication" Type="int" Nullable="false" />
           <Property Name="Feedback" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
@@ -29,7 +29,7 @@
           </Key>
           <Property Name="id Journal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id User" Type="int" Nullable="false" />
-          <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="EntryTime" Type="smalldatetime" />
           <Property Name="ExitTime" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="OperatorPostOffice">
@@ -296,8 +296,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PostOfficeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -327,7 +326,7 @@
           </Key>
           <Property Name="id_Journal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_User" Type="Int32" Nullable="false" />
-          <Property Name="EntryTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EntryTime" Type="DateTime" Precision="0" />
           <Property Name="ExitTime" Type="DateTime" Precision="0" />
           <NavigationProperty Name="User" Relationship="Self.FK_LogIO_User" FromRole="LogIO" ToRole="User" />
         </EntityType>
