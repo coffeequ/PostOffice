@@ -76,8 +76,67 @@ namespace PostOffice.View
         {
             if (Publication.id_Publication == 0)
             {
-                Publication.id_Publication = allPublication[allPublication.Count() - 1].id_Publication + 1;
+                try
+                {
+                    Publication.TypePublication = (TypePublication)cbTypePublication.SelectedItem;
 
+                    Publication.TypeViewPublication = (TypeViewPublication)cbTypeViewPublication.SelectedItem;
+
+                    if (string.IsNullOrEmpty(tbName.Text))
+                    {
+                        throw new Exception("Поле \"Наименование издания\" не может быть пустым");
+                    }
+
+                    if (tbName.Text.Length > 50)
+                    {
+                        throw new Exception("Наименование издания не может превышать 50 символов");
+                    }
+
+                    if (allPublication.Where(item => item.Name == tbName.Text).Count() >= 1)
+                    {
+                        throw new Exception("Издание с таким именем уже существует");
+                    }
+
+                    if (string.IsNullOrWhiteSpace(tbNumberIssuesPerMonth.Text) || int.Parse(tbNumberIssuesPerMonth.Text) == 0)
+                    {
+                        throw new Exception("Поле \"Количество выпусков в месяц\" не может быть пустым");
+                    }
+
+                    if (string.IsNullOrEmpty(tbPriceMonth.Text) || int.Parse(tbPriceMonth.Text) == 0)
+                    {
+                        throw new Exception("Поле \"Цена за месяц\" не может быть пустым");
+                    }
+
+                    if (Publication.Cover == null)
+                    {
+                        throw new Exception("Выберете обложку для публикации");
+                    }
+
+                    if (Publication.TypePublication == null)
+                    {
+                        throw new Exception("Выберете тип издания");
+                    }
+
+                    if (Publication.TypeViewPublication == null)
+                    {
+                        throw new Exception("Выберете вид издания");
+                    }
+
+                    Publication.NumberIssuesPerMonth = int.Parse(tbNumberIssuesPerMonth.Text);
+
+                    Publication.PricePerMonth = int.Parse(tbPriceMonth.Text);
+
+                    if (Publication.NumberIssuesPerMonth > 4)
+                    {
+                        throw new Exception("Количество выпусков не может превышать 4 единиц в месяц");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+                Publication.id_Publication = allPublication[allPublication.Count() - 1].id_Publication + 1;
                 dataBasePostOffice.postOfficeEntities.Publication.Add(Publication);
             }
 

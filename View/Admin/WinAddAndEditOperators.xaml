@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PostOffice.View.Admin"
         mc:Ignorable="d"
-        Title="WinAddAndEditOperators" Height="400" Width="500">
+        Title="Почтовое отделение" Height="400" Width="500">
     <Grid Background="#a7c3c6">
         <StackPanel>
             

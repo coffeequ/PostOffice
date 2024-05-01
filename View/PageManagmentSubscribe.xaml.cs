@@ -220,7 +220,15 @@ namespace PostOffice.View
 
                     deliveryBreak += 3;
 
-                    dataBasePostOffice.postOfficeEntities.SaveChanges();
+                    try
+                    {
+                        dataBasePostOffice.postOfficeEntities.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                        //Починить ошибку при, после которой не возможно взаимодейстовать с базой
+                        MessageBox.Show("Не возможно оформить подписку не менее чем на 1 месяц");
+                    }
                 }
 
                 MessageBox.Show($"Успешно были добавлены {publicationsSelected.Count} публикаций в подписку!");
