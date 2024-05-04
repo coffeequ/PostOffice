@@ -30,7 +30,6 @@
                     <StackPanel Height="300">
                         <ComboBox Name="cbCatergoriaPublication" SelectionChanged="cbCategoriaChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>
                         <ComboBox Name="cbTypePublication" SelectionChanged="cbTypeChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>
-                        <!--<ComboBox Name="cbPriorityGender" SelectionChanged="cbPriorityGenderChanged" IsEditable="True" IsReadOnly="True" FontSize="16" Height="30" Padding="5"></ComboBox>-->
                     </StackPanel>
                 </Border>
             </StackPanel>

@@ -66,11 +66,6 @@ namespace PostOffice.View
             isLoginPageTap = false;
         }
 
-        //private void WinEntrance_closePage()
-        //{
-        //    closePage();
-        //}
-
         private int CountEntryMax(int AllCountData) => (int) Math.Ceiling(AllCountData * 1.0 / _countPublication);
 
         private void comboBoxTypePublication(ComboBox comboBox, List<TypePublication> list)

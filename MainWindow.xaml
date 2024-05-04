@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="Почтовое отделение" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Frame Name="mainFrame" Navigated="mainFrame_Navigated">
-            
-        </Frame>
+        <Viewbox>
+            <Frame Name="mainFrame" Navigated="mainFrame_Navigated">
+
+            </Frame>
+        </Viewbox>
     </Grid>
 </Window>

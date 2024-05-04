@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PostOffice.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="WinAboutUser" Height="250" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="#a7c3c6">
+        Title="Почтовое отделение" Height="250" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="#a7c3c6">
     <Grid>
         <StackPanel Margin="10">
             <StackPanel Orientation="Horizontal">

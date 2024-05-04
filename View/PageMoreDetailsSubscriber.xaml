@@ -48,11 +48,11 @@
                 <DataGridTextColumn Header="Дата регистрации" Binding="{Binding smallDateRegistration}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Статус подписки" Binding="{Binding GetStringStatusActive}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Номер подписки" Binding="{Binding NumberSubscribe}"></DataGridTextColumn>
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Действие">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Background="Red" Width="60" FontSize="16" Height="40" Click="Button_Delete_Publication">
-                                <materialDesign:PackIcon Kind="Cross"></materialDesign:PackIcon>
+                                <materialDesign:PackIcon Kind="Delete"></materialDesign:PackIcon>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

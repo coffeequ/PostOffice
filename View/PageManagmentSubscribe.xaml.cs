@@ -113,6 +113,8 @@ namespace PostOffice.View
                 {
                     yearMonthEnd = int.Parse(tbMonthEnd.Text);
 
+                    int yearMonthStart = int.Parse(tbMonthStart.Text);
+
                     if (string.IsNullOrWhiteSpace(yearMonthEnd.ToString()))
                     {
                         throw new Exception($"Введите правильный месяц");
@@ -131,6 +133,11 @@ namespace PostOffice.View
                     if (yearMonthEnd >= 13)
                     {
                        throw new Exception("Введите корректный месяц!");
+                    }
+
+                    if ((yearMonthEnd - yearMonthStart) == 0)
+                    {
+                        throw new Exception("Не возможно оформить подписку менее чем на 1 месяц");
                     }
 
                 }
@@ -220,7 +227,15 @@ namespace PostOffice.View
 
                     deliveryBreak += 3;
 
-                    dataBasePostOffice.postOfficeEntities.SaveChanges();
+                    try
+                    {
+                        dataBasePostOffice.postOfficeEntities.SaveChanges();
+                    }
+                    catch (Exception)
+                    {
+                        //Починить ошибку при, после которой не возможно взаимодейстовать с базой
+                        MessageBox.Show("Не возможно оформить подписку не менее чем на 1 месяц");
+                    }
                 }
 
                 MessageBox.Show($"Успешно были добавлены {publicationsSelected.Count} публикаций в подписку!");

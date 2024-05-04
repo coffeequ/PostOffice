@@ -43,6 +43,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=3.0.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>packages\MaterialDesignColors.3.0.0\lib\net462\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -375,12 +381,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pic\free-icon-font-angle-left-3916912.png" />
-    <Resource Include="Pic\free-icon-font-angle-right-3916907.png" />
-    <Resource Include="Pic\free-icon-font-arrow-small-left-3916837.png" />
-    <Resource Include="Pic\free-icon-font-arrow-small-right-3916831.png" />
     <Resource Include="Pic\u-komelka.jpg" />
-    <Resource Include="Pic\free-icon-font-user-3917711.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -395,9 +396,6 @@
     <Resource Include="Pic\CoverPublication\file_c8b9a2c2-e09d-4dee-a180-d37a6ca3a23c_EXTRA_LARGE.jpg" />
     <Resource Include="Pic\CoverPublication\file_d9a10f38-8d28-48d0-bf85-7c899973b33a_EXTRA_LARGE.jpg" />
     <Resource Include="Pic\CoverPublication\file_f8bf44b5-0ed5-4c02-ba96-7b317580bb6b_EXTRA_LARGE.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pic\free-icon-font-magic-wand-3914260.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
@@ -438,6 +436,11 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Pic\CoverPublication\file_00a5a1b2-2b65-4f8d-b7f8-58a3590f9f58_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_322540fd-b55e-4c34-a713-4c59a16d022c_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_80ebaf3b-6321-4779-b364-466356c4341b_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_bec24c00-db52-47b3-95c2-507bd4f92792_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\CoverPublication\file_dd011ece-8af0-480a-a8ab-b68786be79b4_EXTRA_LARGE.jpg" />
     <Content Include="PostOfficeModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PostOfficeModel.edmx</DependentUpon>

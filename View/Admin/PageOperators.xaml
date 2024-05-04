@@ -24,6 +24,15 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
+                            <Button Background="Transparent" Width="60" FontSize="16" Height="40" Click="Button_edit">
+                                <materialDesign:PackIcon Kind="Edit"></materialDesign:PackIcon>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
                             <Button Background="Red" Width="60" FontSize="16" Height="40" Click="Button_Delete">
                                 <materialDesign:PackIcon Kind="Delete"></materialDesign:PackIcon>
                             </Button>

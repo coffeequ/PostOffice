@@ -22,6 +22,16 @@ namespace PostOffice.View.Admin
     {
         Model.DataBasePostOffice dataBasePostOffice;
 
+        List<Subscribe> allSubscribers;
+
+        List<Subscribe> activeSubscribers;
+
+        List<Publication> allPublication;
+
+        List<Publication> sortPublication;
+
+        List<Publication> temps;
+
         public PagePublicationAdmin()
         {
             InitializeComponent();
@@ -36,10 +46,27 @@ namespace PostOffice.View.Admin
             }
 
             dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+
+            allSubscribers = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
+
+            allPublication = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+
+            sortPublication = new List<Publication>();
+
+            temps = new List<Publication>();
+
+            dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+
+            comboBoxTypePublication(cbTypePublication, dataBasePostOffice.postOfficeEntities.TypePublication.ToList());
+
+            comboBoxTypeViewPubication(cbCatergoriaPublication, dataBasePostOffice.postOfficeEntities.TypeViewPublication.ToList());
+
         }
 
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
+            activeSubscribers = new List<Subscribe>();
+
             var item = sender as Button;
 
             var selectedItem = item.DataContext as Publication;
@@ -55,10 +82,28 @@ namespace PostOffice.View.Admin
 
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                    dataBasePostOffice.postOfficeEntities.Publication.Remove(selectedItem);
-                    dataBasePostOffice.postOfficeEntities.SaveChanges();
-                    dgPublication.ItemsSource = null;
-                    dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+                    foreach (var itemSubsribers in allSubscribers)
+                    {
+                        if (itemSubsribers.id_Publication == selectedItem.id_Publication)
+                        {
+                            activeSubscribers.Add(itemSubsribers);
+                        }
+                    }
+
+                    if (activeSubscribers.Count() == 0)
+                    {
+                        dataBasePostOffice.postOfficeEntities.Publication.Remove(selectedItem);
+
+                        dataBasePostOffice.postOfficeEntities.SaveChanges();
+                        
+                        dgPublication.ItemsSource = null;
+                        
+                        dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Удаление предотвращено! Вы не можете удалить это издание, так как у него есть активные подписки");
+                    }
                 }
             }
         }
@@ -71,9 +116,9 @@ namespace PostOffice.View.Admin
 
             new WinAddAndEditPublication(itemSelected).ShowDialog();
 
-            dgPublication.ItemsSource = null;
+            SearchFilter();
 
-            dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+            ComboBoxFiltres();
         }
 
         private void Button_Add(object sender, RoutedEventArgs e)
@@ -82,9 +127,99 @@ namespace PostOffice.View.Admin
 
             new WinAddAndEditPublication(publication).ShowDialog();
 
-            dgPublication.ItemsSource = null;
+            SearchFilter();
 
-            dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+            ComboBoxFiltres();
         }
+
+        private void comboBoxTypePublication(ComboBox comboBox, List<TypePublication> list)
+        {
+            List<string> temp = new List<string>();
+
+            temp.Add("Все издания");
+
+            foreach (var item in list)
+            {
+                temp.Add(item.Name);
+            }
+
+            comboBox.ItemsSource = temp;
+
+            comboBox.SelectedItem = temp[0];
+        }
+
+        private void comboBoxTypeViewPubication(ComboBox comboBox, List<TypeViewPublication> list)
+        {
+            List<string> temp = new List<string>();
+
+            temp.Add("Все категории изданий");
+
+            foreach (var item in list)
+            {
+                temp.Add(item.Name);
+            }
+
+            comboBox.ItemsSource = temp;
+
+            comboBox.SelectedItem = temp[0];
+        }
+
+        private void TextChangedSearch(object sender, TextChangedEventArgs e)
+        {
+            SearchFilter();
+            ComboBoxFiltres();
+        }
+
+        private void SearchFilter()
+        {
+            sortPublication = allPublication.Where(item => item.Name.StartsWith(tbSearch.Text)).ToList();
+        }
+
+        private void ComboBoxFiltres()
+        {
+            string selectItem = cbCatergoriaPublication.SelectedItem as string;
+
+            string selectItem2 = cbTypePublication.SelectedItem as string;
+
+            if (selectItem != "Все категории изданий")
+            {
+                temps = allPublication.Where(item => item.TypeViewPublication.Name == selectItem & item.Name.StartsWith(tbSearch.Text)).ToList();
+                if (selectItem2 != "Все издания")
+                {
+                    sortPublication = temps.Where(item => item.TypePublication.Name == selectItem2 & item.Name.StartsWith(tbSearch.Text)).ToList();
+                }
+                else
+                {
+                    sortPublication = temps;
+                }
+            }
+
+            if (selectItem2 != "Все издания")
+            {
+                temps = allPublication.Where(item => item.TypePublication.Name == selectItem2 & item.Name.StartsWith(tbSearch.Text)).ToList();
+                if (selectItem != "Все категории изданий")
+                {
+                    sortPublication = temps.Where(item => item.TypeViewPublication.Name == selectItem & item.Name.StartsWith(tbSearch.Text)).ToList();
+                }
+                else
+                {
+                    sortPublication = temps;
+                }
+            }
+            dgPublication.ItemsSource = sortPublication;
+        }
+
+        private void cbCategoriaChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SearchFilter();
+            ComboBoxFiltres();
+        }
+
+        private void cbTypeChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SearchFilter();
+            ComboBoxFiltres();
+        }
+
     }
 }

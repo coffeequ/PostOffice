@@ -61,7 +61,7 @@ namespace PostOffice
         {
             get
             {
-                return EntryTime.ToShortDateString();
+                return EndTime.ToShortDateString();
             }
         }
 

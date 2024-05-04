@@ -10,25 +10,27 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="220"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Border BorderBrush="Black" BorderThickness="1">
             <StackPanel Background="#a7c3c6">
-                <TextBlock HorizontalAlignment="Left" Width="200" Padding="0 10 0 5" >
+                <TextBlock HorizontalAlignment="Left" Width="220" Padding="0 10 0 5" >
                     <InlineUIContainer>
-                        <TextBox Background="AliceBlue" TextWrapping="Wrap" Text="Почтовое отделение Cтатистика" Height="60" VerticalContentAlignment="Center" Width="200" HorizontalContentAlignment="Center" FontSize="18"/>
+                        <TextBlock Padding="0 5 0 0" Text="Почтовое отделение Статистика" Background="AliceBlue" TextAlignment="Center" TextWrapping="Wrap" Height="60" VerticalAlignment="Center" Width="218" HorizontalAlignment="Left" FontSize="18">
+                            
+                        </TextBlock>
                     </InlineUIContainer>
                 </TextBlock>
                 <Border Background="AliceBlue" Margin="5 10 5 0">
                     <StackPanel Height="300">
-                        <Button FontSize="14" Background="AliceBlue" Height="30" Margin="0 0 0 10" Click="ButtonSubsribesStatic">Подписчики изданий</Button>
-                        <Button FontSize="14" Background="AliceBlue" Height="50" Margin="0 0 0 10" Click="ButtonCorrespondenceStatic">
+                        <Button FontSize="16" Background="AliceBlue" Height="30" Margin="0 0 0 10" Click="ButtonSubsribesStatic">Подписчики изданий</Button>
+                        <Button FontSize="16" Background="AliceBlue" Height="50" Margin="0 0 0 10" Click="ButtonCorrespondenceStatic">
                             <TextBlock TextWrapping="Wrap" Width="160" >
                                 Движение корреспонденции
                             </TextBlock>
                         </Button>
-                        <Button Background="AliceBlue" FontSize="14" Height="30" Margin="0 0 0 10" Click="ButtonExit">Назад</Button>
+                        <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonExit">Назад</Button>
                     </StackPanel>
                 </Border>
             </StackPanel>

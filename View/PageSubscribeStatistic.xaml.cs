@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,9 +25,9 @@ namespace PostOffice.View
     {
         Model.DataBasePostOffice dataBasePostOffice;
 
-        List<Subscribe> subscribes;
+        List<SubscriberOfThePostOffice> subscriberOfThePostOffices;
 
-        List<Subscribe> corrSubs;
+        public SeriesCollection sc { get; set; }
 
         public PageSubscribeStatistic()
         {
@@ -36,23 +39,42 @@ namespace PostOffice.View
 
             dgSubscribers.ItemsSource = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
 
-            subscribes = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
+            subscriberOfThePostOffices = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
+
+            ChartValues<int> vs = new ChartValues<int>();
+
+            for (int i = 0; i < subscriberOfThePostOffices.Count; i++)
+            {
+                vs.Add(subscriberOfThePostOffices[i].CountSubscribe);
+            }
+
+            SeriesCollection seriesViews = new SeriesCollection();
+
+            for (int i = 0; i < subscriberOfThePostOffices.Count; i++)
+            {
+                seriesViews.Add(new PieSeries()
+                {
+                    Title = $"{subscriberOfThePostOffices[i].Surname} {subscriberOfThePostOffices[i].Name} {subscriberOfThePostOffices[i].MiddleName}",
+                    Values = new ChartValues<int> { vs[i] },
+                    PushOut = 15,
+                    DataLabels = true
+                });
+            }
+
+            myChart.Series = seriesViews;
+
+            myChart.LegendLocation = LegendLocation.Right;
+
+            myChart.FontSize = 14;
+
+            DataContext = this;
         }
 
         private void dgPublication_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = dgPublication.SelectedItem as Publication;
 
-            corrSubs = new List<Subscribe>();
-
-            for (int i = 0; i < subscribes.Count(); i++)
-            {
-                if (item.id_Publication == subscribes[i].id_Publication)
-                {
-                    corrSubs.Add(subscribes[i]);
-                }
-            }
-            dgSubscribers.ItemsSource = corrSubs;
+            dgSubscribers.ItemsSource = item.Subscribe.Select(t => t.SubscriberOfThePostOffice).ToList();
         }
 
         private void Button_statisticToExcel(object sender, RoutedEventArgs e)
