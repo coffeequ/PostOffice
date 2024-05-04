@@ -17,7 +17,9 @@
             <StackPanel Background="#a7c3c6">
                 <TextBlock HorizontalAlignment="Left" Width="200" Padding="0 10 0 5" >
                     <InlineUIContainer>
-                        <TextBox Background="AliceBlue" TextWrapping="Wrap" Text="Почтовое отделение Cтатистика" Height="60" VerticalContentAlignment="Center" Width="200" HorizontalContentAlignment="Center" FontSize="18"/>
+                        <TextBlock Text="Почтовое отделение Статистика" Background="AliceBlue" TextAlignment="Center" TextWrapping="Wrap" Height="60" VerticalAlignment="Center" Width="200" HorizontalAlignment="Left" FontSize="18">
+                            
+                        </TextBlock>
                     </InlineUIContainer>
                 </TextBlock>
                 <Border Background="AliceBlue" Margin="5 10 5 0">
