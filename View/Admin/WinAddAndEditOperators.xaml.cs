@@ -23,6 +23,8 @@ namespace PostOffice.View.Admin
 
         List<User> users;
 
+        List<string> usersLogin;
+
         public WinAddAndEditOperators(OperatorPostOffice operatorPostOffice)
         {
             InitializeComponent();
@@ -47,6 +49,12 @@ namespace PostOffice.View.Admin
 
                 user.Login = tbLogin.Text;
 
+                if (users.Where(item => item.Login == user.Login).Count() > 0)
+                {
+                    MessageBox.Show("Пользователь с таким логином уже существует!");
+                    return;
+                }
+
                 user.Password = tbPassword.Text;
 
                 user.id_User = users[users.Count() - 1].id_User + 1;
@@ -58,6 +66,8 @@ namespace PostOffice.View.Admin
                 MainWindow.postOfficeEntity.User.Add(user);
 
                 operatorPostOffice.User = user;
+
+                operatorPostOffice.id_Operator = users[users.Count() - 1].id_User + 1;
 
                 MainWindow.postOfficeEntity.OperatorPostOffice.Add(operatorPostOffice);
             }

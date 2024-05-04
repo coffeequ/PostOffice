@@ -32,8 +32,6 @@ namespace PostOffice.View.Admin
 
             dataBasePostOffice = new Model.DataBasePostOffice(MainWindow.postOfficeEntity);
 
-            users = dataBasePostOffice.postOfficeEntities.User.ToList();
-
             logIOs = dataBasePostOffice.postOfficeEntities.LogIO.ToList();
 
             dgOperators.ItemsSource = MainWindow.postOfficeEntity.OperatorPostOffice.ToList();
@@ -53,6 +51,8 @@ namespace PostOffice.View.Admin
 
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
+            users = dataBasePostOffice.postOfficeEntities.User.ToList();
+
             var item = sender as Button;
 
             var selectedItem = item.DataContext as OperatorPostOffice;
@@ -69,8 +69,6 @@ namespace PostOffice.View.Admin
                 {
                     User user = new User();
 
-                    dataBasePostOffice.postOfficeEntities.OperatorPostOffice.Remove(selectedItem);
-
                     foreach (var itemCollection in users)
                     {
                         if (itemCollection.id_User == selectedItem.id_Operator)
@@ -79,6 +77,8 @@ namespace PostOffice.View.Admin
                             MainWindow.postOfficeEntity.User.Remove(itemCollection);
                         }
                     }
+
+                    dataBasePostOffice.postOfficeEntities.OperatorPostOffice.Remove(selectedItem);
 
                     for (int i = 0; i < logIOs.Count(); i++)
                     {
@@ -97,6 +97,19 @@ namespace PostOffice.View.Admin
                     dgOperators.ItemsSource = MainWindow.postOfficeEntity.OperatorPostOffice.ToList();
                 }
             }
+        }
+
+        private void Button_edit(object sender, RoutedEventArgs e)
+        {
+            var item = sender as Button;
+
+            var selectedItem = item.DataContext as OperatorPostOffice;
+
+            new WinAddAndEditOperators(selectedItem).ShowDialog();
+
+            dgOperators.ItemsSource = null;
+
+            dgOperators.ItemsSource = MainWindow.postOfficeEntity.OperatorPostOffice.ToList();
         }
     }
 }

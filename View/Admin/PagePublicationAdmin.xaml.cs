@@ -103,7 +103,7 @@ namespace PostOffice.View.Admin
                     else
                     {
                         MessageBox.Show("Удаление предотвращено! Вы не можете удалить это издание, так как у него есть активные подписки");
-                    }                   
+                    }
                 }
             }
         }
@@ -116,9 +116,9 @@ namespace PostOffice.View.Admin
 
             new WinAddAndEditPublication(itemSelected).ShowDialog();
 
-            dgPublication.ItemsSource = null;
+            SearchFilter();
 
-            dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+            ComboBoxFiltres();
         }
 
         private void Button_Add(object sender, RoutedEventArgs e)
@@ -127,9 +127,9 @@ namespace PostOffice.View.Admin
 
             new WinAddAndEditPublication(publication).ShowDialog();
 
-            dgPublication.ItemsSource = null;
+            SearchFilter();
 
-            dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
+            ComboBoxFiltres();
         }
 
         private void comboBoxTypePublication(ComboBox comboBox, List<TypePublication> list)
@@ -167,7 +167,7 @@ namespace PostOffice.View.Admin
         private void TextChangedSearch(object sender, TextChangedEventArgs e)
         {
             SearchFilter();
-            ApplyComboBoxFiltres();
+            ComboBoxFiltres();
         }
 
         private void SearchFilter()
@@ -175,7 +175,7 @@ namespace PostOffice.View.Admin
             sortPublication = allPublication.Where(item => item.Name.StartsWith(tbSearch.Text)).ToList();
         }
 
-        private void ApplyComboBoxFiltres()
+        private void ComboBoxFiltres()
         {
             string selectItem = cbCatergoriaPublication.SelectedItem as string;
 
@@ -212,13 +212,13 @@ namespace PostOffice.View.Admin
         private void cbCategoriaChanged(object sender, SelectionChangedEventArgs e)
         {
             SearchFilter();
-            ApplyComboBoxFiltres();
+            ComboBoxFiltres();
         }
 
         private void cbTypeChanged(object sender, SelectionChangedEventArgs e)
         {
             SearchFilter();
-            ApplyComboBoxFiltres();
+            ComboBoxFiltres();
         }
 
     }

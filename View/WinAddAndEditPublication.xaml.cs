@@ -195,7 +195,6 @@ namespace PostOffice.View
                 var x = System.IO.File.ReadAllBytes(filename);
                 Publication.Cover = x;
             }
-            
         }
     }
 }
