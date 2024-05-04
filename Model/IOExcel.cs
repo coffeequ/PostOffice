@@ -17,6 +17,8 @@ namespace PostOffice.Model
 
         Excel.Worksheet worksheet;
 
+        Excel.Worksheet worksheet2;
+
         List<Subscribe> allSubs;
 
         List<Publication> allPublication;
@@ -46,7 +48,7 @@ namespace PostOffice.Model
 
             workbook = excelApp.Workbooks.Add();
 
-            worksheet = workbook.Worksheets[1];
+            worksheet = workbook.Worksheets[1]; 
 
             for (int i = 0; i < allPublication.Count(); i++)
             {
@@ -141,6 +143,54 @@ namespace PostOffice.Model
                 }
                 row++;
             }
+
+            worksheet2 = workbook.Worksheets.Add(After: worksheet);
+
+            row = 1;
+
+            worksheet2.Cells[row, 1] = $"ФИО";
+
+            worksheet2.Cells[row, 1].Font.Size = 14;
+
+            worksheet2.Cells[row, 2] = $"Количество подписок";
+
+            worksheet2.Cells[row, 2].Font.Size = 14;
+
+            Excel.Range rangeTitle2 = worksheet2.Range[$"A{row}: B{row}"];
+
+            rangeTitle2.ColumnWidth = 25;
+
+            rangeTitle2.EntireRow.AutoFit();
+
+            rangeTitle2.Interior.Color = Excel.XlRgbColor.rgbAliceBlue;
+
+            row++;
+
+            int cols = 0;
+
+            for (int i = 0; i < allSubscriberOfThePostOffices.Count; i++, row++)
+            {
+                worksheet2.Cells[row, 1] = $"{allSubscriberOfThePostOffices[i].Surname} {allSubscriberOfThePostOffices[i].Name} {allSubscriberOfThePostOffices[i].MiddleName}";
+
+                worksheet2.Cells[row, 2] = $"{allSubscriberOfThePostOffices[i].CountSubscribe}";
+
+                cols++;
+            }
+
+            Excel.ChartObjects chartObjects = (Excel.ChartObjects)worksheet2.ChartObjects(Type.Missing);
+
+            Excel.ChartObject chartObject = chartObjects.Add(350, 10, 400, 250);
+
+            Excel.Chart chart = chartObject.Chart;
+
+            Excel.Range rangeXl;
+
+            rangeXl = worksheet2.get_Range($"A{2}:A{allSubscriberOfThePostOffices.Count + 1}", $"B{cols + 1}");
+
+            chart.SetSourceData(rangeXl, Type.Missing);
+
+            chart.ChartType = Excel.XlChartType.xlPie;
+
             excelApp.Visible = true;
 
             excelApp.UserControl = true;

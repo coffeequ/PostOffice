@@ -27,7 +27,7 @@
                         </Button>
                         <Button Background="AliceBlue" FontSize="16" Height="30" Margin="0 0 0 10" Click="ButtonTypeViewPublication">Виды изданий</Button>
                         <Button Background="AliceBlue" FontSize="16" Height="50" Margin="0 0 0 10" Click="ButtonCorrespondence">
-                            <TextBlock TextWrapping="Wrap">
+                            <TextBlock TextAlignment="Center" TextWrapping="Wrap">
                                 Движения корреспонденции
                             </TextBlock>
                         </Button>
