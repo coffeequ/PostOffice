@@ -97,5 +97,12 @@ namespace PostOffice.View
                 CommentTextBox.Clear();
             }
         }
+
+        private void F1Shortcut1(object sender, ExecutedRoutedEventArgs e)
+        {
+            Model.ProcHelp procHelp = new Model.ProcHelp("Справка.chm");
+
+            procHelp.CallHelp();
+        }
     }
 }
