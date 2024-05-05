@@ -27,7 +27,9 @@ namespace PostOffice.View
 
         List<SubscriberOfThePostOffice> subscriberOfThePostOffices;
 
-        public SeriesCollection sc { get; set; }
+        List<Subscribe> allSubscribes;
+
+        //public SeriesCollection sc { get; set; }
 
         public PageSubscribeStatistic()
         {
@@ -37,9 +39,11 @@ namespace PostOffice.View
 
             dgPublication.ItemsSource = dataBasePostOffice.postOfficeEntities.Publication.ToList();
 
-            dgSubscribers.ItemsSource = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
+            dgSubscribers.ItemsSource = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
 
             subscriberOfThePostOffices = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
+
+            allSubscribes = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
 
             ChartValues<int> vs = new ChartValues<int>();
 
@@ -74,7 +78,20 @@ namespace PostOffice.View
         {
             var item = dgPublication.SelectedItem as Publication;
 
-            dgSubscribers.ItemsSource = item.Subscribe.Select(t => t.SubscriberOfThePostOffice).ToList();
+            List<SubscriberOfThePostOffice> temp = new List<SubscriberOfThePostOffice>();
+
+            for (int i = 0; i < subscriberOfThePostOffices.Count(); i++)
+            {
+                for (int j = 0; j < subscriberOfThePostOffices[i].Subscribe.Count(); j++)
+                {
+                    if (subscriberOfThePostOffices[i].Subscribe.ToList()[j].id_Publication == item.id_Publication)
+                    {
+                        temp.Add(subscriberOfThePostOffices[i]);
+                    }
+                }
+            }
+
+            dgSubscribers.ItemsSource = temp;
         }
 
         private void Button_statisticToExcel(object sender, RoutedEventArgs e)

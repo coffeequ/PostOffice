@@ -22,14 +22,6 @@ namespace PostOffice
     {
         public static PostOfficeEntities postOfficeEntity;
 
-        /*
-         * от [14.04.2024]
-         * Что надо доделать:
-         * Вывод отчета по корреспонденденциям в excel
-         * Проверить всю работоспособность
-         * Сделать маску для ввода даты рождения
-         */
-
         public MainWindow()
         {
             InitializeComponent();
@@ -39,6 +31,24 @@ namespace PostOffice
             mainFrame.NavigationService.Navigate(new View.PageWatchPublicationNoReg());
 
             View.WinEntrance.closeWin += WinEntrance_closeWin;
+
+            List<SubscriberOfThePostOffice> subscriberOfThePostOffices = postOfficeEntity.SubscriberOfThePostOffice.ToList();
+
+            List<Subscribe> activeSubsribes = new List<Subscribe>();
+
+            for (int i = 0; i < subscriberOfThePostOffices.Count; i++)
+            {
+                for (int j = 0; j < subscriberOfThePostOffices[i].Subscribe.Count(); j++)
+                {
+                    if (subscriberOfThePostOffices[i].Subscribe.ToList()[j].EndTime <= DateTime.Now)
+                    {
+                        subscriberOfThePostOffices[i].Subscribe.ToList()[j].StatusActive = 0;
+                    }
+                }
+            }
+
+            postOfficeEntity.SaveChanges();
+
         }
 
         private void WinEntrance_closeWin()
