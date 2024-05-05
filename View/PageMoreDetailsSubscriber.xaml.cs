@@ -100,11 +100,6 @@ namespace PostOffice.View
                     throw new Exception("Введите имя");
                 }
 
-                if (string.IsNullOrWhiteSpace(tbMiddleName.Text))
-                {
-                    throw new Exception("Введите отчество");
-                }
-
                 if (string.IsNullOrWhiteSpace(tbPhone.Text))
                 {
                     throw new Exception("Введите номер телефона");

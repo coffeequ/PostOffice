@@ -34,9 +34,9 @@
                     </DataGrid.Columns>
                 </DataGrid>
                 <StackPanel Grid.Row="2">
-                    <materialDesign:Card Margin="10 10 10 00">
+                    <materialDesign:Card Background="AliceBlue" Margin="10 10 10 00">
                         <StackPanel>
-                            <lvc:PieChart x:Name="myChart" Height="200" ></lvc:PieChart>
+                            <lvc:PieChart x:Name="myChart" Margin="5" Height="200"></lvc:PieChart>
                         </StackPanel>
                     </materialDesign:Card>
                     <StackPanel Margin="0 10" HorizontalAlignment="Center" Orientation="Horizontal">

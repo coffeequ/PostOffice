@@ -6,6 +6,17 @@
         xmlns:local="clr-namespace:PostOffice.View"
         mc:Ignorable="d"
         Title="Почтовое отделение" Background="#a7c3c6" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <RoutedUICommand x:Key="f1" Text="Another Text"/>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="F1" Command="{StaticResource f1}"/>
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource f1}" Executed="F1Shortcut1"/>
+    </Window.CommandBindings>
     <Grid>
         <Frame x:Name="MyFrame" NavigationUIVisibility="Hidden">
             

@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="Model\DataBasePostOffice.cs" />
     <Compile Include="Model\IOExcel.cs" />
+    <Compile Include="Model\ProcHelp.cs" />
     <Compile Include="OperatorPostOffice.cs">
       <DependentUpon>PostOfficeModel.tt</DependentUpon>
     </Compile>
