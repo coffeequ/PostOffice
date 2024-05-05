@@ -59,7 +59,7 @@
         <DataGrid Grid.Row="1" Name="dgPublication" AutoGenerateColumns="False" MouseDoubleClick="dgPublication_MouseDoubleClick" IsReadOnly="True" FontSize="14">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование публикации" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Цена за 1 месяц" Binding="{Binding PricePerMonth}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена за 1 месяц" Binding="{Binding PricePerMonthRounded}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество выпусков в месяц" Binding="{Binding NumberIssuesPerMonth}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Вид издания" Binding="{Binding TypePublication.Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Тип издания" Binding="{Binding TypeViewPublication.Name}"></DataGridTextColumn>
