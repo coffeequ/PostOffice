@@ -56,7 +56,7 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        <DataGrid Grid.Row="1" Name="dgPublication" AutoGenerateColumns="False" MouseDoubleClick="dgPublication_MouseDoubleClick" IsReadOnly="True" FontSize="14">
+        <DataGrid Grid.Row="1" Name="dgPublication" AutoGenerateColumns="False"  MouseDoubleClick="dgPublication_MouseDoubleClick" IsReadOnly="True" FontSize="14">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование публикации" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Цена за 1 месяц" Binding="{Binding PricePerMonthRounded}"></DataGridTextColumn>

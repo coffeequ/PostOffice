@@ -442,6 +442,7 @@
     <Resource Include="Pic\CoverPublication\file_80ebaf3b-6321-4779-b364-466356c4341b_EXTRA_LARGE.jpg" />
     <Resource Include="Pic\CoverPublication\file_bec24c00-db52-47b3-95c2-507bd4f92792_EXTRA_LARGE.jpg" />
     <Resource Include="Pic\CoverPublication\file_dd011ece-8af0-480a-a8ab-b68786be79b4_EXTRA_LARGE.jpg" />
+    <Resource Include="Pic\XEWSMCqZ87g.ico" />
     <Content Include="PostOfficeModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PostOfficeModel.edmx</DependentUpon>

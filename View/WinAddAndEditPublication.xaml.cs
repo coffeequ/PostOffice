@@ -202,5 +202,31 @@ namespace PostOffice.View
 
             procHelp.CallHelp();
         }
+
+        private void Button_Accept(object sender, RoutedEventArgs e)
+        {
+            var item = sender as Button;
+
+            var selectedItem = item.DataContext as Feedback;
+
+            if (selectedItem.Status != 1)
+            {
+                if (selectedItem == null)
+                {
+                    MessageBox.Show("Ошибочное поле");
+                    return;
+                }
+
+                selectedItem.Status = 1;
+
+                dataBasePostOffice.postOfficeEntities.SaveChanges();
+
+                MessageBox.Show("Комментарий был опубликован!");
+            }
+            else
+            {
+                MessageBox.Show("Комментарий уже опубликован!");
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PostOffice"
         mc:Ignorable="d"
-        Title="Почтовое отделение" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Почтовое отделение" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\Pic\XEWSMCqZ87g.ico">
     <Window.Resources>
         <ResourceDictionary>
             <RoutedUICommand x:Key="f1" Text="Another Text"/>
@@ -18,10 +18,8 @@
         <CommandBinding Command="{StaticResource f1}" Executed="F1Shortcut1"/>
     </Window.CommandBindings>
     <Grid>
-        <Viewbox>
-            <Frame Name="mainFrame" Navigated="mainFrame_Navigated">
+        <Frame Name="mainFrame" Navigated="mainFrame_Navigated">
 
-            </Frame>
-        </Viewbox>
+        </Frame>
     </Grid>
 </Window>

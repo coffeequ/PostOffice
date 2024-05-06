@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PostOffice.Model
@@ -18,6 +19,8 @@ namespace PostOffice.Model
         Excel.Worksheet worksheet;
 
         Excel.Worksheet worksheet2;
+
+        Excel.Worksheet worksheet3;
 
         List<Subscribe> allSubs;
 
@@ -156,7 +159,65 @@ namespace PostOffice.Model
 
             worksheet2.Cells[row, 2].Font.Size = 14;
 
-            Excel.Range rangeTitle2 = worksheet2.Range[$"A{row}: B{row}"];
+            Excel.Range rangeTitle3 = worksheet2.Range[$"A{row}: B{row}"];
+
+            rangeTitle3.ColumnWidth = 25;
+
+            rangeTitle3.EntireRow.AutoFit();
+
+            rangeTitle3.Interior.Color = Excel.XlRgbColor.rgbAliceBlue;
+
+            row++;
+
+            int countAllSubscribers = 0;
+
+            for (int h = 0; h < allSubscriberOfThePostOffices.Count(); h++)
+            {
+                worksheet2.Cells[row, 1] = allSubscriberOfThePostOffices[h].Surname + " " + allSubscriberOfThePostOffices[h].Name + " " + allSubscriberOfThePostOffices[h].MiddleName;
+
+                worksheet2.Cells[row, 2] = allSubscriberOfThePostOffices[h].CountSubscribe;
+
+                countAllSubscribers += allSubscriberOfThePostOffices[h].CountSubscribe;
+
+                row++;
+            }
+            row++;
+
+            worksheet2.Cells[row, 1] = "Общее количество подписок: ";
+
+            worksheet2.Cells[row, 1].Font.Bold = true;
+
+            worksheet2.Cells[row, 2] = countAllSubscribers;
+
+            worksheet2.Cells[row, 2].Font.Bold = true;
+
+            Excel.ChartObjects chartObjects2 = (Excel.ChartObjects)worksheet2.ChartObjects(Type.Missing);
+
+            Excel.ChartObject chartObject2 = chartObjects2.Add(350, 10, 400, 250);
+
+            Excel.Chart chart2 = chartObject2.Chart;
+
+            Excel.Range rangeXl2;
+
+            rangeXl2 = worksheet2.get_Range($"A{2}:A{allSubscriberOfThePostOffices.Count + 1}", $"B{2}:B{allSubscriberOfThePostOffices.Count + 1}");
+
+            chart2.SetSourceData(rangeXl2, Type.Missing);
+
+            chart2.ChartType = Excel.XlChartType.xl3DColumn;
+
+            worksheet3 = workbook.Worksheets.Add(After: worksheet2);
+
+            row = 1;
+
+            worksheet3.Cells[row, 1] = $"Наименование издания";
+
+            worksheet3.Cells[row, 1].Font.Size = 14;
+
+            worksheet3.Cells[row, 2] = $"Сумма за 2024 год";
+
+            worksheet3.Cells[row, 2].Font.Size = 14;
+
+            Excel.Range rangeTitle2 = worksheet3.Range[$"A{row}: B{row}"];
 
             rangeTitle2.ColumnWidth = 25;
 
@@ -166,18 +227,37 @@ namespace PostOffice.Model
 
             row++;
 
-            int cols = 0;
+            decimal resultPrice = 0;
 
-            for (int i = 0; i < allSubscriberOfThePostOffices.Count; i++, row++)
+            decimal allPrice = 0;
+
+            for (int i = 0; i < allPublication.Count; i++, row++)
             {
-                worksheet2.Cells[row, 1] = $"{allSubscriberOfThePostOffices[i].Surname} {allSubscriberOfThePostOffices[i].Name} {allSubscriberOfThePostOffices[i].MiddleName}";
+                worksheet3.Cells[row, 1] = $"{allPublication[i].Name}";
 
-                worksheet2.Cells[row, 2] = $"{allSubscriberOfThePostOffices[i].CountSubscribe}";
+                resultPrice = 0;
 
-                cols++;
+                for (int j = 0; j < allPublication[i].Subscribe.Count(); j++)
+                {
+                    if (allPublication[i].Subscribe.ToList()[j].EntryTime.Year == DateTime.Now.Year & allPublication[i].Subscribe.ToList()[j].EndTime.Year == DateTime.Now.Year)
+                    {
+                        resultPrice += allPublication[i].Subscribe.ToList()[j].ResultPrice;
+                        allPrice += resultPrice;
+                    }
+                }
+
+                worksheet3.Cells[row, 2] = double.Parse(resultPrice.ToString());
             }
 
-            Excel.ChartObjects chartObjects = (Excel.ChartObjects)worksheet2.ChartObjects(Type.Missing);
+            worksheet3.Cells[row, 1] = $"Итоговая сумма по всем изданиям за 2024 год: ";
+
+            worksheet3.Cells[row, 1].Font.Bold = true;
+
+            worksheet3.Cells[row, 2] = $"{double.Parse(allPrice.ToString())}";
+
+            worksheet3.Cells[row, 2].Font.Bold = true;
+
+            Excel.ChartObjects chartObjects = (Excel.ChartObjects)worksheet3.ChartObjects(Type.Missing);
 
             Excel.ChartObject chartObject = chartObjects.Add(350, 10, 400, 250);
 
@@ -185,7 +265,7 @@ namespace PostOffice.Model
 
             Excel.Range rangeXl;
 
-            rangeXl = worksheet2.get_Range($"A{2}:A{allSubscriberOfThePostOffices.Count + 1}", $"B{cols + 1}");
+            rangeXl = worksheet3.get_Range($"A{2}:A{allPublication.Count + 1}", $"B{2}:B{allPublication.Count + 1}");
 
             chart.SetSourceData(rangeXl, Type.Missing);
 
@@ -194,6 +274,8 @@ namespace PostOffice.Model
             excelApp.Visible = true;
 
             excelApp.UserControl = true;
+
+
         }
 
         public void DBToExcelTableCorrespondence()

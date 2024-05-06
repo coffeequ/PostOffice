@@ -17,6 +17,7 @@ namespace PostOffice
         public int id_Feedback { get; set; }
         public int id_Publication { get; set; }
         public string Feedback1 { get; set; }
+        public int Status { get; set; }
     
         public virtual Publication Publication { get; set; }
     }

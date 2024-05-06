@@ -26,6 +26,8 @@ namespace PostOffice.View.Admin
 
         Model.DataBasePostOffice dataBasePostOffice;
 
+        List<SubscriberOfThePostOffice> sortSubscriberPostOffice;
+
         User user;
 
         public PageSubscribersAdmin(User user)
@@ -48,6 +50,8 @@ namespace PostOffice.View.Admin
             subscriberOfThePostOffices = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
 
             dgSubscribers.ItemsSource = subscriberOfThePostOffices;
+
+            sortSubscriberPostOffice = new List<SubscriberOfThePostOffice>();
         }
 
         private void Button_More(object sender, RoutedEventArgs e)
@@ -60,8 +64,9 @@ namespace PostOffice.View.Admin
 
             dgSubscribers.ItemsSource = null;
 
-            dgSubscribers.ItemsSource = subscriberOfThePostOffices;
+            ApplySearch();
 
+            ApplyDataPicker();
         }
 
         private void Button_Add(object sender, RoutedEventArgs e)
@@ -120,6 +125,39 @@ namespace PostOffice.View.Admin
                     dgSubscribers.ItemsSource = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
                 }
             }
+        }
+
+        private void ApplySearch()
+        {
+            sortSubscriberPostOffice = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.Where(item => item.Surname.StartsWith(tbSearch.Text) || item.Name.StartsWith(tbSearch.Text) || item.MiddleName.StartsWith(tbSearch.Text)).ToList();
+        }
+
+        private void ApplyDataPicker()
+        {
+            var temp = new List<SubscriberOfThePostOffice>();
+            try
+            {
+                DateTime dateTime = (DateTime)tbBrithday.SelectedDate;
+                temp = sortSubscriberPostOffice.Where(item => item.Birthday == dateTime).ToList();
+            }
+            catch (Exception)
+            {
+                temp = sortSubscriberPostOffice.ToList();
+            }
+
+            dgSubscribers.ItemsSource = temp;
+        }
+
+        private void TextChangedSearch(object sender, TextChangedEventArgs e)
+        {
+            ApplySearch();
+            ApplyDataPicker();
+        }
+
+        private void tbBrithday_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ApplySearch();
+            ApplyDataPicker();
         }
     }
 }

@@ -79,5 +79,12 @@ namespace PostOffice.View
 
             procHelp.CallHelp();
         }
+
+        private void Button_Help(object sender, RoutedEventArgs e)
+        {
+            Model.ProcHelp procHelp = new Model.ProcHelp("Справка.chm");
+
+            procHelp.CallHelp();
+        }
     }
 }

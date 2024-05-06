@@ -10,10 +10,19 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="55*"></RowDefinition>
             <RowDefinition Height="397*"></RowDefinition>
             <RowDefinition Height="55*"></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid Name="dgSubscribers" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" FontSize="14">
+        <StackPanel Background="AliceBlue" Orientation="Horizontal">
+            <Button Style="{StaticResource MaterialDesignToolButton}">
+                <materialDesign:PackIcon Kind="Search" Opacity="1" />
+            </Button>
+            <TextBox FontSize="14" Width="180" BorderBrush="Gray" materialDesign:HintAssist.Hint="ФИО" TextChanged="TextChangedSearch" VerticalContentAlignment="Center"  HorizontalContentAlignment="Left" Height="48" BorderThickness="0 0 0 1" x:Name="tbSearch" />
+            <DatePicker IsTodayHighlighted="True" Language="Ru" x:Name="tbBrithday" SelectedDateChanged="tbBrithday_SelectedDateChanged" HorizontalContentAlignment="Left" materialDesign:HintAssist.Hint="Дата рождения" Height="48" Margin="10 0" materialDesign:HintAssist.HelperTextFontSize="16" VerticalContentAlignment="Center" Text="{Binding Birthday}" FontSize="14" HorizontalAlignment="Left" Width="200"></DatePicker>
+        </StackPanel>
+
+        <DataGrid Name="dgSubscribers" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" FontSize="14">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>
@@ -32,7 +41,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Grid.Row="1" Background="#a7c3c6" Width="120" FontSize="16" Height="40" Click="Button_Add">Добавить</Button>
         </StackPanel>
     </Grid>

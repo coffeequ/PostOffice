@@ -163,6 +163,8 @@ namespace PostOffice.View
 
                 for (int i = 0; i < publicationsSelected.Count(); i++)
                 {
+                    decimal price = 0;
+
                     subscribe = new Subscribe();
 
                     int lastIndexCorrespondence = allCorrespondence[allCorrespondence.Count() - 1].id_Correspondence + 1;
@@ -176,6 +178,12 @@ namespace PostOffice.View
                     subscribe.StatusActive = 1;
 
                     DateTime dateTime = new DateTime(int.Parse(tbYearEnd.Text), yearMonthEnd, int.Parse(tbDayEnd.Text));
+
+                    int countPublication = monthEnd - int.Parse(tbMonthStart.Text);
+
+                    price = publicationsSelected[i].PricePerMonth * countPublication;
+
+                    subscribe.ResultPrice = price;
 
                     subscribe.EndTime = dateTime;
 
@@ -289,11 +297,11 @@ namespace PostOffice.View
 
                         cellRange = table.Cell(i + 4, 6).Range;
 
-                        decimal price = countPublication * publicationsSelected[i].PricePerMonth;
+                        decimal priceWord = countPublication * publicationsSelected[i].PricePerMonth;
 
-                        priceItog += price;
+                        priceItog += priceWord;
 
-                        cellRange.Text = price.ToString("F2");
+                        cellRange.Text = priceWord.ToString("F2");
                     }
 
                     wordDocument.Bookmarks["TotalPrice"].Range.Text = priceItog.ToString("F2");

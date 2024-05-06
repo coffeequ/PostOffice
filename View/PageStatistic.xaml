@@ -26,7 +26,7 @@
                     <StackPanel Height="300">
                         <Button FontSize="16" Background="AliceBlue" Height="30" Margin="0 0 0 10" Click="ButtonSubsribesStatic">Подписчики изданий</Button>
                         <Button FontSize="16" Background="AliceBlue" Height="50" Margin="0 0 0 10" Click="ButtonCorrespondenceStatic">
-                            <TextBlock TextWrapping="Wrap" Width="160" >
+                            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Width="160" >
                                 Движение корреспонденции
                             </TextBlock>
                         </Button>
