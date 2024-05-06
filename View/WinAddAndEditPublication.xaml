@@ -66,6 +66,15 @@
                         <DataGridTemplateColumn Header="Действие">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
+                                    <Button Background="Green" Width="50" x:Name="AcceptButton" Click="Button_Accept">
+                                        <materialDesign:PackIcon Kind="Check"></materialDesign:PackIcon>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Действие">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
                                     <Button Background="Red" Width="50" Click="Button_Delete">
                                         <materialDesign:PackIcon Kind="Delete"></materialDesign:PackIcon>
                                     </Button>

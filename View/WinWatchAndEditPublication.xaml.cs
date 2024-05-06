@@ -48,7 +48,7 @@ namespace PostOffice.View
 
         private List<Feedback> UpdateInfo()
         {
-            return dataBasePostOffice.postOfficeEntities.Feedback.Where(item => item.Publication.id_Publication == publication.id_Publication).ToList();
+            return dataBasePostOffice.postOfficeEntities.Feedback.Where(item => item.Publication.id_Publication == publication.id_Publication & item.Status == 1).ToList();
         }
 
         private void isLoaded(object sender, RoutedEventArgs e)

@@ -19,6 +19,7 @@
     <Property Name="id_Publication" Type="Int32" Nullable="false" />
     <Property Name="Feedback1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Publication" Relationship="Self.FK_Feedback_Publication" FromRole="Feedback" ToRole="Publication" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="LogIO">
     <Key>

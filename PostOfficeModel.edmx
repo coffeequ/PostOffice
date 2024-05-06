@@ -22,6 +22,7 @@
           <Property Name="id Feedback" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id Publication" Type="int" Nullable="false" />
           <Property Name="Feedback" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LogIO">
           <Key>
@@ -320,6 +321,7 @@
           <Property Name="id_Publication" Type="Int32" Nullable="false" />
           <Property Name="Feedback1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Publication" Relationship="Self.FK_Feedback_Publication" FromRole="Feedback" ToRole="Publication" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="LogIO">
           <Key>
@@ -633,6 +635,7 @@
           <EntitySetMapping Name="Feedback">
             <EntityTypeMapping TypeName="PostOfficeModel.Feedback">
               <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="id_Feedback" ColumnName="id Feedback" />
                 <ScalarProperty Name="id_Publication" ColumnName="id Publication" />
                 <ScalarProperty Name="Feedback1" ColumnName="Feedback" />

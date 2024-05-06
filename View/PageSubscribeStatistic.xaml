@@ -39,6 +39,15 @@
                             <lvc:PieChart x:Name="myChart" Margin="5" Height="200"></lvc:PieChart>
                         </StackPanel>
                     </materialDesign:Card>
+                    <materialDesign:Card Background="AliceBlue" Margin="10 10 10 00">
+                        <StackPanel>
+                            <lvc:CartesianChart Series="{Binding}" x:Name="myChart2" Margin="5" Height="200">
+                                <lvc:CartesianChart.AxisY>
+                                    <lvc:Axis Title="Кол-во подписок" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                                </lvc:CartesianChart.AxisY>
+                            </lvc:CartesianChart>
+                        </StackPanel>
+                    </materialDesign:Card>
                     <StackPanel Margin="0 10" HorizontalAlignment="Center" Orientation="Horizontal">
                         <Button Background="#a7c3c6" Width="155" FontSize="16" Height="40" Click="Button_statisticToExcel">Вывод в Excel</Button>
                     </StackPanel>

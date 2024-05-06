@@ -3,6 +3,7 @@ using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,11 @@ namespace PostOffice.View
 
         List<Subscribe> allSubscribes;
 
-        //public SeriesCollection sc { get; set; }
+        List<Publication> allPublication;
+
+        public SeriesCollection seriesViews2 { get; set; }
+
+        public Func<double, string> Formatter { get; set; }
 
         public PageSubscribeStatistic()
         {
@@ -42,24 +47,41 @@ namespace PostOffice.View
             dgSubscribers.ItemsSource = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
 
             subscriberOfThePostOffices = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
+ 
+            allPublication = dataBasePostOffice.postOfficeEntities.Publication.ToList();
 
             allSubscribes = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
 
-            ChartValues<int> vs = new ChartValues<int>();
+            ChartValues<decimal> vs = new ChartValues<decimal>();
 
-            for (int i = 0; i < subscriberOfThePostOffices.Count; i++)
+            decimal resultPrice = 0;
+
+            decimal allPrice = 0;
+
+            for (int i = 0; i < allPublication.Count; i++)
             {
-                vs.Add(subscriberOfThePostOffices[i].CountSubscribe);
+                resultPrice = 0;
+
+                for (int j = 0; j < allPublication[i].Subscribe.Count(); j++)
+                {
+                    if (allPublication[i].Subscribe.ToList()[j].EntryTime.Year == DateTime.Now.Year & allPublication[i].Subscribe.ToList()[j].EndTime.Year == DateTime.Now.Year)
+                    {
+                        resultPrice += allPublication[i].Subscribe.ToList()[j].ResultPrice;
+                        allPrice += resultPrice;
+                    }
+                }
+
+                vs.Add(resultPrice);
             }
 
             SeriesCollection seriesViews = new SeriesCollection();
 
-            for (int i = 0; i < subscriberOfThePostOffices.Count; i++)
+            for (int k = 0; k < allPublication.Count; k++)
             {
                 seriesViews.Add(new PieSeries()
                 {
-                    Title = $"{subscriberOfThePostOffices[i].Surname} {subscriberOfThePostOffices[i].Name} {subscriberOfThePostOffices[i].MiddleName}",
-                    Values = new ChartValues<int> { vs[i] },
+                    Title = $"{allPublication[k].Name}",
+                    Values = new ChartValues<decimal> { vs[k] },
                     PushOut = 15,
                     DataLabels = true
                 });
@@ -70,6 +92,33 @@ namespace PostOffice.View
             myChart.LegendLocation = LegendLocation.Right;
 
             myChart.FontSize = 14;
+
+            ChartValues<int> vs2 = new ChartValues<int>();
+
+            for (int i = 0; i < subscriberOfThePostOffices.Count(); i++)
+            {
+                vs2.Add(subscriberOfThePostOffices[i].CountSubscribe);
+            }
+
+            seriesViews2 = new SeriesCollection();
+
+            for (int p = 0; p < subscriberOfThePostOffices.Count; p++)
+            {
+                seriesViews2.Add(new ColumnSeries()
+                {
+                    Title = $"{subscriberOfThePostOffices[p].Surname} {subscriberOfThePostOffices[p].Name} {subscriberOfThePostOffices[p].MiddleName}",
+                    Values = new ChartValues<int> { vs2[p] },
+
+                });
+            }
+
+            Formatter = value => value.ToString("N");
+
+            myChart2.Series = seriesViews2;
+
+            myChart2.LegendLocation = LegendLocation.Right;
+
+            myChart2.FontSize = 14;
 
             DataContext = this;
         }

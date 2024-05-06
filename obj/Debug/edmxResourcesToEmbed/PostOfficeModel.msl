@@ -15,6 +15,7 @@
     <EntitySetMapping Name="Feedback">
       <EntityTypeMapping TypeName="PostOfficeModel.Feedback">
         <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="id_Feedback" ColumnName="id Feedback" />
           <ScalarProperty Name="id_Publication" ColumnName="id Publication" />
           <ScalarProperty Name="Feedback1" ColumnName="Feedback" />
