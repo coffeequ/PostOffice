@@ -65,6 +65,7 @@
     <EntitySetMapping Name="Subscribe">
       <EntityTypeMapping TypeName="PostOfficeModel.Subscribe">
         <MappingFragment StoreEntitySet="Subscribe">
+          <ScalarProperty Name="ResultPrice" ColumnName="ResultPrice" />
           <ScalarProperty Name="id_Subscribe" ColumnName="id Subscribe" />
           <ScalarProperty Name="id_Subscriber" ColumnName="id Subscriber" />
           <ScalarProperty Name="id_Publication" ColumnName="id Publication" />

@@ -29,12 +29,12 @@ namespace PostOffice
         public System.DateTime EndTime { get; set; }
         public Nullable<System.DateTime> DateRegistration { get; set; }
         public string NumberSubscribe { get; set; }
+        public Nullable<decimal> ResultPrice { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Correspondence> Correspondence { get; set; }
         public virtual Publication Publication { get; set; }
         public virtual SubscriberOfThePostOffice SubscriberOfThePostOffice { get; set; }
-
         public string GetStringStatusActive
         {
             get
@@ -73,5 +73,6 @@ namespace PostOffice
                 return DateRegistration.Value.ToShortDateString();
             }
         }
+        public virtual SubscriberOfThePostOffice SubscriberOfThePostOffice { get; set; }
     }
 }

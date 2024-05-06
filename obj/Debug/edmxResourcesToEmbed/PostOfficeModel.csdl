@@ -50,7 +50,7 @@
     <Property Name="id_TypeViewPublication" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PricePerMonth" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="Cover" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Cover" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <Property Name="NumberIssuesPerMonth" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Feedback" Relationship="Self.FK_Feedback_Publication" FromRole="Publication" ToRole="Feedback" />
     <NavigationProperty Name="TypePublication" Relationship="Self.FK_Publication_TypePublication" FromRole="Publication" ToRole="TypePublication" />
@@ -80,6 +80,7 @@
     <NavigationProperty Name="Correspondence" Relationship="Self.FK_Correspondence_Subscribe" FromRole="Subscribe" ToRole="Correspondence" />
     <NavigationProperty Name="Publication" Relationship="Self.FK_Subscribe_Publication" FromRole="Subscribe" ToRole="Publication" />
     <NavigationProperty Name="SubscriberOfThePostOffice" Relationship="Self.FK_Subscribe_SubscriberOfThePostOffice" FromRole="Subscribe" ToRole="SubscriberOfThePostOffice" />
+    <Property Name="ResultPrice" Type="Decimal" Precision="19" Scale="4" />
   </EntityType>
   <EntityType Name="SubscriberOfThePostOffice">
     <Key>
@@ -127,8 +128,8 @@
     </Key>
     <Property Name="id_User" Type="Int32" Nullable="false" />
     <Property Name="id_Role" Type="Int32" Nullable="false" />
-    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="LogIO" Relationship="Self.FK_LogIO_User" FromRole="User" ToRole="LogIO" />
     <NavigationProperty Name="OperatorPostOffice" Relationship="Self.FK_OperatorPostOffice_User" FromRole="User" ToRole="OperatorPostOffice" />
     <NavigationProperty Name="Role" Relationship="Self.FK_User_Role1" FromRole="User" ToRole="Role" />
