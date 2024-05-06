@@ -27,9 +27,9 @@ namespace PostOffice
         public byte StatusActive { get; set; }
         public System.DateTime EntryTime { get; set; }
         public System.DateTime EndTime { get; set; }
-        public Nullable<System.DateTime> DateRegistration { get; set; }
+        public System.DateTime DateRegistration { get; set; }
         public string NumberSubscribe { get; set; }
-        public Nullable<decimal> ResultPrice { get; set; }
+        public decimal ResultPrice { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Correspondence> Correspondence { get; set; }
@@ -70,9 +70,8 @@ namespace PostOffice
         {
             get
             {
-                return DateRegistration.Value.ToShortDateString();
+                return DateRegistration.ToShortDateString();
             }
         }
-        public virtual SubscriberOfThePostOffice SubscriberOfThePostOffice { get; set; }
     }
 }

@@ -70,9 +70,9 @@
           <Property Name="StatusActive" Type="tinyint" Nullable="false" />
           <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
           <Property Name="EndTime" Type="smalldatetime" Nullable="false" />
-          <Property Name="DateRegistration" Type="smalldatetime" />
-          <Property Name="NumberSubscribe" Type="nvarchar" MaxLength="100" />
-          <Property Name="ResultPrice" Type="money" />
+          <Property Name="DateRegistration" Type="smalldatetime" Nullable="false" />
+          <Property Name="NumberSubscribe" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ResultPrice" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="SubscriberOfThePostOffice">
           <Key>
@@ -376,12 +376,12 @@
           <Property Name="StatusActive" Type="Byte" Nullable="false" />
           <Property Name="EntryTime" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DateRegistration" Type="DateTime" Precision="0" />
-          <Property Name="NumberSubscribe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateRegistration" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="NumberSubscribe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Correspondence" Relationship="Self.FK_Correspondence_Subscribe" FromRole="Subscribe" ToRole="Correspondence" />
           <NavigationProperty Name="Publication" Relationship="Self.FK_Subscribe_Publication" FromRole="Subscribe" ToRole="Publication" />
           <NavigationProperty Name="SubscriberOfThePostOffice" Relationship="Self.FK_Subscribe_SubscriberOfThePostOffice" FromRole="Subscribe" ToRole="SubscriberOfThePostOffice" />
-          <Property Name="ResultPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ResultPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
         </EntityType>
         <EntityType Name="SubscriberOfThePostOffice">
           <Key>
