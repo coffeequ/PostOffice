@@ -181,10 +181,7 @@ namespace PostOffice.View
 
                     int countPublication = monthEnd - int.Parse(tbMonthStart.Text);
 
-                    for (int j = 0; j < publicationsSelected.Count; j++)
-                    {
-                        price += publicationsSelected[i].PricePerMonth;
-                    }
+                    price = publicationsSelected[i].PricePerMonth * countPublication;
 
                     subscribe.ResultPrice = price;
 

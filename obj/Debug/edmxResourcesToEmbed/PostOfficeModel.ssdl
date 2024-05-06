@@ -65,9 +65,9 @@
     <Property Name="StatusActive" Type="tinyint" Nullable="false" />
     <Property Name="EntryTime" Type="smalldatetime" Nullable="false" />
     <Property Name="EndTime" Type="smalldatetime" Nullable="false" />
-    <Property Name="DateRegistration" Type="smalldatetime" />
-    <Property Name="NumberSubscribe" Type="nvarchar" MaxLength="100" />
-    <Property Name="ResultPrice" Type="money" />
+    <Property Name="DateRegistration" Type="smalldatetime" Nullable="false" />
+    <Property Name="NumberSubscribe" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ResultPrice" Type="money" Nullable="false" />
   </EntityType>
   <EntityType Name="SubscriberOfThePostOffice">
     <Key>

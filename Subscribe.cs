@@ -35,6 +35,7 @@ namespace PostOffice
         public virtual ICollection<Correspondence> Correspondence { get; set; }
         public virtual Publication Publication { get; set; }
         public virtual SubscriberOfThePostOffice SubscriberOfThePostOffice { get; set; }
+
         public string GetStringStatusActive
         {
             get
@@ -71,6 +72,14 @@ namespace PostOffice
             get
             {
                 return DateRegistration.ToShortDateString();
+            }
+        }
+
+        public string smallResultPrice
+        {
+            get
+            {
+                return ResultPrice.ToString("f2");
             }
         }
     }
