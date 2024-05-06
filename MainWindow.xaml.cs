@@ -48,7 +48,6 @@ namespace PostOffice
             }
 
             postOfficeEntity.SaveChanges();
-
         }
 
         private void WinEntrance_closeWin()

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PostOffice.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Почтовое отделение" Height="450" Width="800">
+        Title="Почтовое отделение" Height="450" Width="800" Icon="C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\Pic\XEWSMCqZ87g.ico">
     <Window.Resources>
         <ResourceDictionary>
             <RoutedUICommand x:Key="f1" Text="Another Text"/>
@@ -35,7 +35,7 @@
                     <Button Margin="0 10 0 10" Width="300" Height="40" FontSize="16" Background="AliceBlue" Click="Button_Add">
                         Сохранить
                     </Button>
-                    <Button Margin="0 10 0 10" Width="300" Height="40" FontSize="16" Background="#a7c3c6" Click="Button_Exit">
+                    <Button Margin="0 10 0 10" Width="300" Height="40" FontSize="16" Background="AliceBlue" Click="Button_Exit">
                         Назад
                     </Button>
                 </StackPanel>

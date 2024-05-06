@@ -168,14 +168,26 @@ namespace PostOffice.Model
 
             int cols = 0;
 
+            int countAllSubscribers = 0;
+
             for (int i = 0; i < allSubscriberOfThePostOffices.Count; i++, row++)
             {
                 worksheet2.Cells[row, 1] = $"{allSubscriberOfThePostOffices[i].Surname} {allSubscriberOfThePostOffices[i].Name} {allSubscriberOfThePostOffices[i].MiddleName}";
 
                 worksheet2.Cells[row, 2] = $"{allSubscriberOfThePostOffices[i].CountSubscribe}";
 
+                countAllSubscribers += allSubscriberOfThePostOffices[i].CountSubscribe;
+
                 cols++;
             }
+
+            worksheet2.Cells[row, 1] = $"Всего подписчиков: ";
+
+            worksheet2.Cells[row, 1].Font.Bold = true;
+
+            worksheet2.Cells[row, 2] = countAllSubscribers;
+
+            worksheet2.Cells[row, 2].Font.Bold = true;
 
             Excel.ChartObjects chartObjects = (Excel.ChartObjects)worksheet2.ChartObjects(Type.Missing);
 

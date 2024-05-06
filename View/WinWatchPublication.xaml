@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PostOffice.View"
         mc:Ignorable="d"
-        Title="Почтовое отделение" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Почтовое отделение" Height="450" Width="800" WindowStartupLocation="CenterScreen" Icon="C:\Users\Savva\Desktop\Практики 3 курс\2 Семестр\Курсовая работа\PostOfficeGitHub\PostOffice\Pic\XEWSMCqZ87g.ico">
     <Window.Resources>
         <ResourceDictionary>
             <RoutedUICommand x:Key="f1" Text="Another Text"/>

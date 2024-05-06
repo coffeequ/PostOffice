@@ -109,6 +109,11 @@ namespace PostOffice.View
                 {
                     throw new Exception("Введите дату рождения");
                 }
+
+                if (DateTime.Now.AddYears(-18) <= tbBrithday.SelectedDate.Value)
+                {
+                    throw new Exception("Пользователь должен быть страше 18 лет");
+                }
             }
             catch (Exception ex)
             {
@@ -121,6 +126,38 @@ namespace PostOffice.View
 
         private void Button_saveData(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(tbSurname.Text))
+                {
+                    throw new Exception("Введите фамилию");
+                }
+
+                if (string.IsNullOrWhiteSpace(tbName.Text))
+                {
+                    throw new Exception("Введите имя");
+                }
+
+                if (string.IsNullOrWhiteSpace(tbPhone.Text))
+                {
+                    throw new Exception("Введите номер телефона");
+                }
+
+                if (string.IsNullOrWhiteSpace(tbBrithday.Text))
+                {
+                    throw new Exception("Введите дату рождения");
+                }
+
+                if (DateTime.Now.AddYears(-18) <= tbBrithday.SelectedDate.Value)
+                {
+                    throw new Exception("Пользователь должен быть страше 18 лет");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
             SaveSubscrubers();
             MessageBox.Show("Данные сохранились");
 
