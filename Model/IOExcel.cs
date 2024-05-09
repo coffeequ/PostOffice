@@ -193,13 +193,13 @@ namespace PostOffice.Model
 
             Excel.ChartObjects chartObjects2 = (Excel.ChartObjects)worksheet2.ChartObjects(Type.Missing);
 
-            Excel.ChartObject chartObject2 = chartObjects2.Add(350, 10, 400, 250);
+            Excel.ChartObject chartObject2 = chartObjects2.Add(350, 10, 500, 250);
 
             Excel.Chart chart2 = chartObject2.Chart;
 
             Excel.Range rangeXl2;
 
-            rangeXl2 = worksheet2.get_Range($"A{2}:A{allSubscriberOfThePostOffices.Count + 1}", $"B{2}:B{allSubscriberOfThePostOffices.Count + 1}");
+            rangeXl2 = worksheet2.get_Range($"A{1}:A{allPublication.Count + 1}", $"B{1}:B{allPublication.Count + 1}");
 
             chart2.SetSourceData(rangeXl2, Type.Missing);
 

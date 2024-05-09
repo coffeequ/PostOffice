@@ -22,6 +22,8 @@ namespace PostOffice.View
     {
         SubscriberOfThePostOffice subscriberOfThePostOffice;
 
+        List<SubscriberOfThePostOffice> allSubscriberOfThePostOffice;
+
         List<SubscriberOfThePostOffice> allSubscribers;
 
         List<Subscribe> allSubscribes;
@@ -56,16 +58,33 @@ namespace PostOffice.View
 
             allSubscribers = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
 
+            allSubscriberOfThePostOffice = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
+
             var publicationSubscriber = dataBasePostOffice.postOfficeEntities.Subscribe.Where(persona => persona.id_Subscriber == subscriberOfThePostOffice.id_Subscriber).ToList();
 
             dgSubsriberPublication.ItemsSource = publicationSubscriber;
         }
 
-        private void SaveSubscrubers()
+        private int SaveSubscrubers()
         {
             if (subscriberOfThePostOffice.id_Subscriber == 0)
             {
-                var allOperator = dataBasePostOffice.postOfficeEntities.OperatorPostOffice.ToList();
+                var existsSubscribers = allSubscriberOfThePostOffice.Where(item => $"{item.Surname} {item.Name} {item.MiddleName}" == $"{subscriberOfThePostOffice.Surname} {subscriberOfThePostOffice.Name} {subscriberOfThePostOffice.MiddleName}");
+
+                try
+                {
+                    if (existsSubscribers.Count() != 0)
+                    {
+                        throw new Exception("Клиент почтового отделения уже существует");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return 0;
+                }
+
+                List<OperatorPostOffice> allOperator = dataBasePostOffice.postOfficeEntities.OperatorPostOffice.ToList();
 
                 OperatorPostOffice tempOperator = new OperatorPostOffice();
 
@@ -84,6 +103,9 @@ namespace PostOffice.View
             subscriberOfThePostOffice.Birthday = (DateTime)tbBrithday.SelectedDate;
 
             dataBasePostOffice.postOfficeEntities.SaveChanges();
+
+            return 1;
+
         }
 
         private void Button_Add_Publication(object sender, RoutedEventArgs e)
@@ -120,8 +142,10 @@ namespace PostOffice.View
                 MessageBox.Show(ex.Message);
                 return;
             }
-            SaveSubscrubers();
-            NavigationService.Navigate(new View.PageManagmentSubscribe(subscriberOfThePostOffice, user));
+            if (SaveSubscrubers() == 1)
+            {
+                NavigationService.Navigate(new View.PageManagmentSubscribe(subscriberOfThePostOffice, user));
+            }
         }
 
         private void Button_saveData(object sender, RoutedEventArgs e)
@@ -158,9 +182,10 @@ namespace PostOffice.View
                 MessageBox.Show(ex.Message);
                 return;
             }
-            SaveSubscrubers();
-            MessageBox.Show("Данные сохранились");
-
+            if (SaveSubscrubers() == 1)
+            {
+                MessageBox.Show("Данные сохранились");
+            }
         }
 
         private void Button_wordCheck(object sender, RoutedEventArgs e)
