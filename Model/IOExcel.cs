@@ -151,11 +151,11 @@ namespace PostOffice.Model
 
             row = 1;
 
-            worksheet2.Cells[row, 1] = $"ФИО";
+            worksheet2.Cells[row, 1] = $"Издание";
 
             worksheet2.Cells[row, 1].Font.Size = 14;
 
-            worksheet2.Cells[row, 2] = $"Количество подписок";
+            worksheet2.Cells[row, 2] = $"Количество подписчиков";
 
             worksheet2.Cells[row, 2].Font.Size = 14;
 
@@ -169,15 +169,15 @@ namespace PostOffice.Model
 
             row++;
 
-            int countAllSubscribers = 0;
+            int countAllPublicationSubscribe = 0;
 
-            for (int h = 0; h < allSubscriberOfThePostOffices.Count(); h++)
+            for (int h = 0; h < allPublication.Count(); h++)
             {
-                worksheet2.Cells[row, 1] = allSubscriberOfThePostOffices[h].Surname + " " + allSubscriberOfThePostOffices[h].Name + " " + allSubscriberOfThePostOffices[h].MiddleName;
+                worksheet2.Cells[row, 1] = allPublication[h].Name;
 
-                worksheet2.Cells[row, 2] = allSubscriberOfThePostOffices[h].CountSubscribe;
+                worksheet2.Cells[row, 2] = allPublication[h].CountSubscribeLastYear;
 
-                countAllSubscribers += allSubscriberOfThePostOffices[h].CountSubscribe;
+                countAllPublicationSubscribe += allPublication[h].CountSubscribeLastYear;
 
                 row++;
             }
@@ -187,7 +187,7 @@ namespace PostOffice.Model
 
             worksheet2.Cells[row, 1].Font.Bold = true;
 
-            worksheet2.Cells[row, 2] = countAllSubscribers;
+            worksheet2.Cells[row, 2] = countAllPublicationSubscribe;
 
             worksheet2.Cells[row, 2].Font.Bold = true;
 

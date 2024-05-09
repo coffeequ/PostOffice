@@ -95,18 +95,18 @@ namespace PostOffice.View
 
             ChartValues<int> vs2 = new ChartValues<int>();
 
-            for (int i = 0; i < subscriberOfThePostOffices.Count(); i++)
+            for (int i = 0; i < allPublication.Count(); i++)
             {
-                vs2.Add(subscriberOfThePostOffices[i].CountSubscribe);
+                vs2.Add(allPublication[i].CountSubscribeLastYear);
             }
 
             seriesViews2 = new SeriesCollection();
 
-            for (int p = 0; p < subscriberOfThePostOffices.Count; p++)
+            for (int p = 0; p < allPublication.Count; p++)
             {
                 seriesViews2.Add(new ColumnSeries()
                 {
-                    Title = $"{subscriberOfThePostOffices[p].Surname} {subscriberOfThePostOffices[p].Name} {subscriberOfThePostOffices[p].MiddleName}",
+                    Title = $"{allPublication[p].Name}",
                     Values = new ChartValues<int> { vs2[p] },
 
                 });
