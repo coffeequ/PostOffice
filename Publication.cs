@@ -104,5 +104,33 @@ namespace PostOffice
                 allTypeViewPublicationString = value;
             }
         }
+
+        public int CountSubscribe
+        {
+            get
+            {
+                return Subscribe.Count();
+            }
+        }
+
+        public int CountSubscribeLastYear
+        {
+            get
+            {
+                int countSubscribeLastYear = 0;
+
+                List<Subscribe> subscribes = Subscribe.ToList();
+
+                for (int i = 0; i < subscribes.Count(); i++)
+                {
+                    if (subscribes[i].EntryTime >= new DateTime(2024, 01, 01) & subscribes[i].EntryTime <= new DateTime(2024, 12, 31))
+                    {
+                        countSubscribeLastYear++;
+                    }
+                }
+
+                return countSubscribeLastYear;
+            }
+        }
     }
 }

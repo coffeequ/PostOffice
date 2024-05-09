@@ -34,11 +34,13 @@
                     </DataGrid.Columns>
                 </DataGrid>
                 <StackPanel Grid.Row="2">
+                    <Label VerticalContentAlignment="Center" Width="300" FontSize="14">Соотношение сумм по изданиям за 2024 год</Label>
                     <materialDesign:Card Background="AliceBlue" Margin="10 10 10 00">
                         <StackPanel>
                             <lvc:PieChart x:Name="myChart" Margin="5" Height="200"></lvc:PieChart>
                         </StackPanel>
                     </materialDesign:Card>
+                    <Label Width="280" FontSize="14">Популярные издания среди подписчиков</Label>
                     <materialDesign:Card Background="AliceBlue" Margin="10 10 10 00">
                         <StackPanel>
                             <lvc:CartesianChart Series="{Binding}" x:Name="myChart2" Margin="5" Height="200">
