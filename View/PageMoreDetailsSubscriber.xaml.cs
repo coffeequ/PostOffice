@@ -15,25 +15,42 @@ using System.Windows.Shapes;
 
 namespace PostOffice.View
 {
+    //*****************************************************************//
+    //* Название программы: "PostOffice"                               //
+    //*                                                                //
+    //* Назначение программы: учет подписчиков периодических изданий и //
+    //* движения корреспонденции в почтовом отделении.                 //
+    //* Разработчик: студент группы ПР-330/б Пугач С.Е.                //
+    //*                                                                //
+    //* Версия 1.0                                                     //
+    //*****************************************************************//
     /// <summary>
     /// Логика взаимодействия для PageMoreDetailsSubscriber.xaml
     /// </summary>
     public partial class PageMoreDetailsSubscriber : Page
     {
+        //Подписчик почтового отделения
         SubscriberOfThePostOffice subscriberOfThePostOffice;
 
+        //Лист со всеми клиентами почтового отделения
         List<SubscriberOfThePostOffice> allSubscriberOfThePostOffice;
 
+        //Лист со всеми подписчиками почтового отделения
         List<SubscriberOfThePostOffice> allSubscribers;
 
+        //Лист со всеми подписками
         List<Subscribe> allSubscribes;
 
+        //БД
         Model.DataBasePostOffice dataBasePostOffice;
 
+        //Метод для закрытия окна
         public delegate void CloseWin();
 
+        //Объект метода для закрытия окна
         public static event CloseWin closeWin;
 
+        //Поле польователь
         User user;
 
         public PageMoreDetailsSubscriber(SubscriberOfThePostOffice subscriberOfThePostOffice, User user)
@@ -65,6 +82,10 @@ namespace PostOffice.View
             dgSubsriberPublication.ItemsSource = publicationSubscriber;
         }
 
+        /// <summary>
+        /// Метод для сохранения подписчика
+        /// </summary>
+        /// <returns></returns>
         private int SaveSubscrubers()
         {
             if (subscriberOfThePostOffice.id_Subscriber == 0)
@@ -108,6 +129,11 @@ namespace PostOffice.View
 
         }
 
+        /// <summary>
+        /// Кнопка для добавления публикации и перехода на страницу для добавления подписки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Add_Publication(object sender, RoutedEventArgs e)
         {
             try
@@ -148,6 +174,11 @@ namespace PostOffice.View
             }
         }
 
+        /// <summary>
+        /// Метод для сохранения подписчика 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_saveData(object sender, RoutedEventArgs e)
         {
             try
@@ -188,11 +219,11 @@ namespace PostOffice.View
             }
         }
 
-        private void Button_wordCheck(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Вывод чека об оплате");
-        }
-
+        /// <summary>
+        /// Метод для удаления подписки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Delete_Publication(object sender, RoutedEventArgs e)
         {
             var item = sender as Button;

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace PostOffice.Model
 {
+    /// <summary>
+    /// Класс для взаимодействия с БД
+    /// </summary>
     class DataBasePostOffice
     {
         public PostOfficeEntities postOfficeEntities { get; set; }

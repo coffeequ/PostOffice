@@ -8,26 +8,59 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PostOffice.Model
 {
+    /// <summary>
+    /// Класс для вывода данных в Excel
+    /// </summary>
     class IOExcel
     {
+        /// <summary>
+        /// Поле БД
+        /// </summary>
         Model.DataBasePostOffice dataBasePostOffice;
 
+        /// <summary>
+        /// Excel приложения
+        /// </summary>
         Excel.Application excelApp;
 
+        /// <summary>
+        /// Рабочие пространство
+        /// </summary>
         Excel.Workbook workbook;
 
+        /// <summary>
+        /// Лист 1
+        /// </summary>
         Excel.Worksheet worksheet;
 
+        /// <summary>
+        /// Лист 2
+        /// </summary>
         Excel.Worksheet worksheet2;
 
+        /// <summary>
+        /// Лист 3
+        /// </summary>
         Excel.Worksheet worksheet3;
 
+        /// <summary>
+        /// Лист всех активных подписок
+        /// </summary>
         List<Subscribe> allSubs;
 
+        /// <summary>
+        /// Лист всех публикаций
+        /// </summary>
         List<Publication> allPublication;
 
+        /// <summary>
+        /// Лист всех подписчиков почтового отделения
+        /// </summary>
         List<SubscriberOfThePostOffice> allSubscriberOfThePostOffices;
 
+        /// <summary>
+        /// Лист всех корреспонденций
+        /// </summary>
         List<Correspondence> AllCorrespondences;
 
         public IOExcel(Model.DataBasePostOffice dataBasePostOffice)
@@ -45,6 +78,9 @@ namespace PostOffice.Model
             excelApp = new Excel.Application();
         }
 
+        /// <summary>
+        /// Методя для вывода публикаций и подписчиков в Excel
+        /// </summary>
         public void DBToExcelTablePubAndSub()
         {
             int row = 1;
@@ -278,6 +314,9 @@ namespace PostOffice.Model
 
         }
 
+        /// <summary>
+        /// Метод для вывода корреспонденций в Excel
+        /// </summary>
         public void DBToExcelTableCorrespondence()
         {
             int row = 1;
