@@ -34,7 +34,7 @@
                     <Label FontSize="14">День:</Label>
                     <TextBox Name="tbDayEnd" FontSize="14" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                     <Label FontSize="14">Месяц:</Label>
-                    <TextBox TextChanged="tbMonthEnd_TextChanged" Name="tbMonthEnd" FontSize="14" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbMonthEnd" FontSize="14" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                     <Label FontSize="14">Год:</Label>
                     <TextBox Name="tbYearEnd" FontSize="14" Width="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                 </StackPanel>

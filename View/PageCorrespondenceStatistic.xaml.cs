@@ -20,8 +20,14 @@ namespace PostOffice.View
     /// </summary>
     public partial class PageCorrespondenceStatistic : Page
     {
+        /// <summary>
+        /// Поле БД
+        /// </summary>
         Model.DataBasePostOffice dataBasePostOffice;
 
+        /// <summary>
+        /// Объект класса выовода в Excel
+        /// </summary>
         Model.IOExcel iOExcel;
 
         public PageCorrespondenceStatistic()
@@ -33,6 +39,11 @@ namespace PostOffice.View
             dgCorrespondence.ItemsSource = dataBasePostOffice.postOfficeEntities.Correspondence.OrderByDescending(item => item.id_Correspondence).ToList();
         }
 
+        /// <summary>
+        /// Вывод статистики в Excel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_statisticToExcel(object sender, RoutedEventArgs e)
         {
             iOExcel = new Model.IOExcel(dataBasePostOffice);

@@ -86,45 +86,56 @@ namespace PostOffice.View.Admin
 
             var selectedItem = item.DataContext as SubscriberOfThePostOffice;
 
-            if (selectedItem != null)
+            var activePublication = selectedItem.Subscribe.ToList().Where(item2 => item2.StatusActive == 1);
+
+            if (activePublication.Count() <= 0)
             {
-                MessageBoxResult messageBoxResult = MessageBox.Show(
-                    "Вы точно хотите удалить запись",
-                    "Внимание!",
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Error);
-
-                if (messageBoxResult == MessageBoxResult.Yes)
+                if (selectedItem != null)
                 {
-                    dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.Remove(selectedItem);
+                    MessageBoxResult messageBoxResult = MessageBox.Show(
+                        "Вы точно хотите удалить запись",
+                        "Внимание!",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Error);
 
-                    var allSubs = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
-
-                    var allActiveSub = new List<Subscribe>();
-
-                    for (int i = 0; i < allSubs.Count(); i++)
+                    if (messageBoxResult == MessageBoxResult.Yes)
                     {
-                        if (allSubs[i].id_Subscriber == selectedItem.id_Subscriber)
+                        dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.Remove(selectedItem);
+
+                        var allSubs = dataBasePostOffice.postOfficeEntities.Subscribe.ToList();
+
+                        var allActiveSub = new List<Subscribe>();
+
+                        for (int i = 0; i < allSubs.Count(); i++)
                         {
-                            allActiveSub.Add(allSubs[i]);
-                            dataBasePostOffice.postOfficeEntities.Subscribe.Remove(allSubs[i]);
+                            if (allSubs[i].id_Subscriber == selectedItem.id_Subscriber)
+                            {
+                                allActiveSub.Add(allSubs[i]);
+                                dataBasePostOffice.postOfficeEntities.Subscribe.Remove(allSubs[i]);
+                            }
                         }
+
+                        for (int i = 0; i < allActiveSub.Count(); i++)
+                        {
+                            allActiveSub[i].Correspondence.Clear();
+                        }
+
+                        dataBasePostOffice.postOfficeEntities.SaveChanges();
+
+                        MessageBox.Show("Пользователь удален!");
+
+                        dgSubscribers.ItemsSource = null;
+
+                        dgSubscribers.ItemsSource = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
                     }
-
-                    for (int i = 0; i < allActiveSub.Count(); i++)
-                    {
-                        allActiveSub[i].Correspondence.Clear();
-                    }
-
-                    dataBasePostOffice.postOfficeEntities.SaveChanges();
-
-                    MessageBox.Show("Пользователь удален!");
-
-                    dgSubscribers.ItemsSource = null;
-
-                    dgSubscribers.ItemsSource = dataBasePostOffice.postOfficeEntities.SubscriberOfThePostOffice.ToList();
                 }
             }
+            else
+            {
+                MessageBox.Show("Нельзя удалить подписчика, так как у него есть активные подписки");
+                return;
+            }
+
         }
 
         private void ApplySearch()

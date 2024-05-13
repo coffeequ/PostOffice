@@ -16,27 +16,45 @@ using Word = Microsoft.Office.Interop.Word;
 
 namespace PostOffice.View
 {
+    //*****************************************************************//
+    //* Название программы: "PostOffice"                               //
+    //*                                                                //
+    //* Назначение программы: учет подписчиков периодических изданий и //
+    //* движения корреспонденции в почтовом отделении.                 //
+    //* Разработчик: студент группы ПР-330/б Пугач С.Е.                //
+    //*                                                                //
+    //* Версия 1.0                                                     //
+    //*****************************************************************//
     /// <summary>
     /// Логика взаимодействия для PageManagmentSubscribe.xaml
     /// </summary>
     public partial class PageManagmentSubscribe : Page
     {
+        //Подписчик почтового отделения
         SubscriberOfThePostOffice subscriberOfThePostOffice;
 
+        //БД
         Model.DataBasePostOffice dataBasePostOffice;
 
+        //Лист публикаций
         List<Publication> publicationsSelected;
 
+        //Лист активных публикаций у пользователя
         List<Publication> activePublication;
 
+        //Лист всех подписок
         List<Subscribe> subscribes;
 
+        //Лист всех корреспонденций
         List<Correspondence> allCorrespondence;
 
+        //Пользователь 
         User user;
 
+        //"Рандомное" поле
         Random rnd;
-
+        
+        //Год окончания подписки
         int yearMonthEnd = 0;
 
         public PageManagmentSubscribe(SubscriberOfThePostOffice subscriberOfThePostOffice, User user)
@@ -71,6 +89,11 @@ namespace PostOffice.View
             rnd = new Random();
         }
 
+        /// <summary>
+        /// Метод загрузки грид формы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Grid_LoadedMonth(object sender, RoutedEventArgs e)
         {
             tbDayStart.IsEnabled = false;
@@ -105,6 +128,11 @@ namespace PostOffice.View
             }
         }
 
+        /// <summary>
+        /// Метод для добавления подписки и корреспонденции
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Add(object sender, RoutedEventArgs e)
         {
             if (publicationsSelected.Count > 0)
@@ -323,11 +351,11 @@ namespace PostOffice.View
             }
         }
 
-        private void tbMonthEnd_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Метод для добавления подписки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgPublication_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var item = sender as DataGrid;
@@ -361,6 +389,11 @@ namespace PostOffice.View
             lvSelectedPublication.Items.Refresh();
         }
 
+        /// <summary>
+        /// Метод удаления выбранной подписки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_delete(object sender, RoutedEventArgs e)
         {
             var item = sender as Button;

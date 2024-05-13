@@ -24,16 +24,34 @@ namespace PostOffice.View
     /// </summary>
     public partial class PageSubscribeStatistic : Page
     {
+        /// <summary>
+        /// Поле БД
+        /// </summary>
         Model.DataBasePostOffice dataBasePostOffice;
 
+        /// <summary>
+        /// Лист с подписчиками
+        /// </summary>
         List<SubscriberOfThePostOffice> subscriberOfThePostOffices;
 
+        /// <summary>
+        /// Лист с активными подписками
+        /// </summary>
         List<Subscribe> allSubscribes;
 
+        /// <summary>
+        /// Лист со всеми публикациями
+        /// </summary>
         List<Publication> allPublication;
 
+        /// <summary>
+        /// Коллекция для графика
+        /// </summary>
         public SeriesCollection seriesViews2 { get; set; }
 
+        /// <summary>
+        /// Функция с наименованиями для графика
+        /// </summary>
         public Func<double, string> Formatter { get; set; }
 
         public PageSubscribeStatistic()
@@ -123,6 +141,11 @@ namespace PostOffice.View
             DataContext = this;
         }
 
+        /// <summary>
+        /// Метод для вывода всех подписчиков у издания
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgPublication_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = dgPublication.SelectedItem as Publication;
@@ -143,6 +166,11 @@ namespace PostOffice.View
             dgSubscribers.ItemsSource = temp;
         }
 
+        /// <summary>
+        /// Метод для вывода данных в Excel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_statisticToExcel(object sender, RoutedEventArgs e)
         {
             Model.IOExcel iOExcel = new Model.IOExcel(dataBasePostOffice);
